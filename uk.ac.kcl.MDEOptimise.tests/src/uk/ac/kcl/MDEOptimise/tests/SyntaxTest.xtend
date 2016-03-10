@@ -33,6 +33,11 @@ class SyntaxTest {
 			evolve using <CDE>
 		''')
 		assertNotNull(model)
+		
 		model.assertNoIssues
+		
+		assertEquals("ABC", model.metamodel.location)
+		assertEquals("ABC", model.evolvers.get(0).rule_location)
+		assertEquals("CDE", model.evolvers.get(1).rule_location)
 	}
 }

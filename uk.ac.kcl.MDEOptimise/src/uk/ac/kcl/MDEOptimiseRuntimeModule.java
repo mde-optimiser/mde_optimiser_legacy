@@ -3,9 +3,19 @@
  */
 package uk.ac.kcl;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
+
+import uk.ac.kcl.values.MDEOptimiseValueConverter;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class MDEOptimiseRuntimeModule extends uk.ac.kcl.AbstractMDEOptimiseRuntimeModule {
-
+	/**
+	 * Provide our own value conversion code so that we can do a bit of pre-procesing on 
+	 * some elements of the language
+	 */
+    public Class<? extends IValueConverterService> bindIValueConverterService() {
+        return MDEOptimiseValueConverter.class;
+    }
 }
