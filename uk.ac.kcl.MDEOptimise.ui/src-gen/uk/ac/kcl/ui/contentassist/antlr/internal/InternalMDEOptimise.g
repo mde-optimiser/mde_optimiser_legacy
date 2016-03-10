@@ -246,9 +246,16 @@ rule__Optimisation__Group__2__Impl
     }
 :
 (
+(
 { before(grammarAccess.getOptimisationAccess().getEvolversAssignment_2()); }
 (rule__Optimisation__EvolversAssignment_2)
 { after(grammarAccess.getOptimisationAccess().getEvolversAssignment_2()); }
+)
+(
+{ before(grammarAccess.getOptimisationAccess().getEvolversAssignment_2()); }
+(rule__Optimisation__EvolversAssignment_2)*
+{ after(grammarAccess.getOptimisationAccess().getEvolversAssignment_2()); }
+)
 )
 
 ;

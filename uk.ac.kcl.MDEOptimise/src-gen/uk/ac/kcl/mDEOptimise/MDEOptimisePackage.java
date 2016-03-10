@@ -85,7 +85,7 @@ public interface MDEOptimisePackage extends EPackage
   int OPTIMISATION__FITNESS = 1;
 
   /**
-   * The feature id for the '<em><b>Evolvers</b></em>' containment reference.
+   * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -229,10 +229,10 @@ public interface MDEOptimisePackage extends EPackage
   EReference getOptimisation_Fitness();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mDEOptimise.Optimisation#getEvolvers <em>Evolvers</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mDEOptimise.Optimisation#getEvolvers <em>Evolvers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Evolvers</em>'.
+   * @return the meta object for the containment reference list '<em>Evolvers</em>'.
    * @see uk.ac.kcl.mDEOptimise.Optimisation#getEvolvers()
    * @see #getOptimisation()
    * @generated
@@ -363,7 +363,7 @@ public interface MDEOptimisePackage extends EPackage
     EReference OPTIMISATION__FITNESS = eINSTANCE.getOptimisation_Fitness();
 
     /**
-     * The meta object literal for the '<em><b>Evolvers</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Evolvers</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

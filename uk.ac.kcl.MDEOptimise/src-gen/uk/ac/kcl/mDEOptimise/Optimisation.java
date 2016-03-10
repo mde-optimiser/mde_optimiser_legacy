@@ -2,6 +2,8 @@
  */
 package uk.ac.kcl.mDEOptimise;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -77,29 +79,19 @@ public interface Optimisation extends EObject
   void setFitness(FitnessFunctionSpec value);
 
   /**
-   * Returns the value of the '<em><b>Evolvers</b></em>' containment reference.
+   * Returns the value of the '<em><b>Evolvers</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.mDEOptimise.EvolverSpec}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Evolvers</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Evolvers</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Evolvers</em>' containment reference.
-   * @see #setEvolvers(EvolverSpec)
+   * @return the value of the '<em>Evolvers</em>' containment reference list.
    * @see uk.ac.kcl.mDEOptimise.MDEOptimisePackage#getOptimisation_Evolvers()
    * @model containment="true"
    * @generated
    */
-  EvolverSpec getEvolvers();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.mDEOptimise.Optimisation#getEvolvers <em>Evolvers</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Evolvers</em>' containment reference.
-   * @see #getEvolvers()
-   * @generated
-   */
-  void setEvolvers(EvolverSpec value);
+  EList<EvolverSpec> getEvolvers();
 
 } // Optimisation

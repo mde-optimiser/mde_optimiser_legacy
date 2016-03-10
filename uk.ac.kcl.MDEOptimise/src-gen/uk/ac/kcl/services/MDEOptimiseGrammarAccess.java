@@ -29,10 +29,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEvolversEvolverSpecParserRuleCall_2_0 = (RuleCall)cEvolversAssignment_2.eContents().get(0);
 		
 		//Optimisation:
-		//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers=EvolverSpec;
+		//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
 		@Override public ParserRule getRule() { return rule; }
 
-		//metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers=EvolverSpec
+		//metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+
 		public Group getGroup() { return cGroup; }
 
 		//metamodel=MetaModelSpec
@@ -47,7 +47,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//FitnessFunctionSpec
 		public RuleCall getFitnessFitnessFunctionSpecParserRuleCall_1_0() { return cFitnessFitnessFunctionSpecParserRuleCall_1_0; }
 
-		//evolvers=EvolverSpec
+		//evolvers+=EvolverSpec+
 		public Assignment getEvolversAssignment_2() { return cEvolversAssignment_2; }
 
 		//EvolverSpec
@@ -212,7 +212,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Optimisation:
-	//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers=EvolverSpec;
+	//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
 	public OptimisationElements getOptimisationAccess() {
 		return pOptimisation;
 	}

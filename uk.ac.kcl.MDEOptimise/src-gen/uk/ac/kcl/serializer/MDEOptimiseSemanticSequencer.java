@@ -101,22 +101,9 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers=EvolverSpec)
+	 *     (metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+)
 	 */
 	protected void sequence_Optimisation(EObject context, Optimisation semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__METAMODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__METAMODEL));
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__FITNESS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__FITNESS));
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__EVOLVERS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.OPTIMISATION__EVOLVERS));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getOptimisationAccess().getMetamodelMetaModelSpecParserRuleCall_0_0(), semanticObject.getMetamodel());
-		feeder.accept(grammarAccess.getOptimisationAccess().getFitnessFitnessFunctionSpecParserRuleCall_1_0(), semanticObject.getFitness());
-		feeder.accept(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_2_0(), semanticObject.getEvolvers());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

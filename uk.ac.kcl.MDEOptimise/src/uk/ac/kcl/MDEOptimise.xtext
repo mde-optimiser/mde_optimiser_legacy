@@ -7,7 +7,7 @@ generate mDEOptimise "http://www.ac.uk/kcl/MDEOptimise"
 Optimisation:
 	metamodel = MetaModelSpec
 	fitness = FitnessFunctionSpec
-	evolvers = EvolverSpec
+	evolvers += EvolverSpec+
 ;
 
 MetaModelSpec:

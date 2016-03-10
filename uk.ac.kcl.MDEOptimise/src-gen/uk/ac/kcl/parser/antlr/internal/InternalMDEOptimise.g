@@ -122,7 +122,7 @@ ruleOptimisation returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOptimisationRule());
 	        }
-       		set(
+       		add(
        			$current, 
        			"evolvers",
         		lv_evolvers_2_0, 
@@ -131,7 +131,7 @@ ruleOptimisation returns [EObject current=null]
 	    }
 
 )
-))
+)+)
 ;
 
 

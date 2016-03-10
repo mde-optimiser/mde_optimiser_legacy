@@ -2,14 +2,21 @@
  */
 package uk.ac.kcl.mDEOptimise.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.kcl.mDEOptimise.EvolverSpec;
 import uk.ac.kcl.mDEOptimise.FitnessFunctionSpec;
@@ -55,14 +62,14 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
   protected FitnessFunctionSpec fitness;
 
   /**
-   * The cached value of the '{@link #getEvolvers() <em>Evolvers</em>}' containment reference.
+   * The cached value of the '{@link #getEvolvers() <em>Evolvers</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getEvolvers()
    * @generated
    * @ordered
    */
-  protected EvolverSpec evolvers;
+  protected EList<EvolverSpec> evolvers;
 
   /**
    * <!-- begin-user-doc -->
@@ -186,47 +193,13 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public EvolverSpec getEvolvers()
+  public EList<EvolverSpec> getEvolvers()
   {
+    if (evolvers == null)
+    {
+      evolvers = new EObjectContainmentEList<EvolverSpec>(EvolverSpec.class, this, MDEOptimisePackage.OPTIMISATION__EVOLVERS);
+    }
     return evolvers;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetEvolvers(EvolverSpec newEvolvers, NotificationChain msgs)
-  {
-    EvolverSpec oldEvolvers = evolvers;
-    evolvers = newEvolvers;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.OPTIMISATION__EVOLVERS, oldEvolvers, newEvolvers);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEvolvers(EvolverSpec newEvolvers)
-  {
-    if (newEvolvers != evolvers)
-    {
-      NotificationChain msgs = null;
-      if (evolvers != null)
-        msgs = ((InternalEObject)evolvers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MDEOptimisePackage.OPTIMISATION__EVOLVERS, null, msgs);
-      if (newEvolvers != null)
-        msgs = ((InternalEObject)newEvolvers).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MDEOptimisePackage.OPTIMISATION__EVOLVERS, null, msgs);
-      msgs = basicSetEvolvers(newEvolvers, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.OPTIMISATION__EVOLVERS, newEvolvers, newEvolvers));
   }
 
   /**
@@ -244,7 +217,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
         return basicSetFitness(null, msgs);
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
-        return basicSetEvolvers(null, msgs);
+        return ((InternalEList<?>)getEvolvers()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -274,6 +247,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -286,7 +260,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         setFitness((FitnessFunctionSpec)newValue);
         return;
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
-        setEvolvers((EvolverSpec)newValue);
+        getEvolvers().clear();
+        getEvolvers().addAll((Collection<? extends EvolverSpec>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -309,7 +284,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         setFitness((FitnessFunctionSpec)null);
         return;
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
-        setEvolvers((EvolverSpec)null);
+        getEvolvers().clear();
         return;
     }
     super.eUnset(featureID);
@@ -330,7 +305,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
         return fitness != null;
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
-        return evolvers != null;
+        return evolvers != null && !evolvers.isEmpty();
     }
     return super.eIsSet(featureID);
   }
