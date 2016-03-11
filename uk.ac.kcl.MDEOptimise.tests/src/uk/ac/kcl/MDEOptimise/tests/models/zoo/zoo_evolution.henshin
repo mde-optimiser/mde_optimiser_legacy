@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_gV4MUOeBEeW5Af7b2nyHRQ">
+  <imports href="zoo.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_jDWfMOeBEeW5Af7b2nyHRQ" name="MoveAnimal">
+    <lhs xmi:id="_jEwNYOeBEeW5Af7b2nyHRQ" name="Lhs">
+      <nodes xmi:id="_nmt8sOeBEeW5Af7b2nyHRQ" outgoing="_vZ6zQOeBEeW5Af7b2nyHRQ _wB0gwOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo"/>
+      </nodes>
+      <nodes xmi:id="_pTSzQOeBEeW5Af7b2nyHRQ" name="c1" incoming="_vZ6zQOeBEeW5Af7b2nyHRQ" outgoing="_8qsFwOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage"/>
+        <attributes xmi:id="_kHXEcOeCEeW5Af7b2nyHRQ" value="x">
+          <type href="zoo.ecore#//Cage/spaceRemaining"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_qr_rkOeBEeW5Af7b2nyHRQ" name="c2" incoming="_wB0gwOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage"/>
+        <attributes xmi:id="_tZ6N4OeCEeW5Af7b2nyHRQ" value="y">
+          <type href="zoo.ecore#//Cage/spaceRemaining"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_s1DCwOeBEeW5Af7b2nyHRQ" name="a" incoming="_8qsFwOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Animal"/>
+      </nodes>
+      <edges xmi:id="_vZ6zQOeBEeW5Af7b2nyHRQ" source="_nmt8sOeBEeW5Af7b2nyHRQ" target="_pTSzQOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo/cages"/>
+      </edges>
+      <edges xmi:id="_wB0gwOeBEeW5Af7b2nyHRQ" source="_nmt8sOeBEeW5Af7b2nyHRQ" target="_qr_rkOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo/cages"/>
+      </edges>
+      <edges xmi:id="_8qsFwOeBEeW5Af7b2nyHRQ" source="_pTSzQOeBEeW5Af7b2nyHRQ" target="_s1DCwOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage/animals"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_kESF0OeDEeW5Af7b2nyHRQ">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_kESs4OeDEeW5Af7b2nyHRQ">
+          <conclusion xmi:id="_kESs4eeDEeW5Af7b2nyHRQ">
+            <nodes xmi:id="_kESs4ueDEeW5Af7b2nyHRQ" outgoing="_kETT8OeDEeW5Af7b2nyHRQ _kETT9OeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Zoo"/>
+            </nodes>
+            <nodes xmi:id="_kESs5OeDEeW5Af7b2nyHRQ" name="c1" incoming="_kETT8OeDEeW5Af7b2nyHRQ" outgoing="_kETT9-eDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Cage"/>
+              <attributes xmi:id="_kESs5eeDEeW5Af7b2nyHRQ" value="x">
+                <type href="zoo.ecore#//Cage/spaceRemaining"/>
+              </attributes>
+            </nodes>
+            <nodes xmi:id="_kETT8eeDEeW5Af7b2nyHRQ" name="c2" incoming="_kETT9OeDEeW5Af7b2nyHRQ" outgoing="_mDCRgOeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Cage"/>
+              <attributes xmi:id="_kETT8ueDEeW5Af7b2nyHRQ" value="y">
+                <type href="zoo.ecore#//Cage/spaceRemaining"/>
+              </attributes>
+            </nodes>
+            <nodes xmi:id="_kETT9eeDEeW5Af7b2nyHRQ" name="a" incoming="_kETT9-eDEeW5Af7b2nyHRQ _m8V4EOeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Animal"/>
+            </nodes>
+            <nodes xmi:id="_kEQ3sOeDEeW5Af7b2nyHRQ" name="fiend" incoming="_mDCRgOeDEeW5Af7b2nyHRQ" outgoing="_m8V4EOeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Animal"/>
+            </nodes>
+            <edges xmi:id="_kETT8OeDEeW5Af7b2nyHRQ" source="_kESs4ueDEeW5Af7b2nyHRQ" target="_kESs5OeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Zoo/cages"/>
+            </edges>
+            <edges xmi:id="_kETT9OeDEeW5Af7b2nyHRQ" source="_kESs4ueDEeW5Af7b2nyHRQ" target="_kETT8eeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Zoo/cages"/>
+            </edges>
+            <edges xmi:id="_kETT9-eDEeW5Af7b2nyHRQ" source="_kESs5OeDEeW5Af7b2nyHRQ" target="_kETT9eeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Cage/animals"/>
+            </edges>
+            <edges xmi:id="_mDCRgOeDEeW5Af7b2nyHRQ" source="_kETT8eeDEeW5Af7b2nyHRQ" target="_kEQ3sOeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Cage/animals"/>
+            </edges>
+            <edges xmi:id="_m8V4EOeDEeW5Af7b2nyHRQ" source="_kEQ3sOeDEeW5Af7b2nyHRQ" target="_kETT9eeDEeW5Af7b2nyHRQ">
+              <type href="zoo.ecore#//Animal/eats"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_kESs4-eDEeW5Af7b2nyHRQ" origin="_nmt8sOeBEeW5Af7b2nyHRQ" image="_kESs4ueDEeW5Af7b2nyHRQ"/>
+          <mappings xmi:id="_kESs5ueDEeW5Af7b2nyHRQ" origin="_pTSzQOeBEeW5Af7b2nyHRQ" image="_kESs5OeDEeW5Af7b2nyHRQ"/>
+          <mappings xmi:id="_kETT8-eDEeW5Af7b2nyHRQ" origin="_qr_rkOeBEeW5Af7b2nyHRQ" image="_kETT8eeDEeW5Af7b2nyHRQ"/>
+          <mappings xmi:id="_kETT9ueDEeW5Af7b2nyHRQ" origin="_s1DCwOeBEeW5Af7b2nyHRQ" image="_kETT9eeDEeW5Af7b2nyHRQ"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_jEw0cOeBEeW5Af7b2nyHRQ" name="Rhs">
+      <nodes xmi:id="_nmujwOeBEeW5Af7b2nyHRQ" outgoing="_vZ6zQeeBEeW5Af7b2nyHRQ _wB0gweeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo"/>
+      </nodes>
+      <nodes xmi:id="_pTSzQeeBEeW5Af7b2nyHRQ" name="c1" incoming="_vZ6zQeeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage"/>
+        <attributes xmi:id="_kHYSkOeCEeW5Af7b2nyHRQ" value="x+a.spaceRequired*a.quantity">
+          <type href="zoo.ecore#//Cage/spaceRemaining"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_qr_rkeeBEeW5Af7b2nyHRQ" name="c2" incoming="_wB0gweeBEeW5Af7b2nyHRQ" outgoing="_-UNBQOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage"/>
+        <attributes xmi:id="_tZ6N4eeCEeW5Af7b2nyHRQ" value="y - a.spaceRequired*a.quantity">
+          <type href="zoo.ecore#//Cage/spaceRemaining"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_s1DCweeBEeW5Af7b2nyHRQ" name="a" incoming="_-UNBQOeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Animal"/>
+      </nodes>
+      <edges xmi:id="_vZ6zQeeBEeW5Af7b2nyHRQ" source="_nmujwOeBEeW5Af7b2nyHRQ" target="_pTSzQeeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo/cages"/>
+      </edges>
+      <edges xmi:id="_wB0gweeBEeW5Af7b2nyHRQ" source="_nmujwOeBEeW5Af7b2nyHRQ" target="_qr_rkeeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Zoo/cages"/>
+      </edges>
+      <edges xmi:id="_-UNBQOeBEeW5Af7b2nyHRQ" source="_qr_rkeeBEeW5Af7b2nyHRQ" target="_s1DCweeBEeW5Af7b2nyHRQ">
+        <type href="zoo.ecore#//Cage/animals"/>
+      </edges>
+    </rhs>
+    <attributeConditions xmi:id="_FTS6UOeCEeW5Af7b2nyHRQ" name="sufficientCapacity" conditionText="c2.spaceRemaining > a.spaceRequired*a.quantity"/>
+    <mappings xmi:id="_nmvK0OeBEeW5Af7b2nyHRQ" origin="_nmt8sOeBEeW5Af7b2nyHRQ" image="_nmujwOeBEeW5Af7b2nyHRQ"/>
+    <mappings xmi:id="_pTSzQueBEeW5Af7b2nyHRQ" origin="_pTSzQOeBEeW5Af7b2nyHRQ" image="_pTSzQeeBEeW5Af7b2nyHRQ"/>
+    <mappings xmi:id="_qsASoOeBEeW5Af7b2nyHRQ" origin="_qr_rkOeBEeW5Af7b2nyHRQ" image="_qr_rkeeBEeW5Af7b2nyHRQ"/>
+    <mappings xmi:id="_s1DCwueBEeW5Af7b2nyHRQ" origin="_s1DCwOeBEeW5Af7b2nyHRQ" image="_s1DCweeBEeW5Af7b2nyHRQ"/>
+  </units>
+</henshin:Module>

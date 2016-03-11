@@ -12,6 +12,7 @@ class Zoo {
 
 class Cage {
 	attr int spaceAvailable;
+	attr int spaceRemaining;
 	ref Animal[*] animals;
 }
 

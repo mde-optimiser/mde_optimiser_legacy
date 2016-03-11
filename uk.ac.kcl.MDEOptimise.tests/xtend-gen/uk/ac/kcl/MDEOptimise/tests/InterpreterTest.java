@@ -30,7 +30,7 @@ public class InterpreterTest {
       _builder.newLine();
       _builder.append("fitness \"uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction\"");
       _builder.newLine();
-      _builder.append("evolve using <ABC>");
+      _builder.append("evolve using <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo_evolution.henshin>");
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);

@@ -9,6 +9,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="spaceAvailable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spaceRemaining" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="animals" upperBound="-1"
         eType="#//Animal"/>
   </eClassifiers>
