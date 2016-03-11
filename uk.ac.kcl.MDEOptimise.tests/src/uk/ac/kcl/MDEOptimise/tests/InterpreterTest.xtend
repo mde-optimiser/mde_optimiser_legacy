@@ -1,43 +1,35 @@
 package uk.ac.kcl.MDEOptimise.tests
 
-import javax.inject.Inject
+import com.google.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimiseInjectorProvider
+import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 
 @InjectWith(MDEOptimiseInjectorProvider)
 @RunWith(XtextRunner)
-class SyntaxTest {
+class InterpreterTest {
 	@Inject ParseHelper<Optimisation> parser
-	@Inject extension ValidationTestHelper
-	
-	/**
-	 * A basic test that should pass to demonstrate basic parsing functionality.
-	 */
+
 	@Test
-	def void testBasicParsing() {
-		val model = parser.parse('''
+	def void testBasicInterpreter() {
+		val model = parser.parse ('''
 			metamodel <ABC>
 			fitness {
 				class "ABC"
-				method "cde"
+				method "def"
 			}
 			evolve using <ABC>
-			evolve using <CDE>
 		''')
 		assertNotNull(model)
 		
-		model.assertNoIssues
-		
-		assertEquals("ABC", model.metamodel.location)
-		assertEquals("ABC", model.evolvers.get(0).rule_location)
-		assertEquals("CDE", model.evolvers.get(1).rule_location)
-	} 
+		val interpreter = new OptimisationInterpreter(model)
+		interpreter.execute();	
+	}
 }

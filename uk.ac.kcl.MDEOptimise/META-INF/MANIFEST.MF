@@ -17,14 +17,15 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl,
- uk.ac.kcl.services,
+ uk.ac.kcl.formatting,
+ uk.ac.kcl.generator,
+ uk.ac.kcl.interpreter,
  uk.ac.kcl.mDEOptimise,
  uk.ac.kcl.mDEOptimise.impl,
  uk.ac.kcl.mDEOptimise.util,
- uk.ac.kcl.serializer,
  uk.ac.kcl.parser.antlr,
  uk.ac.kcl.parser.antlr.internal,
- uk.ac.kcl.validation,
  uk.ac.kcl.scoping,
- uk.ac.kcl.generator,
- uk.ac.kcl.formatting
+ uk.ac.kcl.serializer,
+ uk.ac.kcl.services,
+ uk.ac.kcl.validation
