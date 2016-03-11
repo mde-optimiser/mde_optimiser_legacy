@@ -37,15 +37,7 @@ public class SyntaxTest {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("metamodel <ABC>");
       _builder.newLine();
-      _builder.append("fitness {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("class \"ABC\"");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("method \"cde\"");
-      _builder.newLine();
-      _builder.append("}");
+      _builder.append("fitness \"ABC\"");
       _builder.newLine();
       _builder.append("evolve using <ABC>");
       _builder.newLine();

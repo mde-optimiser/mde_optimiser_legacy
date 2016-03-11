@@ -15,11 +15,7 @@ MetaModelSpec:
 ;
 
 FitnessFunctionSpec:
-	// TODO: Define standard signature of this method. Should I perhaps change this to just take a class and define the signature through an interface?
-	"fitness" "{"
-		"class" class=STRING
-		"method" method=STRING
-	"}"
+	"fitness" class=STRING
 ;
 
 EvolverSpec:

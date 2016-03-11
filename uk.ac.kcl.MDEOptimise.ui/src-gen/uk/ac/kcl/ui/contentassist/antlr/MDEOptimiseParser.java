@@ -45,8 +45,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationAccess().getFitnessAssignment_1(), "rule__Optimisation__FitnessAssignment_1");
 					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_2(), "rule__Optimisation__EvolversAssignment_2");
 					put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
-					put(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_3(), "rule__FitnessFunctionSpec__ClassAssignment_3");
-					put(grammarAccess.getFitnessFunctionSpecAccess().getMethodAssignment_5(), "rule__FitnessFunctionSpec__MethodAssignment_5");
+					put(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_1(), "rule__FitnessFunctionSpec__ClassAssignment_1");
 					put(grammarAccess.getEvolverSpecAccess().getRule_locationAssignment_2(), "rule__EvolverSpec__Rule_locationAssignment_2");
 				}
 			};

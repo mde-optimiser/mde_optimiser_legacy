@@ -66,19 +66,16 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (class=STRING method=STRING)
+	 *     class=STRING
 	 */
 	protected void sequence_FitnessFunctionSpec(EObject context, FitnessFunctionSpec semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__CLASS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__CLASS));
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__METHOD) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__METHOD));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_3_0(), semanticObject.getClass_());
-		feeder.accept(grammarAccess.getFitnessFunctionSpecAccess().getMethodSTRINGTerminalRuleCall_5_0(), semanticObject.getMethod());
+		feeder.accept(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_1_0(), semanticObject.getClass_());
 		feeder.finish();
 	}
 	

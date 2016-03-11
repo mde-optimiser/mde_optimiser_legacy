@@ -22,25 +22,21 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMDEOptimiseParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'metamodel'", "'fitness'", "'{'", "'class'", "'method'", "'}'", "'evolve'", "'using'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'metamodel'", "'fitness'", "'evolve'", "'using'"
     };
+    public static final int RULE_ID=6;
+    public static final int RULE_WS=10;
     public static final int RULE_STRING=5;
+    public static final int RULE_ANY_OTHER=11;
     public static final int RULE_SL_COMMENT=9;
-    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
+    public static final int RULE_INT=7;
+    public static final int RULE_URL=4;
+    public static final int RULE_ML_COMMENT=8;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
-    public static final int RULE_ID=6;
-    public static final int RULE_WS=10;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int RULE_INT=7;
-    public static final int RULE_URL=4;
-    public static final int RULE_ML_COMMENT=8;
 
     // delegates
     // delegators
@@ -632,7 +628,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==18) ) {
+                if ( (LA1_0==14) ) {
                     alt1=1;
                 }
 
@@ -911,22 +907,17 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FitnessFunctionSpec__Group__1"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:367:1: rule__FitnessFunctionSpec__Group__1 : rule__FitnessFunctionSpec__Group__1__Impl rule__FitnessFunctionSpec__Group__2 ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:367:1: rule__FitnessFunctionSpec__Group__1 : rule__FitnessFunctionSpec__Group__1__Impl ;
     public final void rule__FitnessFunctionSpec__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:371:1: ( rule__FitnessFunctionSpec__Group__1__Impl rule__FitnessFunctionSpec__Group__2 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:372:2: rule__FitnessFunctionSpec__Group__1__Impl rule__FitnessFunctionSpec__Group__2
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:371:1: ( rule__FitnessFunctionSpec__Group__1__Impl )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:372:2: rule__FitnessFunctionSpec__Group__1__Impl
             {
             pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__1__Impl_in_rule__FitnessFunctionSpec__Group__1693);
             rule__FitnessFunctionSpec__Group__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__2_in_rule__FitnessFunctionSpec__Group__1696);
-            rule__FitnessFunctionSpec__Group__2();
 
             state._fsp--;
 
@@ -949,21 +940,31 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FitnessFunctionSpec__Group__1__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:379:1: rule__FitnessFunctionSpec__Group__1__Impl : ( '{' ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:378:1: rule__FitnessFunctionSpec__Group__1__Impl : ( ( rule__FitnessFunctionSpec__ClassAssignment_1 ) ) ;
     public final void rule__FitnessFunctionSpec__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:383:1: ( ( '{' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:384:1: ( '{' )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:382:1: ( ( ( rule__FitnessFunctionSpec__ClassAssignment_1 ) ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:383:1: ( ( rule__FitnessFunctionSpec__ClassAssignment_1 ) )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:384:1: ( '{' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:385:1: '{'
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:383:1: ( ( rule__FitnessFunctionSpec__ClassAssignment_1 ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:384:1: ( rule__FitnessFunctionSpec__ClassAssignment_1 )
             {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,14,FOLLOW_14_in_rule__FitnessFunctionSpec__Group__1__Impl724); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getLeftCurlyBracketKeyword_1()); 
+             before(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_1()); 
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:385:1: ( rule__FitnessFunctionSpec__ClassAssignment_1 )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:385:2: rule__FitnessFunctionSpec__ClassAssignment_1
+            {
+            pushFollow(FOLLOW_rule__FitnessFunctionSpec__ClassAssignment_1_in_rule__FitnessFunctionSpec__Group__1__Impl720);
+            rule__FitnessFunctionSpec__ClassAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_1()); 
 
             }
 
@@ -985,412 +986,22 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__FitnessFunctionSpec__Group__1__Impl"
 
 
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__2"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:398:1: rule__FitnessFunctionSpec__Group__2 : rule__FitnessFunctionSpec__Group__2__Impl rule__FitnessFunctionSpec__Group__3 ;
-    public final void rule__FitnessFunctionSpec__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:402:1: ( rule__FitnessFunctionSpec__Group__2__Impl rule__FitnessFunctionSpec__Group__3 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:403:2: rule__FitnessFunctionSpec__Group__2__Impl rule__FitnessFunctionSpec__Group__3
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__2__Impl_in_rule__FitnessFunctionSpec__Group__2755);
-            rule__FitnessFunctionSpec__Group__2__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__3_in_rule__FitnessFunctionSpec__Group__2758);
-            rule__FitnessFunctionSpec__Group__3();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__2"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__2__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:410:1: rule__FitnessFunctionSpec__Group__2__Impl : ( 'class' ) ;
-    public final void rule__FitnessFunctionSpec__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:414:1: ( ( 'class' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:415:1: ( 'class' )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:415:1: ( 'class' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:416:1: 'class'
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getClassKeyword_2()); 
-            match(input,15,FOLLOW_15_in_rule__FitnessFunctionSpec__Group__2__Impl786); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getClassKeyword_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__2__Impl"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__3"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:429:1: rule__FitnessFunctionSpec__Group__3 : rule__FitnessFunctionSpec__Group__3__Impl rule__FitnessFunctionSpec__Group__4 ;
-    public final void rule__FitnessFunctionSpec__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:433:1: ( rule__FitnessFunctionSpec__Group__3__Impl rule__FitnessFunctionSpec__Group__4 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:434:2: rule__FitnessFunctionSpec__Group__3__Impl rule__FitnessFunctionSpec__Group__4
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__3__Impl_in_rule__FitnessFunctionSpec__Group__3817);
-            rule__FitnessFunctionSpec__Group__3__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__4_in_rule__FitnessFunctionSpec__Group__3820);
-            rule__FitnessFunctionSpec__Group__4();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__3"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__3__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:441:1: rule__FitnessFunctionSpec__Group__3__Impl : ( ( rule__FitnessFunctionSpec__ClassAssignment_3 ) ) ;
-    public final void rule__FitnessFunctionSpec__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:445:1: ( ( ( rule__FitnessFunctionSpec__ClassAssignment_3 ) ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:446:1: ( ( rule__FitnessFunctionSpec__ClassAssignment_3 ) )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:446:1: ( ( rule__FitnessFunctionSpec__ClassAssignment_3 ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:447:1: ( rule__FitnessFunctionSpec__ClassAssignment_3 )
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_3()); 
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:448:1: ( rule__FitnessFunctionSpec__ClassAssignment_3 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:448:2: rule__FitnessFunctionSpec__ClassAssignment_3
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__ClassAssignment_3_in_rule__FitnessFunctionSpec__Group__3__Impl847);
-            rule__FitnessFunctionSpec__ClassAssignment_3();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__3__Impl"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__4"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:458:1: rule__FitnessFunctionSpec__Group__4 : rule__FitnessFunctionSpec__Group__4__Impl rule__FitnessFunctionSpec__Group__5 ;
-    public final void rule__FitnessFunctionSpec__Group__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:462:1: ( rule__FitnessFunctionSpec__Group__4__Impl rule__FitnessFunctionSpec__Group__5 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:463:2: rule__FitnessFunctionSpec__Group__4__Impl rule__FitnessFunctionSpec__Group__5
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__4__Impl_in_rule__FitnessFunctionSpec__Group__4877);
-            rule__FitnessFunctionSpec__Group__4__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__5_in_rule__FitnessFunctionSpec__Group__4880);
-            rule__FitnessFunctionSpec__Group__5();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__4"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__4__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:470:1: rule__FitnessFunctionSpec__Group__4__Impl : ( 'method' ) ;
-    public final void rule__FitnessFunctionSpec__Group__4__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:474:1: ( ( 'method' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:475:1: ( 'method' )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:475:1: ( 'method' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:476:1: 'method'
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getMethodKeyword_4()); 
-            match(input,16,FOLLOW_16_in_rule__FitnessFunctionSpec__Group__4__Impl908); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getMethodKeyword_4()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__4__Impl"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__5"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:489:1: rule__FitnessFunctionSpec__Group__5 : rule__FitnessFunctionSpec__Group__5__Impl rule__FitnessFunctionSpec__Group__6 ;
-    public final void rule__FitnessFunctionSpec__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:493:1: ( rule__FitnessFunctionSpec__Group__5__Impl rule__FitnessFunctionSpec__Group__6 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:494:2: rule__FitnessFunctionSpec__Group__5__Impl rule__FitnessFunctionSpec__Group__6
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__5__Impl_in_rule__FitnessFunctionSpec__Group__5939);
-            rule__FitnessFunctionSpec__Group__5__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__6_in_rule__FitnessFunctionSpec__Group__5942);
-            rule__FitnessFunctionSpec__Group__6();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__5"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__5__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:501:1: rule__FitnessFunctionSpec__Group__5__Impl : ( ( rule__FitnessFunctionSpec__MethodAssignment_5 ) ) ;
-    public final void rule__FitnessFunctionSpec__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:505:1: ( ( ( rule__FitnessFunctionSpec__MethodAssignment_5 ) ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:506:1: ( ( rule__FitnessFunctionSpec__MethodAssignment_5 ) )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:506:1: ( ( rule__FitnessFunctionSpec__MethodAssignment_5 ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:507:1: ( rule__FitnessFunctionSpec__MethodAssignment_5 )
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getMethodAssignment_5()); 
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:508:1: ( rule__FitnessFunctionSpec__MethodAssignment_5 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:508:2: rule__FitnessFunctionSpec__MethodAssignment_5
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__MethodAssignment_5_in_rule__FitnessFunctionSpec__Group__5__Impl969);
-            rule__FitnessFunctionSpec__MethodAssignment_5();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getFitnessFunctionSpecAccess().getMethodAssignment_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__5__Impl"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__6"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:518:1: rule__FitnessFunctionSpec__Group__6 : rule__FitnessFunctionSpec__Group__6__Impl ;
-    public final void rule__FitnessFunctionSpec__Group__6() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:522:1: ( rule__FitnessFunctionSpec__Group__6__Impl )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:523:2: rule__FitnessFunctionSpec__Group__6__Impl
-            {
-            pushFollow(FOLLOW_rule__FitnessFunctionSpec__Group__6__Impl_in_rule__FitnessFunctionSpec__Group__6999);
-            rule__FitnessFunctionSpec__Group__6__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__6"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__Group__6__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:529:1: rule__FitnessFunctionSpec__Group__6__Impl : ( '}' ) ;
-    public final void rule__FitnessFunctionSpec__Group__6__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:533:1: ( ( '}' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:534:1: ( '}' )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:534:1: ( '}' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:535:1: '}'
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,17,FOLLOW_17_in_rule__FitnessFunctionSpec__Group__6__Impl1027); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getRightCurlyBracketKeyword_6()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__Group__6__Impl"
-
-
     // $ANTLR start "rule__EvolverSpec__Group__0"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:562:1: rule__EvolverSpec__Group__0 : rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1 ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:399:1: rule__EvolverSpec__Group__0 : rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1 ;
     public final void rule__EvolverSpec__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:566:1: ( rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:567:2: rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:403:1: ( rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1 )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:404:2: rule__EvolverSpec__Group__0__Impl rule__EvolverSpec__Group__1
             {
-            pushFollow(FOLLOW_rule__EvolverSpec__Group__0__Impl_in_rule__EvolverSpec__Group__01072);
+            pushFollow(FOLLOW_rule__EvolverSpec__Group__0__Impl_in_rule__EvolverSpec__Group__0754);
             rule__EvolverSpec__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EvolverSpec__Group__1_in_rule__EvolverSpec__Group__01075);
+            pushFollow(FOLLOW_rule__EvolverSpec__Group__1_in_rule__EvolverSpec__Group__0757);
             rule__EvolverSpec__Group__1();
 
             state._fsp--;
@@ -1414,20 +1025,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvolverSpec__Group__0__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:574:1: rule__EvolverSpec__Group__0__Impl : ( 'evolve' ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:411:1: rule__EvolverSpec__Group__0__Impl : ( 'evolve' ) ;
     public final void rule__EvolverSpec__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:578:1: ( ( 'evolve' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:579:1: ( 'evolve' )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:415:1: ( ( 'evolve' ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:416:1: ( 'evolve' )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:579:1: ( 'evolve' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:580:1: 'evolve'
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:416:1: ( 'evolve' )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:417:1: 'evolve'
             {
              before(grammarAccess.getEvolverSpecAccess().getEvolveKeyword_0()); 
-            match(input,18,FOLLOW_18_in_rule__EvolverSpec__Group__0__Impl1103); 
+            match(input,14,FOLLOW_14_in_rule__EvolverSpec__Group__0__Impl785); 
              after(grammarAccess.getEvolverSpecAccess().getEvolveKeyword_0()); 
 
             }
@@ -1451,21 +1062,21 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvolverSpec__Group__1"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:593:1: rule__EvolverSpec__Group__1 : rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2 ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:430:1: rule__EvolverSpec__Group__1 : rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2 ;
     public final void rule__EvolverSpec__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:597:1: ( rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:598:2: rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:434:1: ( rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2 )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:435:2: rule__EvolverSpec__Group__1__Impl rule__EvolverSpec__Group__2
             {
-            pushFollow(FOLLOW_rule__EvolverSpec__Group__1__Impl_in_rule__EvolverSpec__Group__11134);
+            pushFollow(FOLLOW_rule__EvolverSpec__Group__1__Impl_in_rule__EvolverSpec__Group__1816);
             rule__EvolverSpec__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EvolverSpec__Group__2_in_rule__EvolverSpec__Group__11137);
+            pushFollow(FOLLOW_rule__EvolverSpec__Group__2_in_rule__EvolverSpec__Group__1819);
             rule__EvolverSpec__Group__2();
 
             state._fsp--;
@@ -1489,20 +1100,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvolverSpec__Group__1__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:605:1: rule__EvolverSpec__Group__1__Impl : ( 'using' ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:442:1: rule__EvolverSpec__Group__1__Impl : ( 'using' ) ;
     public final void rule__EvolverSpec__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:609:1: ( ( 'using' ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:610:1: ( 'using' )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:446:1: ( ( 'using' ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:447:1: ( 'using' )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:610:1: ( 'using' )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:611:1: 'using'
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:447:1: ( 'using' )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:448:1: 'using'
             {
              before(grammarAccess.getEvolverSpecAccess().getUsingKeyword_1()); 
-            match(input,19,FOLLOW_19_in_rule__EvolverSpec__Group__1__Impl1165); 
+            match(input,15,FOLLOW_15_in_rule__EvolverSpec__Group__1__Impl847); 
              after(grammarAccess.getEvolverSpecAccess().getUsingKeyword_1()); 
 
             }
@@ -1526,16 +1137,16 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvolverSpec__Group__2"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:624:1: rule__EvolverSpec__Group__2 : rule__EvolverSpec__Group__2__Impl ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:461:1: rule__EvolverSpec__Group__2 : rule__EvolverSpec__Group__2__Impl ;
     public final void rule__EvolverSpec__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:628:1: ( rule__EvolverSpec__Group__2__Impl )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:629:2: rule__EvolverSpec__Group__2__Impl
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:465:1: ( rule__EvolverSpec__Group__2__Impl )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:466:2: rule__EvolverSpec__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__EvolverSpec__Group__2__Impl_in_rule__EvolverSpec__Group__21196);
+            pushFollow(FOLLOW_rule__EvolverSpec__Group__2__Impl_in_rule__EvolverSpec__Group__2878);
             rule__EvolverSpec__Group__2__Impl();
 
             state._fsp--;
@@ -1559,23 +1170,23 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvolverSpec__Group__2__Impl"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:635:1: rule__EvolverSpec__Group__2__Impl : ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:472:1: rule__EvolverSpec__Group__2__Impl : ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) ) ;
     public final void rule__EvolverSpec__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:639:1: ( ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:640:1: ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:476:1: ( ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:477:1: ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:640:1: ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:641:1: ( rule__EvolverSpec__Rule_locationAssignment_2 )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:477:1: ( ( rule__EvolverSpec__Rule_locationAssignment_2 ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:478:1: ( rule__EvolverSpec__Rule_locationAssignment_2 )
             {
              before(grammarAccess.getEvolverSpecAccess().getRule_locationAssignment_2()); 
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:642:1: ( rule__EvolverSpec__Rule_locationAssignment_2 )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:642:2: rule__EvolverSpec__Rule_locationAssignment_2
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:479:1: ( rule__EvolverSpec__Rule_locationAssignment_2 )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:479:2: rule__EvolverSpec__Rule_locationAssignment_2
             {
-            pushFollow(FOLLOW_rule__EvolverSpec__Rule_locationAssignment_2_in_rule__EvolverSpec__Group__2__Impl1223);
+            pushFollow(FOLLOW_rule__EvolverSpec__Rule_locationAssignment_2_in_rule__EvolverSpec__Group__2__Impl905);
             rule__EvolverSpec__Rule_locationAssignment_2();
 
             state._fsp--;
@@ -1606,20 +1217,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Optimisation__MetamodelAssignment_0"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:659:1: rule__Optimisation__MetamodelAssignment_0 : ( ruleMetaModelSpec ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:496:1: rule__Optimisation__MetamodelAssignment_0 : ( ruleMetaModelSpec ) ;
     public final void rule__Optimisation__MetamodelAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:663:1: ( ( ruleMetaModelSpec ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:664:1: ( ruleMetaModelSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:500:1: ( ( ruleMetaModelSpec ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:501:1: ( ruleMetaModelSpec )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:664:1: ( ruleMetaModelSpec )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:665:1: ruleMetaModelSpec
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:501:1: ( ruleMetaModelSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:502:1: ruleMetaModelSpec
             {
              before(grammarAccess.getOptimisationAccess().getMetamodelMetaModelSpecParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleMetaModelSpec_in_rule__Optimisation__MetamodelAssignment_01264);
+            pushFollow(FOLLOW_ruleMetaModelSpec_in_rule__Optimisation__MetamodelAssignment_0946);
             ruleMetaModelSpec();
 
             state._fsp--;
@@ -1647,20 +1258,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Optimisation__FitnessAssignment_1"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:674:1: rule__Optimisation__FitnessAssignment_1 : ( ruleFitnessFunctionSpec ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:511:1: rule__Optimisation__FitnessAssignment_1 : ( ruleFitnessFunctionSpec ) ;
     public final void rule__Optimisation__FitnessAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:678:1: ( ( ruleFitnessFunctionSpec ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:679:1: ( ruleFitnessFunctionSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:515:1: ( ( ruleFitnessFunctionSpec ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:516:1: ( ruleFitnessFunctionSpec )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:679:1: ( ruleFitnessFunctionSpec )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:680:1: ruleFitnessFunctionSpec
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:516:1: ( ruleFitnessFunctionSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:517:1: ruleFitnessFunctionSpec
             {
              before(grammarAccess.getOptimisationAccess().getFitnessFitnessFunctionSpecParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleFitnessFunctionSpec_in_rule__Optimisation__FitnessAssignment_11295);
+            pushFollow(FOLLOW_ruleFitnessFunctionSpec_in_rule__Optimisation__FitnessAssignment_1977);
             ruleFitnessFunctionSpec();
 
             state._fsp--;
@@ -1688,20 +1299,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Optimisation__EvolversAssignment_2"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:689:1: rule__Optimisation__EvolversAssignment_2 : ( ruleEvolverSpec ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:526:1: rule__Optimisation__EvolversAssignment_2 : ( ruleEvolverSpec ) ;
     public final void rule__Optimisation__EvolversAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:693:1: ( ( ruleEvolverSpec ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:694:1: ( ruleEvolverSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:530:1: ( ( ruleEvolverSpec ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:531:1: ( ruleEvolverSpec )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:694:1: ( ruleEvolverSpec )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:695:1: ruleEvolverSpec
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:531:1: ( ruleEvolverSpec )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:532:1: ruleEvolverSpec
             {
              before(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleEvolverSpec_in_rule__Optimisation__EvolversAssignment_21326);
+            pushFollow(FOLLOW_ruleEvolverSpec_in_rule__Optimisation__EvolversAssignment_21008);
             ruleEvolverSpec();
 
             state._fsp--;
@@ -1729,20 +1340,20 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__MetaModelSpec__LocationAssignment_1"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:704:1: rule__MetaModelSpec__LocationAssignment_1 : ( RULE_URL ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:541:1: rule__MetaModelSpec__LocationAssignment_1 : ( RULE_URL ) ;
     public final void rule__MetaModelSpec__LocationAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:708:1: ( ( RULE_URL ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:709:1: ( RULE_URL )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:545:1: ( ( RULE_URL ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:546:1: ( RULE_URL )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:709:1: ( RULE_URL )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:710:1: RULE_URL
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:546:1: ( RULE_URL )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:547:1: RULE_URL
             {
              before(grammarAccess.getMetaModelSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
-            match(input,RULE_URL,FOLLOW_RULE_URL_in_rule__MetaModelSpec__LocationAssignment_11357); 
+            match(input,RULE_URL,FOLLOW_RULE_URL_in_rule__MetaModelSpec__LocationAssignment_11039); 
              after(grammarAccess.getMetaModelSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
 
             }
@@ -1765,22 +1376,22 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__MetaModelSpec__LocationAssignment_1"
 
 
-    // $ANTLR start "rule__FitnessFunctionSpec__ClassAssignment_3"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:719:1: rule__FitnessFunctionSpec__ClassAssignment_3 : ( RULE_STRING ) ;
-    public final void rule__FitnessFunctionSpec__ClassAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__FitnessFunctionSpec__ClassAssignment_1"
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:556:1: rule__FitnessFunctionSpec__ClassAssignment_1 : ( RULE_STRING ) ;
+    public final void rule__FitnessFunctionSpec__ClassAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:723:1: ( ( RULE_STRING ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:724:1: ( RULE_STRING )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:560:1: ( ( RULE_STRING ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:561:1: ( RULE_STRING )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:724:1: ( RULE_STRING )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:725:1: RULE_STRING
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:561:1: ( RULE_STRING )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:562:1: RULE_STRING
             {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__ClassAssignment_31388); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_3_0()); 
+             before(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_1_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__ClassAssignment_11070); 
+             after(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_1_0()); 
 
             }
 
@@ -1799,61 +1410,24 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__FitnessFunctionSpec__ClassAssignment_3"
-
-
-    // $ANTLR start "rule__FitnessFunctionSpec__MethodAssignment_5"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:734:1: rule__FitnessFunctionSpec__MethodAssignment_5 : ( RULE_STRING ) ;
-    public final void rule__FitnessFunctionSpec__MethodAssignment_5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:738:1: ( ( RULE_STRING ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:739:1: ( RULE_STRING )
-            {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:739:1: ( RULE_STRING )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:740:1: RULE_STRING
-            {
-             before(grammarAccess.getFitnessFunctionSpecAccess().getMethodSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__MethodAssignment_51419); 
-             after(grammarAccess.getFitnessFunctionSpecAccess().getMethodSTRINGTerminalRuleCall_5_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FitnessFunctionSpec__MethodAssignment_5"
+    // $ANTLR end "rule__FitnessFunctionSpec__ClassAssignment_1"
 
 
     // $ANTLR start "rule__EvolverSpec__Rule_locationAssignment_2"
-    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:749:1: rule__EvolverSpec__Rule_locationAssignment_2 : ( RULE_URL ) ;
+    // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:571:1: rule__EvolverSpec__Rule_locationAssignment_2 : ( RULE_URL ) ;
     public final void rule__EvolverSpec__Rule_locationAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:753:1: ( ( RULE_URL ) )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:754:1: ( RULE_URL )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:575:1: ( ( RULE_URL ) )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:576:1: ( RULE_URL )
             {
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:754:1: ( RULE_URL )
-            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:755:1: RULE_URL
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:576:1: ( RULE_URL )
+            // ../uk.ac.kcl.MDEOptimise.ui/src-gen/uk/ac/kcl/ui/contentassist/antlr/internal/InternalMDEOptimise.g:577:1: RULE_URL
             {
              before(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0()); 
-            match(input,RULE_URL,FOLLOW_RULE_URL_in_rule__EvolverSpec__Rule_locationAssignment_21450); 
+            match(input,RULE_URL,FOLLOW_RULE_URL_in_rule__EvolverSpec__Rule_locationAssignment_21101); 
              after(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0()); 
 
             }
@@ -1895,51 +1469,35 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__Optimisation__Group__0__Impl_in_rule__Optimisation__Group__0308 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_rule__Optimisation__Group__1_in_rule__Optimisation__Group__0311 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Optimisation__MetamodelAssignment_0_in_rule__Optimisation__Group__0__Impl338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Optimisation__Group__1__Impl_in_rule__Optimisation__Group__1368 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_rule__Optimisation__Group__1__Impl_in_rule__Optimisation__Group__1368 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_rule__Optimisation__Group__2_in_rule__Optimisation__Group__1371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Optimisation__FitnessAssignment_1_in_rule__Optimisation__Group__1__Impl398 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Optimisation__Group__2__Impl_in_rule__Optimisation__Group__2428 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Optimisation__EvolversAssignment_2_in_rule__Optimisation__Group__2__Impl457 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__Optimisation__EvolversAssignment_2_in_rule__Optimisation__Group__2__Impl469 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__Optimisation__EvolversAssignment_2_in_rule__Optimisation__Group__2__Impl457 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_rule__Optimisation__EvolversAssignment_2_in_rule__Optimisation__Group__2__Impl469 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_rule__MetaModelSpec__Group__0__Impl_in_rule__MetaModelSpec__Group__0508 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__MetaModelSpec__Group__1_in_rule__MetaModelSpec__Group__0511 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_12_in_rule__MetaModelSpec__Group__0__Impl539 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__MetaModelSpec__Group__1__Impl_in_rule__MetaModelSpec__Group__1570 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__MetaModelSpec__LocationAssignment_1_in_rule__MetaModelSpec__Group__1__Impl597 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__0__Impl_in_rule__FitnessFunctionSpec__Group__0631 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__0__Impl_in_rule__FitnessFunctionSpec__Group__0631 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__1_in_rule__FitnessFunctionSpec__Group__0634 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_13_in_rule__FitnessFunctionSpec__Group__0__Impl662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__1__Impl_in_rule__FitnessFunctionSpec__Group__1693 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__2_in_rule__FitnessFunctionSpec__Group__1696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__FitnessFunctionSpec__Group__1__Impl724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__2__Impl_in_rule__FitnessFunctionSpec__Group__2755 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__3_in_rule__FitnessFunctionSpec__Group__2758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__FitnessFunctionSpec__Group__2__Impl786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__3__Impl_in_rule__FitnessFunctionSpec__Group__3817 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__4_in_rule__FitnessFunctionSpec__Group__3820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__ClassAssignment_3_in_rule__FitnessFunctionSpec__Group__3__Impl847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__4__Impl_in_rule__FitnessFunctionSpec__Group__4877 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__5_in_rule__FitnessFunctionSpec__Group__4880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__FitnessFunctionSpec__Group__4__Impl908 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__5__Impl_in_rule__FitnessFunctionSpec__Group__5939 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__6_in_rule__FitnessFunctionSpec__Group__5942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__MethodAssignment_5_in_rule__FitnessFunctionSpec__Group__5__Impl969 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__6__Impl_in_rule__FitnessFunctionSpec__Group__6999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__FitnessFunctionSpec__Group__6__Impl1027 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Group__0__Impl_in_rule__EvolverSpec__Group__01072 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Group__1_in_rule__EvolverSpec__Group__01075 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__EvolverSpec__Group__0__Impl1103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Group__1__Impl_in_rule__EvolverSpec__Group__11134 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Group__2_in_rule__EvolverSpec__Group__11137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__EvolverSpec__Group__1__Impl1165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Group__2__Impl_in_rule__EvolverSpec__Group__21196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EvolverSpec__Rule_locationAssignment_2_in_rule__EvolverSpec__Group__2__Impl1223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetaModelSpec_in_rule__Optimisation__MetamodelAssignment_01264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFitnessFunctionSpec_in_rule__Optimisation__FitnessAssignment_11295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEvolverSpec_in_rule__Optimisation__EvolversAssignment_21326 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_URL_in_rule__MetaModelSpec__LocationAssignment_11357 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__ClassAssignment_31388 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__MethodAssignment_51419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_URL_in_rule__EvolverSpec__Rule_locationAssignment_21450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__Group__1__Impl_in_rule__FitnessFunctionSpec__Group__1693 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FitnessFunctionSpec__ClassAssignment_1_in_rule__FitnessFunctionSpec__Group__1__Impl720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Group__0__Impl_in_rule__EvolverSpec__Group__0754 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Group__1_in_rule__EvolverSpec__Group__0757 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__EvolverSpec__Group__0__Impl785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Group__1__Impl_in_rule__EvolverSpec__Group__1816 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Group__2_in_rule__EvolverSpec__Group__1819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__EvolverSpec__Group__1__Impl847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Group__2__Impl_in_rule__EvolverSpec__Group__2878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EvolverSpec__Rule_locationAssignment_2_in_rule__EvolverSpec__Group__2__Impl905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetaModelSpec_in_rule__Optimisation__MetamodelAssignment_0946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFitnessFunctionSpec_in_rule__Optimisation__FitnessAssignment_1977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEvolverSpec_in_rule__Optimisation__EvolversAssignment_21008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_URL_in_rule__MetaModelSpec__LocationAssignment_11039 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__FitnessFunctionSpec__ClassAssignment_11070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_URL_in_rule__EvolverSpec__Rule_locationAssignment_21101 = new BitSet(new long[]{0x0000000000000002L});
 
 }

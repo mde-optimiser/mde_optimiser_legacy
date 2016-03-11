@@ -150,22 +150,13 @@ public interface MDEOptimisePackage extends EPackage
   int FITNESS_FUNCTION_SPEC__CLASS = 0;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FITNESS_FUNCTION_SPEC__METHOD = 1;
-
-  /**
    * The number of structural features of the '<em>Fitness Function Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FITNESS_FUNCTION_SPEC_FEATURE_COUNT = 2;
+  int FITNESS_FUNCTION_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mDEOptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.
@@ -282,17 +273,6 @@ public interface MDEOptimisePackage extends EPackage
   EAttribute getFitnessFunctionSpec_Class();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mDEOptimise.FitnessFunctionSpec#getMethod <em>Method</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Method</em>'.
-   * @see uk.ac.kcl.mDEOptimise.FitnessFunctionSpec#getMethod()
-   * @see #getFitnessFunctionSpec()
-   * @generated
-   */
-  EAttribute getFitnessFunctionSpec_Method();
-
-  /**
    * Returns the meta object for class '{@link uk.ac.kcl.mDEOptimise.EvolverSpec <em>Evolver Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -405,14 +385,6 @@ public interface MDEOptimisePackage extends EPackage
      * @generated
      */
     EAttribute FITNESS_FUNCTION_SPEC__CLASS = eINSTANCE.getFitnessFunctionSpec_Class();
-
-    /**
-     * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FITNESS_FUNCTION_SPEC__METHOD = eINSTANCE.getFitnessFunctionSpec_Method();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mDEOptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.

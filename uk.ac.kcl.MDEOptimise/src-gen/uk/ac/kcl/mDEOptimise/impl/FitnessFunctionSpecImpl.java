@@ -21,7 +21,6 @@ import uk.ac.kcl.mDEOptimise.MDEOptimisePackage;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.mDEOptimise.impl.FitnessFunctionSpecImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link uk.ac.kcl.mDEOptimise.impl.FitnessFunctionSpecImpl#getMethod <em>Method</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,26 +46,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected String class_ = CLASS_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMethod()
-   * @generated
-   * @ordered
-   */
-  protected static final String METHOD_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMethod()
-   * @generated
-   * @ordered
-   */
-  protected String method = METHOD_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,29 +96,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMethod()
-  {
-    return method;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMethod(String newMethod)
-  {
-    String oldMethod = method;
-    method = newMethod;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.FITNESS_FUNCTION_SPEC__METHOD, oldMethod, method));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -147,8 +103,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
     {
       case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__CLASS:
         return getClass_();
-      case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__METHOD:
-        return getMethod();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,9 +119,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
     {
       case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__CLASS:
         setClass((String)newValue);
-        return;
-      case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__METHOD:
-        setMethod((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -186,9 +137,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
       case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__CLASS:
         setClass(CLASS_EDEFAULT);
         return;
-      case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__METHOD:
-        setMethod(METHOD_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -205,8 +153,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
     {
       case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__CLASS:
         return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
-      case MDEOptimisePackage.FITNESS_FUNCTION_SPEC__METHOD:
-        return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
     }
     return super.eIsSet(featureID);
   }
@@ -224,8 +170,6 @@ public class FitnessFunctionSpecImpl extends MinimalEObjectImpl.Container implem
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (class: ");
     result.append(class_);
-    result.append(", method: ");
-    result.append(method);
     result.append(')');
     return result.toString();
   }

@@ -199,19 +199,11 @@ ruleFitnessFunctionSpec returns [EObject current=null]
     {
     	newLeafNode(otherlv_0, grammarAccess.getFitnessFunctionSpecAccess().getFitnessKeyword_0());
     }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getFitnessFunctionSpecAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='class' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getFitnessFunctionSpecAccess().getClassKeyword_2());
-    }
 (
 (
-		lv_class_3_0=RULE_STRING
+		lv_class_1_0=RULE_STRING
 		{
-			newLeafNode(lv_class_3_0, grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_class_1_0, grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -220,38 +212,12 @@ ruleFitnessFunctionSpec returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"class",
-        		lv_class_3_0, 
+        		lv_class_1_0, 
         		"STRING");
 	    }
 
 )
-)	otherlv_4='method' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getFitnessFunctionSpecAccess().getMethodKeyword_4());
-    }
-(
-(
-		lv_method_5_0=RULE_STRING
-		{
-			newLeafNode(lv_method_5_0, grammarAccess.getFitnessFunctionSpecAccess().getMethodSTRINGTerminalRuleCall_5_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFitnessFunctionSpecRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"method",
-        		lv_method_5_0, 
-        		"STRING");
-	    }
-
-)
-)	otherlv_6='}' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getFitnessFunctionSpecAccess().getRightCurlyBracketKeyword_6());
-    }
-)
+))
 ;
 
 

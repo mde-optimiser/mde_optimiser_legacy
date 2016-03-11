@@ -82,50 +82,24 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FitnessFunctionSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFitnessKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cClassKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cClassSTRINGTerminalRuleCall_3_0 = (RuleCall)cClassAssignment_3.eContents().get(0);
-		private final Keyword cMethodKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cMethodAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cMethodSTRINGTerminalRuleCall_5_0 = (RuleCall)cMethodAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cClassAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cClassSTRINGTerminalRuleCall_1_0 = (RuleCall)cClassAssignment_1.eContents().get(0);
 		
-		//FitnessFunctionSpec: // TODO: Define standard signature of this method. Should I perhaps change this to just take a class and define the signature through an interface?
-		//	"fitness" "{" "class" class=STRING "method" method=STRING "}";
+		//FitnessFunctionSpec:
+		//	"fitness" class=STRING;
 		@Override public ParserRule getRule() { return rule; }
 
-		//// TODO: Define standard signature of this method. Should I perhaps change this to just take a class and define the signature through an interface?
-		//"fitness" "{" "class" class=STRING "method" method=STRING "}"
+		//"fitness" class=STRING
 		public Group getGroup() { return cGroup; }
 
-		//// TODO: Define standard signature of this method. Should I perhaps change this to just take a class and define the signature through an interface?
 		//"fitness"
 		public Keyword getFitnessKeyword_0() { return cFitnessKeyword_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"class"
-		public Keyword getClassKeyword_2() { return cClassKeyword_2; }
-
 		//class=STRING
-		public Assignment getClassAssignment_3() { return cClassAssignment_3; }
+		public Assignment getClassAssignment_1() { return cClassAssignment_1; }
 
 		//STRING
-		public RuleCall getClassSTRINGTerminalRuleCall_3_0() { return cClassSTRINGTerminalRuleCall_3_0; }
-
-		//"method"
-		public Keyword getMethodKeyword_4() { return cMethodKeyword_4; }
-
-		//method=STRING
-		public Assignment getMethodAssignment_5() { return cMethodAssignment_5; }
-
-		//STRING
-		public RuleCall getMethodSTRINGTerminalRuleCall_5_0() { return cMethodSTRINGTerminalRuleCall_5_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public RuleCall getClassSTRINGTerminalRuleCall_1_0() { return cClassSTRINGTerminalRuleCall_1_0; }
 	}
 
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
@@ -231,8 +205,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getMetaModelSpecAccess().getRule();
 	}
 
-	//FitnessFunctionSpec: // TODO: Define standard signature of this method. Should I perhaps change this to just take a class and define the signature through an interface?
-	//	"fitness" "{" "class" class=STRING "method" method=STRING "}";
+	//FitnessFunctionSpec:
+	//	"fitness" class=STRING;
 	public FitnessFunctionSpecElements getFitnessFunctionSpecAccess() {
 		return pFitnessFunctionSpec;
 	}

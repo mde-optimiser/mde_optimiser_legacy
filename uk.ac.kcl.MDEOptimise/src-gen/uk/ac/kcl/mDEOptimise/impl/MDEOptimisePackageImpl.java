@@ -200,16 +200,6 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFitnessFunctionSpec_Method()
-  {
-    return (EAttribute)fitnessFunctionSpecEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getEvolverSpec()
   {
     return evolverSpecEClass;
@@ -265,7 +255,6 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     fitnessFunctionSpecEClass = createEClass(FITNESS_FUNCTION_SPEC);
     createEAttribute(fitnessFunctionSpecEClass, FITNESS_FUNCTION_SPEC__CLASS);
-    createEAttribute(fitnessFunctionSpecEClass, FITNESS_FUNCTION_SPEC__METHOD);
 
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
@@ -312,7 +301,6 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     initEClass(fitnessFunctionSpecEClass, FitnessFunctionSpec.class, "FitnessFunctionSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFitnessFunctionSpec_Class(), ecorePackage.getEString(), "class", null, 0, 1, FitnessFunctionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFitnessFunctionSpec_Method(), ecorePackage.getEString(), "method", null, 0, 1, FitnessFunctionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

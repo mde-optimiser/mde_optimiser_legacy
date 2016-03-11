@@ -17,7 +17,6 @@
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//FitnessFunctionSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//FitnessFunctionSpec/class"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//FitnessFunctionSpec/method"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//EvolverSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverSpec/rule_location"/>

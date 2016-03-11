@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.mDEOptimise.FitnessFunctionSpec#getClass_ <em>Class</em>}</li>
- *   <li>{@link uk.ac.kcl.mDEOptimise.FitnessFunctionSpec#getMethod <em>Method</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mDEOptimise.MDEOptimisePackage#getFitnessFunctionSpec()
@@ -48,31 +47,5 @@ public interface FitnessFunctionSpec extends EObject
    * @generated
    */
   void setClass(String value);
-
-  /**
-   * Returns the value of the '<em><b>Method</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Method</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Method</em>' attribute.
-   * @see #setMethod(String)
-   * @see uk.ac.kcl.mDEOptimise.MDEOptimisePackage#getFitnessFunctionSpec_Method()
-   * @model
-   * @generated
-   */
-  String getMethod();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.mDEOptimise.FitnessFunctionSpec#getMethod <em>Method</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Method</em>' attribute.
-   * @see #getMethod()
-   * @generated
-   */
-  void setMethod(String value);
 
 } // FitnessFunctionSpec

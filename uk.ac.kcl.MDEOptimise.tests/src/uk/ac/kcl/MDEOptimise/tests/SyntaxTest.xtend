@@ -25,10 +25,7 @@ class SyntaxTest {
 	def void testBasicParsing() {
 		val model = parser.parse('''
 			metamodel <ABC>
-			fitness {
-				class "ABC"
-				method "cde"
-			}
+			fitness "ABC"
 			evolve using <ABC>
 			evolve using <CDE>
 		''')
