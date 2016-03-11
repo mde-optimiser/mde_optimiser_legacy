@@ -1,5 +1,7 @@
 package uk.ac.kcl.interpreter;
 
+import java.util.Iterator;
+import org.eclipse.emf.ecore.EObject;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
@@ -27,5 +29,26 @@ public class OptimisationInterpreter {
   
   public void execute() {
     this.optimisationStrategy.execute(this);
+  }
+  
+  /**
+   * This will produce a lazy iteration of possible initial solutions
+   */
+  public Iterator<EObject> getInitialSolutions() {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
+  /**
+   * This will compute the fitness for the given candidate solution
+   */
+  public double fitness(final EObject candidateSolution) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
+  /**
+   * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
+   */
+  public EObject evolve(final EObject object) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
   }
 }

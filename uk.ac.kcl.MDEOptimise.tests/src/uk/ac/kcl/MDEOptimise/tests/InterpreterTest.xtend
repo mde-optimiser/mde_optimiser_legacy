@@ -7,8 +7,8 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimiseInjectorProvider
-import uk.ac.kcl.interpreter.OptimisationAlgorithm
 import uk.ac.kcl.interpreter.OptimisationInterpreter
+import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
@@ -30,12 +30,7 @@ class InterpreterTest {
 		''')
 		assertNotNull(model)
 		
-		val interpreter = new OptimisationInterpreter(model, new BasicOptimisationAlgorithm)
+		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1))
 		interpreter.execute();	
 	}
-}
-
-class BasicOptimisationAlgorithm implements OptimisationAlgorithm {
-	
-	override execute(OptimisationInterpreter interpreter) { }	
 }

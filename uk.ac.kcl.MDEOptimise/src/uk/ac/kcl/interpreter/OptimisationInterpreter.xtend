@@ -1,5 +1,7 @@
 package uk.ac.kcl.interpreter
 
+import java.util.Iterator
+import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 /**
@@ -27,5 +29,26 @@ class OptimisationInterpreter {
 
 	public def void execute() { 
 		optimisationStrategy.execute (this)
+	}
+	
+	/**
+	 * This will produce a lazy iteration of possible initial solutions
+	 */
+	def Iterator<EObject> getInitialSolutions() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	/**
+	 * This will compute the fitness for the given candidate solution
+	 */
+	def double fitness(EObject candidateSolution) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	/**
+	 * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
+	 */
+	def EObject evolve(EObject object) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 }
