@@ -7,12 +7,11 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimiseInjectorProvider
+import uk.ac.kcl.interpreter.OptimisationAlgorithm
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
-import uk.ac.kcl.interpreter.OptimisationAlgorithm
-import uk.ac.kcl.interpreter.Population
 
 @InjectWith(MDEOptimiseInjectorProvider)
 @RunWith(XtextRunner)
@@ -38,16 +37,5 @@ class InterpreterTest {
 
 class BasicOptimisationAlgorithm implements OptimisationAlgorithm {
 	
-	override initialPopulation(OptimisationInterpreter interpreter) {
-		null
-	}
-	
-	override runAgain() {
-		false
-	}
-	
-	override computeNextGeneration(Population currentGeneration, OptimisationInterpreter interpreter) {
-		currentGeneration
-	}
-	
+	override execute(OptimisationInterpreter interpreter) { }	
 }

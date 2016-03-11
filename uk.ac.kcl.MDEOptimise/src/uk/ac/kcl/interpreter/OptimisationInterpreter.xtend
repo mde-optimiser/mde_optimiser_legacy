@@ -26,10 +26,6 @@ class OptimisationInterpreter {
 	}
 
 	public def void execute() { 
-		var population = optimisationStrategy.initialPopulation (this)
-		
-		while (optimisationStrategy.runAgain) {
-			population = optimisationStrategy.computeNextGeneration (population, this)
-		}
+		optimisationStrategy.execute (this)
 	}
 }

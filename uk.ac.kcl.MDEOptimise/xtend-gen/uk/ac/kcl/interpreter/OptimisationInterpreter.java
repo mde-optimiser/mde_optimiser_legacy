@@ -1,7 +1,6 @@
 package uk.ac.kcl.interpreter;
 
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
-import uk.ac.kcl.interpreter.Population;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
 /**
@@ -27,10 +26,6 @@ public class OptimisationInterpreter {
   }
   
   public void execute() {
-    Population population = this.optimisationStrategy.initialPopulation(this);
-    while (this.optimisationStrategy.runAgain()) {
-      Population _computeNextGeneration = this.optimisationStrategy.computeNextGeneration(population, this);
-      population = _computeNextGeneration;
-    }
+    this.optimisationStrategy.execute(this);
   }
 }
