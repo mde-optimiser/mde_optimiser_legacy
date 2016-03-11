@@ -6,6 +6,7 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+import uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooModelProvider
 import uk.ac.kcl.MDEOptimiseInjectorProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
@@ -30,7 +31,7 @@ class InterpreterTest {
 		''')
 		assertNotNull(model)
 		
-		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1))
+		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1), new ZooModelProvider)
 		interpreter.execute();	
 	}
 }

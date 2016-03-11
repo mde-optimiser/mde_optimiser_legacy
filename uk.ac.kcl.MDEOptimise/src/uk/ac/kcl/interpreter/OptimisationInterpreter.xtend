@@ -21,10 +21,17 @@ class OptimisationInterpreter {
 	 */
 	 //TODO Eventually want to be able to inject this from a launch configuration or similar
 	private OptimisationAlgorithm optimisationStrategy
+	
+	/**
+	 * Strategy for generating initial models
+	 */
+	//TODO Eventually want to be able to inject this from a launch configuration or similar
+	private ModelProvider initalModelProvider
 
-	new(Optimisation model, OptimisationAlgorithm algorithm) {
+	new(Optimisation model, OptimisationAlgorithm algorithm, ModelProvider initalModelProvider) {
 		this.model = model
 		optimisationStrategy = algorithm
+		this.initalModelProvider = initalModelProvider
 	}
 
 	public def void execute() { 

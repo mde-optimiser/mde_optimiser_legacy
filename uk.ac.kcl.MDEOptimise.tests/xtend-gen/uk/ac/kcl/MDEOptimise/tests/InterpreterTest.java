@@ -9,6 +9,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooModelProvider;
 import uk.ac.kcl.MDEOptimiseInjectorProvider;
 import uk.ac.kcl.interpreter.OptimisationInterpreter;
 import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing;
@@ -42,7 +43,8 @@ public class InterpreterTest {
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);
       RandomHillClimbing _randomHillClimbing = new RandomHillClimbing(1);
-      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _randomHillClimbing);
+      ZooModelProvider _zooModelProvider = new ZooModelProvider();
+      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _randomHillClimbing, _zooModelProvider);
       interpreter.execute();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

@@ -2,6 +2,7 @@ package uk.ac.kcl.interpreter;
 
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
+import uk.ac.kcl.interpreter.ModelProvider;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
@@ -22,9 +23,15 @@ public class OptimisationInterpreter {
    */
   private OptimisationAlgorithm optimisationStrategy;
   
-  public OptimisationInterpreter(final Optimisation model, final OptimisationAlgorithm algorithm) {
+  /**
+   * Strategy for generating initial models
+   */
+  private ModelProvider initalModelProvider;
+  
+  public OptimisationInterpreter(final Optimisation model, final OptimisationAlgorithm algorithm, final ModelProvider initalModelProvider) {
     this.model = model;
     this.optimisationStrategy = algorithm;
+    this.initalModelProvider = initalModelProvider;
   }
   
   public void execute() {
