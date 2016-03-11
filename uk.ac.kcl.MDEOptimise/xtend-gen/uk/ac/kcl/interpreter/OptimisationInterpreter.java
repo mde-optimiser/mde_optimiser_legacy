@@ -1,9 +1,13 @@
 package uk.ac.kcl.interpreter;
 
+import com.google.common.base.Objects;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import uk.ac.kcl.interpreter.FitnessFunction;
 import uk.ac.kcl.interpreter.ModelProvider;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
+import uk.ac.kcl.mDEOptimise.FitnessFunctionSpec;
 import uk.ac.kcl.mDEOptimise.MetaModelSpec;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
@@ -29,6 +33,11 @@ public class OptimisationInterpreter {
    */
   private ModelProvider initalModelProvider;
   
+  /**
+   * Cache for the fitness function object
+   */
+  private FitnessFunction fitnessFunction = null;
+  
   public OptimisationInterpreter(final Optimisation model, final OptimisationAlgorithm algorithm, final ModelProvider initalModelProvider) {
     this.model = model;
     this.optimisationStrategy = algorithm;
@@ -52,7 +61,24 @@ public class OptimisationInterpreter {
    * This will compute the fitness for the given candidate solution
    */
   public double fitness(final EObject candidateSolution) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+    try {
+      double _xblockexpression = (double) 0;
+      {
+        boolean _equals = Objects.equal(this.fitnessFunction, null);
+        if (_equals) {
+          FitnessFunctionSpec _fitness = this.model.getFitness();
+          String _class_ = _fitness.getClass_();
+          Class<?> _forName = Class.forName(_class_);
+          final Class<? extends FitnessFunction> fitnessClass = ((Class<? extends FitnessFunction>) _forName);
+          FitnessFunction _newInstance = fitnessClass.newInstance();
+          this.fitnessFunction = _newInstance;
+        }
+        _xblockexpression = this.fitnessFunction.computeFitness(candidateSolution);
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**

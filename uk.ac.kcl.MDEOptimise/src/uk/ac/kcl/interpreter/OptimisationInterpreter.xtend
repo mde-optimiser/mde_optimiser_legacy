@@ -28,6 +28,11 @@ class OptimisationInterpreter {
 	//TODO Eventually want to be able to inject this from a launch configuration or similar
 	private ModelProvider initalModelProvider
 
+	/**
+	 * Cache for the fitness function object
+	 */
+	private FitnessFunction fitnessFunction = null
+
 	new(Optimisation model, OptimisationAlgorithm algorithm, ModelProvider initalModelProvider) {
 		this.model = model
 		optimisationStrategy = algorithm
@@ -45,11 +50,17 @@ class OptimisationInterpreter {
 		initalModelProvider.initialModels(model.metamodel.location)
 	}
 	
+	
 	/**
 	 * This will compute the fitness for the given candidate solution
 	 */
 	def double fitness(EObject candidateSolution) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		if (fitnessFunction == null) {
+			val Class<? extends FitnessFunction> fitnessClass = Class.forName(model.getFitness.class_) as Class<? extends FitnessFunction>
+			fitnessFunction = fitnessClass.newInstance
+		}
+		
+		fitnessFunction.computeFitness(candidateSolution)
 	}
 	
 	/**
