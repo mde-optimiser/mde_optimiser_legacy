@@ -4,6 +4,7 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import uk.ac.kcl.interpreter.ModelProvider;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
+import uk.ac.kcl.mDEOptimise.MetaModelSpec;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
 /**
@@ -42,7 +43,9 @@ public class OptimisationInterpreter {
    * This will produce a lazy iteration of possible initial solutions
    */
   public Iterator<EObject> getInitialSolutions() {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+    MetaModelSpec _metamodel = this.model.getMetamodel();
+    String _location = _metamodel.getLocation();
+    return this.initalModelProvider.initialModels(_location);
   }
   
   /**

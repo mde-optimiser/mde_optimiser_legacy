@@ -42,7 +42,7 @@ class OptimisationInterpreter {
 	 * This will produce a lazy iteration of possible initial solutions
 	 */
 	def Iterator<EObject> getInitialSolutions() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		initalModelProvider.initialModels(model.metamodel.location)
 	}
 	
 	/**
