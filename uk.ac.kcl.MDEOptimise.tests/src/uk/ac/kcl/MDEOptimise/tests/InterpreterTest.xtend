@@ -22,7 +22,7 @@ class InterpreterTest {
 	@Test
 	def void testBasicInterpreter() {
 		val model = parser.parse ('''
-			metamodel <ABC>
+			metamodel <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo.ecore>
 			fitness "uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction"
 			evolve using <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo_evolution.henshin>
 		''')

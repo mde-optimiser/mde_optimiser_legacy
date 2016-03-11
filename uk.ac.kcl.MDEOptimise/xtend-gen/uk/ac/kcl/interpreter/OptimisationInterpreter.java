@@ -7,6 +7,7 @@ import java.util.Random;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
@@ -48,6 +49,15 @@ public class OptimisationInterpreter {
    */
   private ModelProvider initalModelProvider;
   
+  private HenshinResourceSet henshinResourceSet = null;
+  
+  private EPackage theMetamodel = null;
+  
+  /**
+   * The list of Henshin rules used as evolvers
+   */
+  private List<Module> henshinEvolvers = null;
+  
   /**
    * Cache for the fitness function object
    */
@@ -67,9 +77,8 @@ public class OptimisationInterpreter {
    * This will produce a lazy iteration of possible initial solutions
    */
   public Iterator<EObject> getInitialSolutions() {
-    MetaModelSpec _metamodel = this.model.getMetamodel();
-    String _location = _metamodel.getLocation();
-    return this.initalModelProvider.initialModels(_location);
+    EPackage _metamodel = this.getMetamodel();
+    return this.initalModelProvider.initialModels(_metamodel);
   }
   
   /**
@@ -97,11 +106,6 @@ public class OptimisationInterpreter {
   }
   
   /**
-   * The list of Henshin rules used as evolvers
-   */
-  private List<Module> henshinEvolvers = null;
-  
-  /**
    * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
    */
   public EObject evolve(final EObject object) {
@@ -109,7 +113,7 @@ public class OptimisationInterpreter {
     {
       boolean _equals = Objects.equal(this.henshinEvolvers, null);
       if (_equals) {
-        final HenshinResourceSet hrs = new HenshinResourceSet();
+        final HenshinResourceSet hrs = this.getResourceSet();
         EList<EvolverSpec> _evolvers = this.model.getEvolvers();
         final Function1<EvolverSpec, Module> _function = (EvolverSpec e) -> {
           String _rule_location = e.getRule_location();
@@ -138,6 +142,36 @@ public class OptimisationInterpreter {
       }
       List<EObject> _roots = graph.getRoots();
       _xblockexpression = IterableExtensions.<EObject>head(_roots);
+    }
+    return _xblockexpression;
+  }
+  
+  public HenshinResourceSet getResourceSet() {
+    HenshinResourceSet _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(this.henshinResourceSet, null);
+      if (_equals) {
+        HenshinResourceSet _henshinResourceSet = new HenshinResourceSet();
+        this.henshinResourceSet = _henshinResourceSet;
+      }
+      _xblockexpression = this.henshinResourceSet;
+    }
+    return _xblockexpression;
+  }
+  
+  public EPackage getMetamodel() {
+    EPackage _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(this.theMetamodel, null);
+      if (_equals) {
+        HenshinResourceSet _resourceSet = this.getResourceSet();
+        MetaModelSpec _metamodel = this.model.getMetamodel();
+        String _location = _metamodel.getLocation();
+        List<EPackage> _registerDynamicEPackages = _resourceSet.registerDynamicEPackages(_location);
+        EPackage _head = IterableExtensions.<EPackage>head(_registerDynamicEPackages);
+        this.theMetamodel = _head;
+      }
+      _xblockexpression = this.theMetamodel;
     }
     return _xblockexpression;
   }

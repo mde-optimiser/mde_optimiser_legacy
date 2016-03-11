@@ -26,7 +26,7 @@ public class InterpreterTest {
   public void testBasicInterpreter() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("metamodel <ABC>");
+      _builder.append("metamodel <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo.ecore>");
       _builder.newLine();
       _builder.append("fitness \"uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction\"");
       _builder.newLine();

@@ -5,14 +5,14 @@ import java.util.List
 import java.util.Random
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
+import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import org.eclipse.emf.henshin.model.Module
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mDEOptimise.Optimisation
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
-import com.ibm.icu.impl.IllegalIcuArgumentException
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality 
@@ -38,6 +38,15 @@ class OptimisationInterpreter {
 	// TODO Eventually want to be able to inject this from a launch configuration or similar
 	private ModelProvider initalModelProvider
 
+	private HenshinResourceSet henshinResourceSet = null
+
+	private EPackage theMetamodel = null
+	
+	/**
+	 * The list of Henshin rules used as evolvers
+	 */
+	private List<Module> henshinEvolvers = null
+
 	/**
 	 * Cache for the fitness function object
 	 */
@@ -57,7 +66,7 @@ class OptimisationInterpreter {
 	 * This will produce a lazy iteration of possible initial solutions
 	 */
 	def Iterator<EObject> getInitialSolutions() {
-		initalModelProvider.initialModels(model.metamodel.location)
+		initalModelProvider.initialModels(metamodel)
 	}
 
 	/**
@@ -74,18 +83,15 @@ class OptimisationInterpreter {
 	}
 
 	/**
-	 * The list of Henshin rules used as evolvers
-	 */
-	private List<Module> henshinEvolvers = null
-
-	/**
 	 * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
 	 */
 	def EObject evolve(EObject object) {
 		// Extract Henshin evolvers if necessary
 		if (henshinEvolvers == null) {
-			val hrs = new HenshinResourceSet()
+			val hrs = resourceSet
 			henshinEvolvers = model.evolvers.map [ e |
+				// TODO: I suspect that I should actually be fixing the imports here.
+				// However, unfortunately, this is implemented so that it doesn't forgive if no correction is necessary 
 				hrs.getModule(URI.createURI(e.rule_location), false)
 			]
 		}
@@ -106,10 +112,27 @@ class OptimisationInterpreter {
 		runner.unit = evolver.units.head
 		if (!runner.execute(null)) {
 			// TODO: Improve error messages
+			// FIXME: Actually, we probably want to try with another evolver unless we have run out of evolvers to try.
 			throw new IllegalArgumentException("Error running evolver...")
 		}
 		
 		// 4. Return the transformed solution
 		graph.roots.head
+	}
+
+	def getResourceSet() {
+		if (henshinResourceSet == null) {
+			henshinResourceSet = new HenshinResourceSet
+		}
+		
+		henshinResourceSet
+	}
+	
+	def getMetamodel() {
+		if (theMetamodel == null) {
+			theMetamodel = resourceSet.registerDynamicEPackages(model.metamodel.location).head
+		}
+		
+		theMetamodel
 	}
 }

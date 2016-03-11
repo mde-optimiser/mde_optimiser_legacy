@@ -23,40 +23,32 @@ import uk.ac.kcl.interpreter.ModelProvider;
 @SuppressWarnings("all")
 public class ZooModelProvider implements ModelProvider {
   @Override
-  public Iterator<EObject> initialModels(final String metamodelURI) {
-    try {
-      Iterator<EObject> _xblockexpression = null;
-      {
-        final ResourceSet resourceSet = new ResourceSetImpl();
-        URI _createURI = URI.createURI("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo.ecore");
-        final Resource mm = resourceSet.createResource(_createURI);
-        mm.load(null);
-        EPackage.Registry _packageRegistry = resourceSet.getPackageRegistry();
-        TreeIterator<EObject> _allContents = mm.getAllContents();
-        EObject _head = IteratorExtensions.<EObject>head(_allContents);
-        _packageRegistry.put("http://inf.kcl.ac.uk/zoo/2016", _head);
-        final List<String> modelPaths = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo.xmi"));
-        final Function1<String, EObject> _function = (String p) -> {
-          try {
-            EObject _xblockexpression_1 = null;
-            {
-              URI _createURI_1 = URI.createURI(p);
-              final Resource resource = resourceSet.createResource(_createURI_1);
-              resource.load(Collections.EMPTY_MAP);
-              TreeIterator<EObject> _allContents_1 = resource.getAllContents();
-              _xblockexpression_1 = IteratorExtensions.<EObject>head(_allContents_1);
-            }
-            return _xblockexpression_1;
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
+  public Iterator<EObject> initialModels(final EPackage metamodel) {
+    Iterator<EObject> _xblockexpression = null;
+    {
+      final ResourceSet resourceSet = new ResourceSetImpl();
+      EPackage.Registry _packageRegistry = resourceSet.getPackageRegistry();
+      String _nsURI = metamodel.getNsURI();
+      _packageRegistry.put(_nsURI, metamodel);
+      final List<String> modelPaths = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo.xmi"));
+      final Function1<String, EObject> _function = (String p) -> {
+        try {
+          EObject _xblockexpression_1 = null;
+          {
+            URI _createURI = URI.createURI(p);
+            final Resource resource = resourceSet.createResource(_createURI);
+            resource.load(Collections.EMPTY_MAP);
+            TreeIterator<EObject> _allContents = resource.getAllContents();
+            _xblockexpression_1 = IteratorExtensions.<EObject>head(_allContents);
           }
-        };
-        List<EObject> _map = ListExtensions.<String, EObject>map(modelPaths, _function);
-        _xblockexpression = _map.iterator();
-      }
-      return _xblockexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
+          return _xblockexpression_1;
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
+        }
+      };
+      List<EObject> _map = ListExtensions.<String, EObject>map(modelPaths, _function);
+      _xblockexpression = _map.iterator();
     }
+    return _xblockexpression;
   }
 }
