@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_gV4MUOeBEeW5Af7b2nyHRQ">
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_gV4MUOeBEeW5Af7b2nyHRQ">
   <imports href="zoo.ecore#/"/>
   <units xsi:type="henshin:Rule" xmi:id="_jDWfMOeBEeW5Af7b2nyHRQ" name="MoveAnimal">
+    <parameters xmi:id="_ou1EMOeVEeWm2cOvbYzuPw" name="x">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </parameters>
+    <parameters xmi:id="_ou1rQOeVEeWm2cOvbYzuPw" name="y">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </parameters>
     <lhs xmi:id="_jEwNYOeBEeW5Af7b2nyHRQ" name="Lhs">
       <nodes xmi:id="_nmt8sOeBEeW5Af7b2nyHRQ" outgoing="_vZ6zQOeBEeW5Af7b2nyHRQ _wB0gwOeBEeW5Af7b2nyHRQ">
         <type href="zoo.ecore#//Zoo"/>
