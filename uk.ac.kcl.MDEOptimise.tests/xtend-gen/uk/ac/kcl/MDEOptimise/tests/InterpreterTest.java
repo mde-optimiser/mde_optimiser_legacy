@@ -28,15 +28,7 @@ public class InterpreterTest {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("metamodel <ABC>");
       _builder.newLine();
-      _builder.append("fitness {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("class \"ABC\"");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("method \"def\"");
-      _builder.newLine();
-      _builder.append("}");
+      _builder.append("fitness \"uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction\"");
       _builder.newLine();
       _builder.append("evolve using <ABC>");
       _builder.newLine();

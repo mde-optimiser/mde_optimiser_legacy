@@ -23,10 +23,7 @@ class InterpreterTest {
 	def void testBasicInterpreter() {
 		val model = parser.parse ('''
 			metamodel <ABC>
-			fitness {
-				class "ABC"
-				method "def"
-			}
+			fitness "uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction"
 			evolve using <ABC>
 		''')
 		assertNotNull(model)
