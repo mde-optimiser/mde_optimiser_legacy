@@ -38,7 +38,7 @@ class InterpreterTest {
 			basepath <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/>
 			metamodel <zoo.ecore>
 			fitness "uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction"
-			evolve using <zoo_evolution.henshin>
+			evolve using <zoo_evolution.henshin> unit "MoveAnimal"
 		''')
 		assertNotNull(model)
 		

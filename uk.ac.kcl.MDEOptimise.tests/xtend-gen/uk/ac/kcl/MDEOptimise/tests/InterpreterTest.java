@@ -43,7 +43,7 @@ public class InterpreterTest {
       _builder.newLine();
       _builder.append("fitness \"uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction\"");
       _builder.newLine();
-      _builder.append("evolve using <zoo_evolution.henshin>");
+      _builder.append("evolve using <zoo_evolution.henshin> unit \"MoveAnimal\"");
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);

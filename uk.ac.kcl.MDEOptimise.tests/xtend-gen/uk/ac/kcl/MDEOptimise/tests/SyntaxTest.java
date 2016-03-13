@@ -42,9 +42,9 @@ public class SyntaxTest {
       _builder.newLine();
       _builder.append("fitness \"ABC\"");
       _builder.newLine();
-      _builder.append("evolve using <ABC>");
+      _builder.append("evolve using <ABC> unit \"XYZ\"");
       _builder.newLine();
-      _builder.append("evolve using <CDE>");
+      _builder.append("evolve using <CDE> unit \"LMN\"");
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);

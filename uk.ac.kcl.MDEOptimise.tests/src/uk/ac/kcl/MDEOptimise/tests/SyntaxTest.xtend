@@ -27,8 +27,8 @@ class SyntaxTest {
 			basepath <ABC>
 			metamodel <ABC>
 			fitness "ABC"
-			evolve using <ABC>
-			evolve using <CDE>
+			evolve using <ABC> unit "XYZ"
+			evolve using <CDE> unit "LMN"
 		''')
 		assertNotNull(model)
 		
