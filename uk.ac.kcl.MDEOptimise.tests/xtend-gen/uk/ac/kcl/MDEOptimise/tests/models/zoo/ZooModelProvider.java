@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -39,7 +38,6 @@ public class ZooModelProvider implements ModelProvider {
             URI _createURI = URI.createURI(p);
             final Resource resource = resourceSet.createResource(_createURI);
             resource.load(Collections.EMPTY_MAP);
-            EcoreUtil.resolveAll(resource);
             TreeIterator<EObject> _allContents = resource.getAllContents();
             _xblockexpression_1 = IteratorExtensions.<EObject>head(_allContents);
           }
