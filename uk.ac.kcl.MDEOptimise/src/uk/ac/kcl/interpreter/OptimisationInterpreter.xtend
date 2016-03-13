@@ -125,7 +125,7 @@ class OptimisationInterpreter {
 
 	def getResourceSet() {
 		if (henshinResourceSet == null) {
-			henshinResourceSet = new HenshinResourceSet()
+			henshinResourceSet = new HenshinResourceSet(model.basepath.location)
 		}
 		
 		henshinResourceSet

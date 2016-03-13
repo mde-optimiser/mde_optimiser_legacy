@@ -23,6 +23,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import uk.ac.kcl.interpreter.FitnessFunction;
 import uk.ac.kcl.interpreter.ModelProvider;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
+import uk.ac.kcl.mDEOptimise.BasepathSpec;
 import uk.ac.kcl.mDEOptimise.EvolverSpec;
 import uk.ac.kcl.mDEOptimise.FitnessFunctionSpec;
 import uk.ac.kcl.mDEOptimise.MetaModelSpec;
@@ -162,7 +163,9 @@ public class OptimisationInterpreter {
     {
       boolean _equals = Objects.equal(this.henshinResourceSet, null);
       if (_equals) {
-        HenshinResourceSet _henshinResourceSet = new HenshinResourceSet();
+        BasepathSpec _basepath = this.model.getBasepath();
+        String _location = _basepath.getLocation();
+        HenshinResourceSet _henshinResourceSet = new HenshinResourceSet(_location);
         this.henshinResourceSet = _henshinResourceSet;
       }
       _xblockexpression = this.henshinResourceSet;
