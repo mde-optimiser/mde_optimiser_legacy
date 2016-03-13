@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -70,8 +71,8 @@ public class OptimisationInterpreter {
     this.initalModelProvider = initalModelProvider;
   }
   
-  public void execute() {
-    this.optimisationStrategy.execute(this);
+  public Set<EObject> execute() {
+    return this.optimisationStrategy.execute(this);
   }
   
   /**

@@ -58,7 +58,7 @@ class OptimisationInterpreter {
 		this.initalModelProvider = initalModelProvider
 	}
 
-	public def void execute() {
+	public def execute() {
 		optimisationStrategy.execute(this)
 	}
 

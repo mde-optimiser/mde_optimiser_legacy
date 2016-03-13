@@ -1,5 +1,7 @@
 package uk.ac.kcl.interpreter;
 
+import java.util.Set;
+import org.eclipse.emf.ecore.EObject;
 import uk.ac.kcl.interpreter.OptimisationInterpreter;
 
 /**
@@ -8,7 +10,8 @@ import uk.ac.kcl.interpreter.OptimisationInterpreter;
 @SuppressWarnings("all")
 public interface OptimisationAlgorithm {
   /**
-   * Run the optimisation algorithm
+   * Run the optimisation algorithm and return its results (this may be a single solution or a
+   * Pareto set).
    */
-  public abstract void execute(final OptimisationInterpreter interpreter);
+  public abstract Set<EObject> execute(final OptimisationInterpreter interpreter);
 }
