@@ -22,9 +22,10 @@ class InterpreterTest {
 	@Test
 	def void testBasicInterpreter() {
 		val model = parser.parse ('''
-			metamodel <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo.ecore>
+			basepath <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/>
+			metamodel <zoo.ecore>
 			fitness "uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction"
-			evolve using <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo_evolution.henshin>
+			evolve using <zoo_evolution.henshin>
 		''')
 		assertNotNull(model)
 		

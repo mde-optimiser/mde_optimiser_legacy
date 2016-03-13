@@ -24,6 +24,7 @@ class SyntaxTest {
 	@Test
 	def void testBasicParsing() {
 		val model = parser.parse('''
+			basepath <ABC>
 			metamodel <ABC>
 			fitness "ABC"
 			evolve using <ABC>
@@ -33,6 +34,7 @@ class SyntaxTest {
 		
 		model.assertNoIssues
 		
+		assertEquals("ABC", model.basepath.location)
 		assertEquals("ABC", model.metamodel.location)
 		assertEquals("ABC", model.evolvers.get(0).rule_location)
 		assertEquals("CDE", model.evolvers.get(1).rule_location)

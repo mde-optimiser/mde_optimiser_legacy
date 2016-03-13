@@ -92,7 +92,10 @@ class OptimisationInterpreter {
 			henshinEvolvers = model.evolvers.map [ e |
 				// TODO: I suspect that I should actually be fixing the imports here.
 				// However, unfortunately, this is implemented so that it doesn't forgive if no correction is necessary 
-				hrs.getModule(URI.createURI(e.rule_location), false)
+				var m = hrs.getModule(URI.createURI(e.rule_location), false)
+				// TODO: Not sure I actually need this.
+				m.imports.forEach[ep | EcoreUtil.resolveAll(ep)]
+				m
 			]
 		}
 
@@ -122,7 +125,7 @@ class OptimisationInterpreter {
 
 	def getResourceSet() {
 		if (henshinResourceSet == null) {
-			henshinResourceSet = new HenshinResourceSet
+			henshinResourceSet = new HenshinResourceSet()
 		}
 		
 		henshinResourceSet

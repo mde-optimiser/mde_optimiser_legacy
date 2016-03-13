@@ -26,11 +26,13 @@ public class InterpreterTest {
   public void testBasicInterpreter() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("metamodel <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo.ecore>");
+      _builder.append("basepath <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/>");
+      _builder.newLine();
+      _builder.append("metamodel <zoo.ecore>");
       _builder.newLine();
       _builder.append("fitness \"uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooFitnessFunction\"");
       _builder.newLine();
-      _builder.append("evolve using <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/zoo_evolution.henshin>");
+      _builder.append("evolve using <zoo_evolution.henshin>");
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);
