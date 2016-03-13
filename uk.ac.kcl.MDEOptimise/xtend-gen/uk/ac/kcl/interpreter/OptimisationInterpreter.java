@@ -59,7 +59,7 @@ public class OptimisationInterpreter {
   /**
    * The list of Henshin rules used as evolvers
    */
-  private List<Module> henshinEvolvers = null;
+  private List<Unit> henshinEvolvers = null;
   
   /**
    * Cache for the fitness function object
@@ -120,30 +120,30 @@ public class OptimisationInterpreter {
       if (_equals) {
         final HenshinResourceSet hrs = this.getResourceSet();
         EList<EvolverSpec> _evolvers = this.model.getEvolvers();
-        final Function1<EvolverSpec, Module> _function = (EvolverSpec e) -> {
+        final Function1<EvolverSpec, Unit> _function = (EvolverSpec e) -> {
           String _rule_location = e.getRule_location();
           URI _createURI = URI.createURI(_rule_location);
-          return hrs.getModule(_createURI, false);
+          Module _module = hrs.getModule(_createURI, false);
+          String _unit = e.getUnit();
+          return _module.getUnit(_unit);
         };
-        List<Module> _map = ListExtensions.<EvolverSpec, Module>map(_evolvers, _function);
+        List<Unit> _map = ListExtensions.<EvolverSpec, Unit>map(_evolvers, _function);
         this.henshinEvolvers = _map;
       }
-      List<Module> _list = IterableExtensions.<Module>toList(this.henshinEvolvers);
-      final ArrayList<Module> evolversToTry = new ArrayList<Module>(_list);
+      List<Unit> _list = IterableExtensions.<Unit>toList(this.henshinEvolvers);
+      final ArrayList<Unit> evolversToTry = new ArrayList<Unit>(_list);
       do {
         {
           Random _random = new Random();
           int _size = evolversToTry.size();
           int _nextInt = _random.nextInt(_size);
-          final Module evolver = evolversToTry.remove(_nextInt);
+          final Unit evolver = evolversToTry.remove(_nextInt);
           final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
           final EGraphImpl graph = new EGraphImpl(candidateSolution);
           final EngineImpl engine = new EngineImpl();
           final UnitApplicationImpl runner = new UnitApplicationImpl(engine);
           runner.setEGraph(graph);
-          EList<Unit> _units = evolver.getUnits();
-          Unit _head = IterableExtensions.<Unit>head(_units);
-          runner.setUnit(_head);
+          runner.setUnit(evolver);
           boolean _execute = runner.execute(null);
           if (_execute) {
             List<EObject> _roots = graph.getRoots();

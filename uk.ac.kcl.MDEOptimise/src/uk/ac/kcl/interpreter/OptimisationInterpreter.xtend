@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
-import org.eclipse.emf.henshin.model.Module
+import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mDEOptimise.Optimisation
 
@@ -46,7 +46,7 @@ class OptimisationInterpreter {
 	/**
 	 * The list of Henshin rules used as evolvers
 	 */
-	private List<Module> henshinEvolvers = null
+	private List<Unit> henshinEvolvers = null
 
 	/**
 	 * Cache for the fitness function object
@@ -93,7 +93,7 @@ class OptimisationInterpreter {
 		if (henshinEvolvers == null) {
 			val hrs = resourceSet
 			henshinEvolvers = model.evolvers.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false)
+				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit) 
 			]
 		}
 
@@ -115,8 +115,7 @@ class OptimisationInterpreter {
 			val runner = new UnitApplicationImpl(engine)
 			runner.EGraph = graph
 			
-			// TODO: Allow unit to be selected from the model. For now we're just taking the first one that we come across
-			runner.unit = evolver.units.head
+			runner.unit = evolver
 			if (runner.execute(null)) {
 				// 4. Return the transformed solution
 				return graph.roots.head
