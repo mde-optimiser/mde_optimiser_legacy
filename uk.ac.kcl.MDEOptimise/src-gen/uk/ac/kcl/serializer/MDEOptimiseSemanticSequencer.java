@@ -70,16 +70,19 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     rule_location=URL
+	 *     (rule_location=URL unit=STRING)
 	 */
 	protected void sequence_EvolverSpec(EObject context, EvolverSpec semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION));
+			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__UNIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__UNIT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0(), semanticObject.getRule_location());
+		feeder.accept(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0(), semanticObject.getUnit());
 		feeder.finish();
 	}
 	

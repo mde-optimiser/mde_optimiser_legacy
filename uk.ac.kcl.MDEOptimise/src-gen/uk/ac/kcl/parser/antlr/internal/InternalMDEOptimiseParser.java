@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'basepath'", "'metamodel'", "'fitness'", "'evolve'", "'using'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'basepath'", "'metamodel'", "'fitness'", "'evolve'", "'using'", "'unit'"
     };
     public static final int RULE_ID=6;
     public static final int RULE_WS=10;
@@ -30,6 +30,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
     public static final int RULE_SL_COMMENT=9;
     public static final int T__15=15;
     public static final int T__16=16;
+    public static final int T__17=17;
     public static final int RULE_INT=7;
     public static final int RULE_URL=4;
     public static final int RULE_ML_COMMENT=8;
@@ -648,22 +649,24 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvolverSpec"
-    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:298:1: ruleEvolverSpec returns [EObject current=null] : (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) ) ;
+    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:298:1: ruleEvolverSpec returns [EObject current=null] : (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) otherlv_3= 'unit' ( (lv_unit_4_0= RULE_STRING ) ) ) ;
     public final EObject ruleEvolverSpec() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token lv_rule_location_2_0=null;
+        Token otherlv_3=null;
+        Token lv_unit_4_0=null;
 
          enterRule(); 
             
         try {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:301:28: ( (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) ) )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:1: (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:301:28: ( (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) otherlv_3= 'unit' ( (lv_unit_4_0= RULE_STRING ) ) ) )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:1: (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) otherlv_3= 'unit' ( (lv_unit_4_0= RULE_STRING ) ) )
             {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:1: (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:3: otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:1: (otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) otherlv_3= 'unit' ( (lv_unit_4_0= RULE_STRING ) ) )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:302:3: otherlv_0= 'evolve' otherlv_1= 'using' ( (lv_rule_location_2_0= RULE_URL ) ) otherlv_3= 'unit' ( (lv_unit_4_0= RULE_STRING ) )
             {
             otherlv_0=(Token)match(input,15,FOLLOW_15_in_ruleEvolverSpec593); 
 
@@ -692,6 +695,36 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
                    			"rule_location",
                     		lv_rule_location_2_0, 
                     		"URL");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_3=(Token)match(input,17,FOLLOW_17_in_ruleEvolverSpec639); 
+
+                	newLeafNode(otherlv_3, grammarAccess.getEvolverSpecAccess().getUnitKeyword_3());
+                
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:332:1: ( (lv_unit_4_0= RULE_STRING ) )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:333:1: (lv_unit_4_0= RULE_STRING )
+            {
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:333:1: (lv_unit_4_0= RULE_STRING )
+            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:334:3: lv_unit_4_0= RULE_STRING
+            {
+            lv_unit_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleEvolverSpec656); 
+
+            			newLeafNode(lv_unit_4_0, grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getEvolverSpecRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"unit",
+                    		lv_unit_4_0, 
+                    		"STRING");
             	    
 
             }
@@ -745,6 +778,8 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleEvolverSpec556 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_15_in_ruleEvolverSpec593 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_16_in_ruleEvolverSpec605 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_URL_in_ruleEvolverSpec622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_URL_in_ruleEvolverSpec622 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleEvolverSpec639 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleEvolverSpec656 = new BitSet(new long[]{0x0000000000000002L});
 
 }

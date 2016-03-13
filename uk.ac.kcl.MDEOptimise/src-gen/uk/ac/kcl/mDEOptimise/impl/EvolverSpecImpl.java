@@ -21,6 +21,7 @@ import uk.ac.kcl.mDEOptimise.MDEOptimisePackage;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.mDEOptimise.impl.EvolverSpecImpl#getRule_location <em>Rule location</em>}</li>
+ *   <li>{@link uk.ac.kcl.mDEOptimise.impl.EvolverSpecImpl#getUnit <em>Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +47,26 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * @ordered
    */
   protected String rule_location = RULE_LOCATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnit()
+   * @generated
+   * @ordered
+   */
+  protected static final String UNIT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnit()
+   * @generated
+   * @ordered
+   */
+  protected String unit = UNIT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,6 +117,29 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getUnit()
+  {
+    return unit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUnit(String newUnit)
+  {
+    String oldUnit = unit;
+    unit = newUnit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.EVOLVER_SPEC__UNIT, oldUnit, unit));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -103,6 +147,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     {
       case MDEOptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         return getRule_location();
+      case MDEOptimisePackage.EVOLVER_SPEC__UNIT:
+        return getUnit();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,6 +165,9 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     {
       case MDEOptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         setRule_location((String)newValue);
+        return;
+      case MDEOptimisePackage.EVOLVER_SPEC__UNIT:
+        setUnit((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,6 +186,9 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
       case MDEOptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         setRule_location(RULE_LOCATION_EDEFAULT);
         return;
+      case MDEOptimisePackage.EVOLVER_SPEC__UNIT:
+        setUnit(UNIT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -153,6 +205,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     {
       case MDEOptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         return RULE_LOCATION_EDEFAULT == null ? rule_location != null : !RULE_LOCATION_EDEFAULT.equals(rule_location);
+      case MDEOptimisePackage.EVOLVER_SPEC__UNIT:
+        return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
     }
     return super.eIsSet(featureID);
   }
@@ -170,6 +224,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (rule_location: ");
     result.append(rule_location);
+    result.append(", unit: ");
+    result.append(unit);
     result.append(')');
     return result.toString();
   }

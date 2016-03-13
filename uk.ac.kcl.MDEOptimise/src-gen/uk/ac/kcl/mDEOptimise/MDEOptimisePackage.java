@@ -215,13 +215,22 @@ public interface MDEOptimisePackage extends EPackage
   int EVOLVER_SPEC__RULE_LOCATION = 0;
 
   /**
+   * The feature id for the '<em><b>Unit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVOLVER_SPEC__UNIT = 1;
+
+  /**
    * The number of structural features of the '<em>Evolver Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVOLVER_SPEC_FEATURE_COUNT = 1;
+  int EVOLVER_SPEC_FEATURE_COUNT = 2;
 
 
   /**
@@ -363,6 +372,17 @@ public interface MDEOptimisePackage extends EPackage
   EAttribute getEvolverSpec_Rule_location();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mDEOptimise.EvolverSpec#getUnit <em>Unit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Unit</em>'.
+   * @see uk.ac.kcl.mDEOptimise.EvolverSpec#getUnit()
+   * @see #getEvolverSpec()
+   * @generated
+   */
+  EAttribute getEvolverSpec_Unit();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -498,6 +518,14 @@ public interface MDEOptimisePackage extends EPackage
      * @generated
      */
     EAttribute EVOLVER_SPEC__RULE_LOCATION = eINSTANCE.getEvolverSpec_Rule_location();
+
+    /**
+     * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVOLVER_SPEC__UNIT = eINSTANCE.getEvolverSpec_Unit();
 
   }
 

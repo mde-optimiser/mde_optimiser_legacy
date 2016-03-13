@@ -325,6 +325,28 @@ ruleEvolverSpec returns [EObject current=null]
 	    }
 
 )
+)	otherlv_3='unit' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getEvolverSpecAccess().getUnitKeyword_3());
+    }
+(
+(
+		lv_unit_4_0=RULE_STRING
+		{
+			newLeafNode(lv_unit_4_0, grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEvolverSpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"unit",
+        		lv_unit_4_0, 
+        		"STRING");
+	    }
+
+)
 ))
 ;
 

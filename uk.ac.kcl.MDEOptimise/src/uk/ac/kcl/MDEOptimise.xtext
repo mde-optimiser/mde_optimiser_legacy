@@ -31,8 +31,9 @@ FitnessFunctionSpec:
 
 EvolverSpec:
 	// This expects to be passed in a Henshin model
-	// TODO May need to add more bits to allow specifying the module to run etc.
+	// TODO We may also want to allow the specification of parameters, but not for now. 
 	"evolve" "using" rule_location=URL
+	         "unit" unit=STRING
 ;
 
 terminal URL returns ecore::EString:

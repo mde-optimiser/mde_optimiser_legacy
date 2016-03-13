@@ -258,6 +258,16 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getEvolverSpec_Unit()
+  {
+    return (EAttribute)evolverSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public MDEOptimiseFactory getMDEOptimiseFactory()
   {
     return (MDEOptimiseFactory)getEFactoryInstance();
@@ -300,6 +310,7 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
+    createEAttribute(evolverSpecEClass, EVOLVER_SPEC__UNIT);
   }
 
   /**
@@ -350,6 +361,7 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvolverSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
