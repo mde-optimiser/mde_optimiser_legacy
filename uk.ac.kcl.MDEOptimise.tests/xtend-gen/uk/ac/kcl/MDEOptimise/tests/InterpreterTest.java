@@ -36,9 +36,9 @@ public class InterpreterTest {
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);
+      final ZooModelProvider mp = new ZooModelProvider();
       RandomHillClimbing _randomHillClimbing = new RandomHillClimbing(1);
-      ZooModelProvider _zooModelProvider = new ZooModelProvider();
-      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _randomHillClimbing, _zooModelProvider);
+      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _randomHillClimbing, mp);
       interpreter.execute();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

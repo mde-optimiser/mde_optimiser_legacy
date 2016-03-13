@@ -11,19 +11,22 @@ import uk.ac.kcl.interpreter.ModelProvider
  * Mock implementation simply providing a number of pre-defined zoo models.
  */
 class ZooModelProvider implements ModelProvider {
-	
+
+	val ResourceSet resourceSet = new ResourceSetImpl
+
 	override initialModels(EPackage metamodel) {
-		val ResourceSet resourceSet = new ResourceSetImpl
-		
 		resourceSet.packageRegistry.put(metamodel.nsURI, metamodel)
-		
+
 		val modelPaths = #["src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo.xmi"]
-		
-		modelPaths.map[p | 
-			val resource = resourceSet.createResource(URI.createURI(p))
-			resource.load (Collections.EMPTY_MAP)
-			resource.allContents.head
+
+		modelPaths.map [p | 
+			loadModel (p)
 		].iterator
 	}
-	
+
+	def loadModel(String relativePath) {
+		val resource = resourceSet.createResource(URI.createURI(relativePath))
+		resource.load(Collections.EMPTY_MAP)
+		resource.allContents.head
+	}
 }

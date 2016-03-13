@@ -22,33 +22,38 @@ import uk.ac.kcl.interpreter.ModelProvider;
  */
 @SuppressWarnings("all")
 public class ZooModelProvider implements ModelProvider {
+  private final ResourceSet resourceSet = new ResourceSetImpl();
+  
   @Override
   public Iterator<EObject> initialModels(final EPackage metamodel) {
     Iterator<EObject> _xblockexpression = null;
     {
-      final ResourceSet resourceSet = new ResourceSetImpl();
-      EPackage.Registry _packageRegistry = resourceSet.getPackageRegistry();
+      EPackage.Registry _packageRegistry = this.resourceSet.getPackageRegistry();
       String _nsURI = metamodel.getNsURI();
       _packageRegistry.put(_nsURI, metamodel);
       final List<String> modelPaths = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo.xmi"));
       final Function1<String, EObject> _function = (String p) -> {
-        try {
-          EObject _xblockexpression_1 = null;
-          {
-            URI _createURI = URI.createURI(p);
-            final Resource resource = resourceSet.createResource(_createURI);
-            resource.load(Collections.EMPTY_MAP);
-            TreeIterator<EObject> _allContents = resource.getAllContents();
-            _xblockexpression_1 = IteratorExtensions.<EObject>head(_allContents);
-          }
-          return _xblockexpression_1;
-        } catch (Throwable _e) {
-          throw Exceptions.sneakyThrow(_e);
-        }
+        return this.loadModel(p);
       };
       List<EObject> _map = ListExtensions.<String, EObject>map(modelPaths, _function);
       _xblockexpression = _map.iterator();
     }
     return _xblockexpression;
+  }
+  
+  public EObject loadModel(final String relativePath) {
+    try {
+      EObject _xblockexpression = null;
+      {
+        URI _createURI = URI.createURI(relativePath);
+        final Resource resource = this.resourceSet.createResource(_createURI);
+        resource.load(Collections.EMPTY_MAP);
+        TreeIterator<EObject> _allContents = resource.getAllContents();
+        _xblockexpression = IteratorExtensions.<EObject>head(_allContents);
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

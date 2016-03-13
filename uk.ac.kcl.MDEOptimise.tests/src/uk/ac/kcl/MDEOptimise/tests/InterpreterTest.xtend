@@ -29,7 +29,11 @@ class InterpreterTest {
 		''')
 		assertNotNull(model)
 		
-		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1), new ZooModelProvider)
-		interpreter.execute();	
+		val mp = new ZooModelProvider
+		
+		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1), mp)
+		interpreter.execute();
+		
+		
 	}
 }
