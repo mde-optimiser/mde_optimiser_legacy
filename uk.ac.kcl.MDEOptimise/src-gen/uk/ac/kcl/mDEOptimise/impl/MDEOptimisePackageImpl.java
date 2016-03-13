@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import uk.ac.kcl.mDEOptimise.BasepathSpec;
 import uk.ac.kcl.mDEOptimise.EvolverSpec;
 import uk.ac.kcl.mDEOptimise.FitnessFunctionSpec;
 import uk.ac.kcl.mDEOptimise.MDEOptimiseFactory;
@@ -30,6 +31,13 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * @generated
    */
   private EClass optimisationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass basepathSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,7 +138,7 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Metamodel()
+  public EReference getOptimisation_Basepath()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(0);
   }
@@ -140,7 +148,7 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Fitness()
+  public EReference getOptimisation_Metamodel()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(1);
   }
@@ -150,9 +158,39 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Evolvers()
+  public EReference getOptimisation_Fitness()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptimisation_Evolvers()
+  {
+    return (EReference)optimisationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBasepathSpec()
+  {
+    return basepathSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBasepathSpec_Location()
+  {
+    return (EAttribute)basepathSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -246,9 +284,13 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     // Create classes and their features
     optimisationEClass = createEClass(OPTIMISATION);
+    createEReference(optimisationEClass, OPTIMISATION__BASEPATH);
     createEReference(optimisationEClass, OPTIMISATION__METAMODEL);
     createEReference(optimisationEClass, OPTIMISATION__FITNESS);
     createEReference(optimisationEClass, OPTIMISATION__EVOLVERS);
+
+    basepathSpecEClass = createEClass(BASEPATH_SPEC);
+    createEAttribute(basepathSpecEClass, BASEPATH_SPEC__LOCATION);
 
     metaModelSpecEClass = createEClass(META_MODEL_SPEC);
     createEAttribute(metaModelSpecEClass, META_MODEL_SPEC__LOCATION);
@@ -292,9 +334,13 @@ public class MDEOptimisePackageImpl extends EPackageImpl implements MDEOptimiseP
 
     // Initialize classes and features; add operations and parameters
     initEClass(optimisationEClass, Optimisation.class, "Optimisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOptimisation_Basepath(), this.getBasepathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Fitness(), this.getFitnessFunctionSpec(), null, "fitness", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Evolvers(), this.getEvolverSpec(), null, "evolvers", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(basepathSpecEClass, BasepathSpec.class, "BasepathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBasepathSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, BasepathSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaModelSpecEClass, MetaModelSpec.class, "MetaModelSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetaModelSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, MetaModelSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

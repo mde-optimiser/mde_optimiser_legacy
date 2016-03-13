@@ -80,16 +80,34 @@ ruleOptimisation returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOptimisationAccess().getMetamodelMetaModelSpecParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0()); 
 	    }
-		lv_metamodel_0_0=ruleMetaModelSpec		{
+		lv_basepath_0_0=ruleBasepathSpec		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getOptimisationRule());
+	        }
+       		set(
+       			$current, 
+       			"basepath",
+        		lv_basepath_0_0, 
+        		"BasepathSpec");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getOptimisationAccess().getMetamodelMetaModelSpecParserRuleCall_1_0()); 
+	    }
+		lv_metamodel_1_0=ruleMetaModelSpec		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOptimisationRule());
 	        }
        		set(
        			$current, 
        			"metamodel",
-        		lv_metamodel_0_0, 
+        		lv_metamodel_1_0, 
         		"MetaModelSpec");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -98,16 +116,16 @@ ruleOptimisation returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOptimisationAccess().getFitnessFitnessFunctionSpecParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getOptimisationAccess().getFitnessFitnessFunctionSpecParserRuleCall_2_0()); 
 	    }
-		lv_fitness_1_0=ruleFitnessFunctionSpec		{
+		lv_fitness_2_0=ruleFitnessFunctionSpec		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOptimisationRule());
 	        }
        		set(
        			$current, 
        			"fitness",
-        		lv_fitness_1_0, 
+        		lv_fitness_2_0, 
         		"FitnessFunctionSpec");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -116,22 +134,65 @@ ruleOptimisation returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_3_0()); 
 	    }
-		lv_evolvers_2_0=ruleEvolverSpec		{
+		lv_evolvers_3_0=ruleEvolverSpec		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOptimisationRule());
 	        }
        		add(
        			$current, 
        			"evolvers",
-        		lv_evolvers_2_0, 
+        		lv_evolvers_3_0, 
         		"EvolverSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )+)
+;
+
+
+
+
+
+// Entry rule entryRuleBasepathSpec
+entryRuleBasepathSpec returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBasepathSpecRule()); }
+	 iv_ruleBasepathSpec=ruleBasepathSpec 
+	 { $current=$iv_ruleBasepathSpec.current; } 
+	 EOF 
+;
+
+// Rule BasepathSpec
+ruleBasepathSpec returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='basepath' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0());
+    }
+(
+(
+		lv_location_1_0=RULE_URL
+		{
+			newLeafNode(lv_location_1_0, grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBasepathSpecRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"location",
+        		lv_location_1_0, 
+        		"URL");
+	    }
+
+)
+))
 ;
 
 

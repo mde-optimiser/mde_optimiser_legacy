@@ -21,37 +21,75 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	public class OptimisationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Optimisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMetamodelAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_0_0 = (RuleCall)cMetamodelAssignment_0.eContents().get(0);
-		private final Assignment cFitnessAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFitnessFitnessFunctionSpecParserRuleCall_1_0 = (RuleCall)cFitnessAssignment_1.eContents().get(0);
-		private final Assignment cEvolversAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cEvolversEvolverSpecParserRuleCall_2_0 = (RuleCall)cEvolversAssignment_2.eContents().get(0);
+		private final Assignment cBasepathAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cBasepathBasepathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
+		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
+		private final Assignment cFitnessAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFitnessFitnessFunctionSpecParserRuleCall_2_0 = (RuleCall)cFitnessAssignment_2.eContents().get(0);
+		private final Assignment cEvolversAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEvolversEvolverSpecParserRuleCall_3_0 = (RuleCall)cEvolversAssignment_3.eContents().get(0);
 		
 		//Optimisation:
-		//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
+		//	basepath=BasepathSpec metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
 		@Override public ParserRule getRule() { return rule; }
 
-		//metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+
+		//basepath=BasepathSpec metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+
 		public Group getGroup() { return cGroup; }
 
+		//basepath=BasepathSpec
+		public Assignment getBasepathAssignment_0() { return cBasepathAssignment_0; }
+
+		//BasepathSpec
+		public RuleCall getBasepathBasepathSpecParserRuleCall_0_0() { return cBasepathBasepathSpecParserRuleCall_0_0; }
+
 		//metamodel=MetaModelSpec
-		public Assignment getMetamodelAssignment_0() { return cMetamodelAssignment_0; }
+		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
 
 		//MetaModelSpec
-		public RuleCall getMetamodelMetaModelSpecParserRuleCall_0_0() { return cMetamodelMetaModelSpecParserRuleCall_0_0; }
+		public RuleCall getMetamodelMetaModelSpecParserRuleCall_1_0() { return cMetamodelMetaModelSpecParserRuleCall_1_0; }
 
 		//fitness=FitnessFunctionSpec
-		public Assignment getFitnessAssignment_1() { return cFitnessAssignment_1; }
+		public Assignment getFitnessAssignment_2() { return cFitnessAssignment_2; }
 
 		//FitnessFunctionSpec
-		public RuleCall getFitnessFitnessFunctionSpecParserRuleCall_1_0() { return cFitnessFitnessFunctionSpecParserRuleCall_1_0; }
+		public RuleCall getFitnessFitnessFunctionSpecParserRuleCall_2_0() { return cFitnessFitnessFunctionSpecParserRuleCall_2_0; }
 
 		//evolvers+=EvolverSpec+
-		public Assignment getEvolversAssignment_2() { return cEvolversAssignment_2; }
+		public Assignment getEvolversAssignment_3() { return cEvolversAssignment_3; }
 
 		//EvolverSpec
-		public RuleCall getEvolversEvolverSpecParserRuleCall_2_0() { return cEvolversEvolverSpecParserRuleCall_2_0; }
+		public RuleCall getEvolversEvolverSpecParserRuleCall_3_0() { return cEvolversEvolverSpecParserRuleCall_3_0; }
+	}
+
+	public class BasepathSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BasepathSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cLocationURLTerminalRuleCall_1_0 = (RuleCall)cLocationAssignment_1.eContents().get(0);
+		
+		/// **
+		// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
+		// * transformations referencing file-based meta-models through relative paths will work 
+		// * correctly. This will happen mainly when working with dynamic instances rather than 
+		// * fully generated and registered metamodels. All further URLs should be either absolute 
+		// * or relative to this basepath.
+		// * / BasepathSpec:
+		//	"basepath" location=URL;
+		@Override public ParserRule getRule() { return rule; }
+
+		//"basepath" location=URL
+		public Group getGroup() { return cGroup; }
+
+		//"basepath"
+		public Keyword getBasepathKeyword_0() { return cBasepathKeyword_0; }
+
+		//location=URL
+		public Assignment getLocationAssignment_1() { return cLocationAssignment_1; }
+
+		//URL
+		public RuleCall getLocationURLTerminalRuleCall_1_0() { return cLocationURLTerminalRuleCall_1_0; }
 	}
 
 	public class MetaModelSpecElements extends AbstractParserRuleElementFinder {
@@ -137,6 +175,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private final OptimisationElements pOptimisation;
+	private final BasepathSpecElements pBasepathSpec;
 	private final MetaModelSpecElements pMetaModelSpec;
 	private final FitnessFunctionSpecElements pFitnessFunctionSpec;
 	private final EvolverSpecElements pEvolverSpec;
@@ -152,6 +191,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pOptimisation = new OptimisationElements();
+		this.pBasepathSpec = new BasepathSpecElements();
 		this.pMetaModelSpec = new MetaModelSpecElements();
 		this.pFitnessFunctionSpec = new FitnessFunctionSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
@@ -186,13 +226,29 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Optimisation:
-	//	metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
+	//	basepath=BasepathSpec metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+;
 	public OptimisationElements getOptimisationAccess() {
 		return pOptimisation;
 	}
 	
 	public ParserRule getOptimisationRule() {
 		return getOptimisationAccess().getRule();
+	}
+
+	/// **
+	// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
+	// * transformations referencing file-based meta-models through relative paths will work 
+	// * correctly. This will happen mainly when working with dynamic instances rather than 
+	// * fully generated and registered metamodels. All further URLs should be either absolute 
+	// * or relative to this basepath.
+	// * / BasepathSpec:
+	//	"basepath" location=URL;
+	public BasepathSpecElements getBasepathSpecAccess() {
+		return pBasepathSpec;
+	}
+	
+	public ParserRule getBasepathSpecRule() {
+		return getBasepathSpecAccess().getRule();
 	}
 
 	//MetaModelSpec:

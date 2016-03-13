@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link uk.ac.kcl.mDEOptimise.Optimisation#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link uk.ac.kcl.mDEOptimise.Optimisation#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link uk.ac.kcl.mDEOptimise.Optimisation#getFitness <em>Fitness</em>}</li>
  *   <li>{@link uk.ac.kcl.mDEOptimise.Optimisation#getEvolvers <em>Evolvers</em>}</li>
@@ -26,6 +27,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Optimisation extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Basepath</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Basepath</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Basepath</em>' containment reference.
+   * @see #setBasepath(BasepathSpec)
+   * @see uk.ac.kcl.mDEOptimise.MDEOptimisePackage#getOptimisation_Basepath()
+   * @model containment="true"
+   * @generated
+   */
+  BasepathSpec getBasepath();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mDEOptimise.Optimisation#getBasepath <em>Basepath</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Basepath</em>' containment reference.
+   * @see #getBasepath()
+   * @generated
+   */
+  void setBasepath(BasepathSpec value);
+
   /**
    * Returns the value of the '<em><b>Metamodel</b></em>' containment reference.
    * <!-- begin-user-doc -->

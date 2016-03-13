@@ -65,6 +65,7 @@ public class MDEOptimiseFactoryImpl extends EFactoryImpl implements MDEOptimiseF
     switch (eClass.getClassifierID())
     {
       case MDEOptimisePackage.OPTIMISATION: return createOptimisation();
+      case MDEOptimisePackage.BASEPATH_SPEC: return createBasepathSpec();
       case MDEOptimisePackage.META_MODEL_SPEC: return createMetaModelSpec();
       case MDEOptimisePackage.FITNESS_FUNCTION_SPEC: return createFitnessFunctionSpec();
       case MDEOptimisePackage.EVOLVER_SPEC: return createEvolverSpec();
@@ -82,6 +83,17 @@ public class MDEOptimiseFactoryImpl extends EFactoryImpl implements MDEOptimiseF
   {
     OptimisationImpl optimisation = new OptimisationImpl();
     return optimisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasepathSpec createBasepathSpec()
+  {
+    BasepathSpecImpl basepathSpec = new BasepathSpecImpl();
+    return basepathSpec;
   }
 
   /**

@@ -67,13 +67,22 @@ public interface MDEOptimisePackage extends EPackage
   int OPTIMISATION = 0;
 
   /**
+   * The feature id for the '<em><b>Basepath</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION__BASEPATH = 0;
+
+  /**
    * The feature id for the '<em><b>Metamodel</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__METAMODEL = 0;
+  int OPTIMISATION__METAMODEL = 1;
 
   /**
    * The feature id for the '<em><b>Fitness</b></em>' containment reference.
@@ -82,7 +91,7 @@ public interface MDEOptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__FITNESS = 1;
+  int OPTIMISATION__FITNESS = 2;
 
   /**
    * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
@@ -91,7 +100,7 @@ public interface MDEOptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__EVOLVERS = 2;
+  int OPTIMISATION__EVOLVERS = 3;
 
   /**
    * The number of structural features of the '<em>Optimisation</em>' class.
@@ -100,7 +109,35 @@ public interface MDEOptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_FEATURE_COUNT = 3;
+  int OPTIMISATION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mDEOptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mDEOptimise.impl.BasepathSpecImpl
+   * @see uk.ac.kcl.mDEOptimise.impl.MDEOptimisePackageImpl#getBasepathSpec()
+   * @generated
+   */
+  int BASEPATH_SPEC = 1;
+
+  /**
+   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASEPATH_SPEC__LOCATION = 0;
+
+  /**
+   * The number of structural features of the '<em>Basepath Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASEPATH_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mDEOptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.
@@ -110,7 +147,7 @@ public interface MDEOptimisePackage extends EPackage
    * @see uk.ac.kcl.mDEOptimise.impl.MDEOptimisePackageImpl#getMetaModelSpec()
    * @generated
    */
-  int META_MODEL_SPEC = 1;
+  int META_MODEL_SPEC = 2;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -138,7 +175,7 @@ public interface MDEOptimisePackage extends EPackage
    * @see uk.ac.kcl.mDEOptimise.impl.MDEOptimisePackageImpl#getFitnessFunctionSpec()
    * @generated
    */
-  int FITNESS_FUNCTION_SPEC = 2;
+  int FITNESS_FUNCTION_SPEC = 3;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -166,7 +203,7 @@ public interface MDEOptimisePackage extends EPackage
    * @see uk.ac.kcl.mDEOptimise.impl.MDEOptimisePackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 3;
+  int EVOLVER_SPEC = 4;
 
   /**
    * The feature id for the '<em><b>Rule location</b></em>' attribute.
@@ -196,6 +233,17 @@ public interface MDEOptimisePackage extends EPackage
    * @generated
    */
   EClass getOptimisation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mDEOptimise.Optimisation#getBasepath <em>Basepath</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Basepath</em>'.
+   * @see uk.ac.kcl.mDEOptimise.Optimisation#getBasepath()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Basepath();
 
   /**
    * Returns the meta object for the containment reference '{@link uk.ac.kcl.mDEOptimise.Optimisation#getMetamodel <em>Metamodel</em>}'.
@@ -229,6 +277,27 @@ public interface MDEOptimisePackage extends EPackage
    * @generated
    */
   EReference getOptimisation_Evolvers();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mDEOptimise.BasepathSpec <em>Basepath Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Basepath Spec</em>'.
+   * @see uk.ac.kcl.mDEOptimise.BasepathSpec
+   * @generated
+   */
+  EClass getBasepathSpec();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mDEOptimise.BasepathSpec#getLocation <em>Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Location</em>'.
+   * @see uk.ac.kcl.mDEOptimise.BasepathSpec#getLocation()
+   * @see #getBasepathSpec()
+   * @generated
+   */
+  EAttribute getBasepathSpec_Location();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mDEOptimise.MetaModelSpec <em>Meta Model Spec</em>}'.
@@ -327,6 +396,14 @@ public interface MDEOptimisePackage extends EPackage
     EClass OPTIMISATION = eINSTANCE.getOptimisation();
 
     /**
+     * The meta object literal for the '<em><b>Basepath</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__BASEPATH = eINSTANCE.getOptimisation_Basepath();
+
+    /**
      * The meta object literal for the '<em><b>Metamodel</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -349,6 +426,24 @@ public interface MDEOptimisePackage extends EPackage
      * @generated
      */
     EReference OPTIMISATION__EVOLVERS = eINSTANCE.getOptimisation_Evolvers();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mDEOptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mDEOptimise.impl.BasepathSpecImpl
+     * @see uk.ac.kcl.mDEOptimise.impl.MDEOptimisePackageImpl#getBasepathSpec()
+     * @generated
+     */
+    EClass BASEPATH_SPEC = eINSTANCE.getBasepathSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BASEPATH_SPEC__LOCATION = eINSTANCE.getBasepathSpec_Location();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mDEOptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.

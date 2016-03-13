@@ -38,12 +38,15 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getOptimisationAccess().getGroup(), "rule__Optimisation__Group__0");
+					put(grammarAccess.getBasepathSpecAccess().getGroup(), "rule__BasepathSpec__Group__0");
 					put(grammarAccess.getMetaModelSpecAccess().getGroup(), "rule__MetaModelSpec__Group__0");
 					put(grammarAccess.getFitnessFunctionSpecAccess().getGroup(), "rule__FitnessFunctionSpec__Group__0");
 					put(grammarAccess.getEvolverSpecAccess().getGroup(), "rule__EvolverSpec__Group__0");
-					put(grammarAccess.getOptimisationAccess().getMetamodelAssignment_0(), "rule__Optimisation__MetamodelAssignment_0");
-					put(grammarAccess.getOptimisationAccess().getFitnessAssignment_1(), "rule__Optimisation__FitnessAssignment_1");
-					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_2(), "rule__Optimisation__EvolversAssignment_2");
+					put(grammarAccess.getOptimisationAccess().getBasepathAssignment_0(), "rule__Optimisation__BasepathAssignment_0");
+					put(grammarAccess.getOptimisationAccess().getMetamodelAssignment_1(), "rule__Optimisation__MetamodelAssignment_1");
+					put(grammarAccess.getOptimisationAccess().getFitnessAssignment_2(), "rule__Optimisation__FitnessAssignment_2");
+					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_3(), "rule__Optimisation__EvolversAssignment_3");
+					put(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1(), "rule__BasepathSpec__LocationAssignment_1");
 					put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
 					put(grammarAccess.getFitnessFunctionSpecAccess().getClassAssignment_1(), "rule__FitnessFunctionSpec__ClassAssignment_1");
 					put(grammarAccess.getEvolverSpecAccess().getRule_locationAssignment_2(), "rule__EvolverSpec__Rule_locationAssignment_2");

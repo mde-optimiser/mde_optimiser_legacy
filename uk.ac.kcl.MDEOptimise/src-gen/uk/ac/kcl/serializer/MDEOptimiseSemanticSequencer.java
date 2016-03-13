@@ -16,6 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import uk.ac.kcl.mDEOptimise.BasepathSpec;
 import uk.ac.kcl.mDEOptimise.EvolverSpec;
 import uk.ac.kcl.mDEOptimise.FitnessFunctionSpec;
 import uk.ac.kcl.mDEOptimise.MDEOptimisePackage;
@@ -32,6 +33,9 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	@Override
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == MDEOptimisePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case MDEOptimisePackage.BASEPATH_SPEC:
+				sequence_BasepathSpec(context, (BasepathSpec) semanticObject); 
+				return; 
 			case MDEOptimisePackage.EVOLVER_SPEC:
 				sequence_EvolverSpec(context, (EvolverSpec) semanticObject); 
 				return; 
@@ -47,6 +51,22 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     location=URL
+	 */
+	protected void sequence_BasepathSpec(EObject context, BasepathSpec semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.BASEPATH_SPEC__LOCATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.BASEPATH_SPEC__LOCATION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Constraint:
@@ -98,7 +118,7 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+)
+	 *     (basepath=BasepathSpec metamodel=MetaModelSpec fitness=FitnessFunctionSpec evolvers+=EvolverSpec+)
 	 */
 	protected void sequence_Optimisation(EObject context, Optimisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

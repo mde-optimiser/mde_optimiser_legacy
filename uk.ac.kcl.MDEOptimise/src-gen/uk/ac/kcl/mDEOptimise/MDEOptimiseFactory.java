@@ -32,6 +32,15 @@ public interface MDEOptimiseFactory extends EFactory
   Optimisation createOptimisation();
 
   /**
+   * Returns a new object of class '<em>Basepath Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Basepath Spec</em>'.
+   * @generated
+   */
+  BasepathSpec createBasepathSpec();
+
+  /**
    * Returns a new object of class '<em>Meta Model Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -80,6 +80,11 @@ public class MDEOptimiseAdapterFactory extends AdapterFactoryImpl
         return createOptimisationAdapter();
       }
       @Override
+      public Adapter caseBasepathSpec(BasepathSpec object)
+      {
+        return createBasepathSpecAdapter();
+      }
+      @Override
       public Adapter caseMetaModelSpec(MetaModelSpec object)
       {
         return createMetaModelSpecAdapter();
@@ -127,6 +132,21 @@ public class MDEOptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOptimisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mDEOptimise.BasepathSpec <em>Basepath Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mDEOptimise.BasepathSpec
+   * @generated
+   */
+  public Adapter createBasepathSpecAdapter()
   {
     return null;
   }
