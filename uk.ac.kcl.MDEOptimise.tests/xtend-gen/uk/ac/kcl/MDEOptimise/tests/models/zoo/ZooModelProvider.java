@@ -41,11 +41,11 @@ public class ZooModelProvider implements ModelProvider {
     return _xblockexpression;
   }
   
-  public EObject loadModel(final String relativePath) {
+  public EObject loadModel(final String path) {
     try {
       EObject _xblockexpression = null;
       {
-        URI _createURI = URI.createURI(relativePath);
+        URI _createURI = URI.createURI(path);
         final Resource resource = this.resourceSet.createResource(_createURI);
         resource.load(Collections.EMPTY_MAP);
         TreeIterator<EObject> _allContents = resource.getAllContents();

@@ -34,6 +34,8 @@ class InterpreterTest {
 		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (1), mp)
 		interpreter.execute();
 		
-		
+		val optimiserOutcome = interpreter.result.head
+		val expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo_expected.xmi")
+		// TODO: Compare the two models
 	}
 }

@@ -24,8 +24,8 @@ class ZooModelProvider implements ModelProvider {
 		].iterator
 	}
 
-	def loadModel(String relativePath) {
-		val resource = resourceSet.createResource(URI.createURI(relativePath))
+	def loadModel(String path) {
+		val resource = resourceSet.createResource(URI.createURI(path))
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
 	}
