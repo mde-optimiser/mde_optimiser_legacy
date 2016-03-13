@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -118,19 +117,9 @@ public class OptimisationInterpreter {
         final HenshinResourceSet hrs = this.getResourceSet();
         EList<EvolverSpec> _evolvers = this.model.getEvolvers();
         final Function1<EvolverSpec, Module> _function = (EvolverSpec e) -> {
-          Module _xblockexpression_1 = null;
-          {
-            String _rule_location = e.getRule_location();
-            URI _createURI = URI.createURI(_rule_location);
-            Module m = hrs.getModule(_createURI, false);
-            EList<EPackage> _imports = m.getImports();
-            final Consumer<EPackage> _function_1 = (EPackage ep) -> {
-              EcoreUtil.resolveAll(ep);
-            };
-            _imports.forEach(_function_1);
-            _xblockexpression_1 = m;
-          }
-          return _xblockexpression_1;
+          String _rule_location = e.getRule_location();
+          URI _createURI = URI.createURI(_rule_location);
+          return hrs.getModule(_createURI, false);
         };
         List<Module> _map = ListExtensions.<EvolverSpec, Module>map(_evolvers, _function);
         this.henshinEvolvers = _map;

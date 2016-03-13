@@ -90,12 +90,7 @@ class OptimisationInterpreter {
 		if (henshinEvolvers == null) {
 			val hrs = resourceSet
 			henshinEvolvers = model.evolvers.map [ e |
-				// TODO: I suspect that I should actually be fixing the imports here.
-				// However, unfortunately, this is implemented so that it doesn't forgive if no correction is necessary 
-				var m = hrs.getModule(URI.createURI(e.rule_location), false)
-				// TODO: Not sure I actually need this.
-				m.imports.forEach[ep | EcoreUtil.resolveAll(ep)]
-				m
+				hrs.getModule(URI.createURI(e.rule_location), false)
 			]
 		}
 
