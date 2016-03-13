@@ -19,7 +19,7 @@ public class InterpreterTest {
   @Test
   public void testBasicInterpreter() {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method result is undefined for the type InterpreterTest"
-      + "\nhead cannot be resolved");
+      + "\nThe method head is undefined for the type InterpreterTest"
+      + "\nType mismatch: type void is not applicable at this location");
   }
 }
