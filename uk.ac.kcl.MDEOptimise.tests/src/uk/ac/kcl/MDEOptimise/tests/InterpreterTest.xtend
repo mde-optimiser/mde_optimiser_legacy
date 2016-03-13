@@ -13,6 +13,7 @@ import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 @InjectWith(MDEOptimiseInjectorProvider)
 @RunWith(XtextRunner)
@@ -49,7 +50,6 @@ class InterpreterTest {
 		
 		val expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo_expected.xmi")
 		
-		// TODO: Compare the two models
-		//assertEquals(expectedOutcome, optimiserOutcome)
+		assertTrue (EcoreUtil.equals (expectedOutcome, optimiserOutcome))
 	}
 }

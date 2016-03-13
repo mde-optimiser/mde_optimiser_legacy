@@ -3,6 +3,7 @@ package uk.ac.kcl.MDEOptimise.tests;
 import com.google.inject.Inject;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -53,6 +54,8 @@ public class InterpreterTest {
       Set<EObject> _execute = interpreter.execute();
       final EObject optimiserOutcome = IterableExtensions.<EObject>head(_execute);
       final EObject expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo_expected.xmi");
+      boolean _equals = EcoreUtil.equals(expectedOutcome, optimiserOutcome);
+      Assert.assertTrue(_equals);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
