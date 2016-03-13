@@ -25,8 +25,16 @@ public class InterpreterTest {
   @Inject
   private ParseHelper<Optimisation> parser;
   
-  @Test
   public void testBasicInterpreter() {
+    this.genericZooInterpreterImpl(1);
+  }
+  
+  @Test
+  public void testReactionToEvolveFail() {
+    this.genericZooInterpreterImpl(2);
+  }
+  
+  public void genericZooInterpreterImpl(final int maxIterations) {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("basepath <src/uk/ac/kcl/MDEOptimise/tests/models/zoo/>");
@@ -40,7 +48,7 @@ public class InterpreterTest {
       final Optimisation model = this.parser.parse(_builder);
       Assert.assertNotNull(model);
       final ZooModelProvider mp = new ZooModelProvider();
-      RandomHillClimbing _randomHillClimbing = new RandomHillClimbing(1);
+      RandomHillClimbing _randomHillClimbing = new RandomHillClimbing(maxIterations);
       final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _randomHillClimbing, mp);
       Set<EObject> _execute = interpreter.execute();
       final EObject optimiserOutcome = IterableExtensions.<EObject>head(_execute);

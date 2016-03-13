@@ -1,5 +1,6 @@
 package uk.ac.kcl.interpreter
 
+import java.util.ArrayList
 import java.util.Iterator
 import java.util.List
 import java.util.Random
@@ -83,7 +84,9 @@ class OptimisationInterpreter {
 	}
 
 	/**
-	 * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
+	 * Produce a new solution from the given one using one of the evolvers defined in the optimisation model. 
+	 * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>, 
+	 * otherwise returns the result of the first randomly picked evolver that was applicable. 
 	 */
 	def EObject evolve(EObject object) {
 		// Extract Henshin evolvers if necessary
@@ -94,28 +97,34 @@ class OptimisationInterpreter {
 			]
 		}
 
-		// 1. Pick an evolver
-		val evolver = henshinEvolvers.get(new Random().nextInt(henshinEvolvers.size))
+		// Make a copy of the evolvers list so that we can keep track of which evolvers we have already tried.
+		val evolversToTry = new ArrayList(henshinEvolvers.toList)
 		
-		// 2. Make a copy of the current candidate solution
-		val candidateSolution = EcoreUtil.copy (object)
+		do {
+			// 1. Pick an evolver
+			val evolver = evolversToTry.remove(new Random().nextInt(evolversToTry.size))
+			
+			// 2. Make a copy of the current candidate solution
+			// Doing this here just in case unsuccessfully applying an evolver has already made changes
+			val candidateSolution = EcoreUtil.copy (object)
+			
+			// 3. Apply the transformation
+			// TODO: Some of these objects we may actually be able to reuse across evolver calls.
+			val graph = new EGraphImpl(candidateSolution)
+			val engine = new EngineImpl
+			val runner = new UnitApplicationImpl(engine)
+			runner.EGraph = graph
+			
+			// TODO: Allow unit to be selected from the model. For now we're just taking the first one that we come across
+			runner.unit = evolver.units.head
+			if (runner.execute(null)) {
+				// 4. Return the transformed solution
+				return graph.roots.head
+			}	
+		} while (!evolversToTry.empty)
 		
-		// 3. Apply the transformation
-		val graph = new EGraphImpl(candidateSolution)
-		val engine = new EngineImpl
-		val runner = new UnitApplicationImpl(engine)
-		runner.EGraph = graph
-		
-		// TODO: Allow unit to be selected from the model. For now we're just taking the first one that we come across
-		runner.unit = evolver.units.head
-		if (!runner.execute(null)) {
-			// TODO: Improve error messages
-			// FIXME: Actually, we probably want to try with another evolver unless we have run out of evolvers to try.
-			throw new IllegalArgumentException("Error running evolver...")
-		}
-		
-		// 4. Return the transformed solution
-		graph.roots.head
+		// We didn't find any applicable evolvers...
+		null
 	}
 
 	def getResourceSet() {

@@ -1,6 +1,7 @@
 package uk.ac.kcl.interpreter;
 
 import com.google.common.base.Objects;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -109,9 +110,11 @@ public class OptimisationInterpreter {
   
   /**
    * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
+   * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
+   * otherwise returns the result of the first randomly picked evolver that was applicable.
    */
   public EObject evolve(final EObject object) {
-    EObject _xblockexpression = null;
+    Object _xblockexpression = null;
     {
       boolean _equals = Objects.equal(this.henshinEvolvers, null);
       if (_equals) {
@@ -125,27 +128,32 @@ public class OptimisationInterpreter {
         List<Module> _map = ListExtensions.<EvolverSpec, Module>map(_evolvers, _function);
         this.henshinEvolvers = _map;
       }
-      Random _random = new Random();
-      int _size = this.henshinEvolvers.size();
-      int _nextInt = _random.nextInt(_size);
-      final Module evolver = this.henshinEvolvers.get(_nextInt);
-      final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
-      final EGraphImpl graph = new EGraphImpl(candidateSolution);
-      final EngineImpl engine = new EngineImpl();
-      final UnitApplicationImpl runner = new UnitApplicationImpl(engine);
-      runner.setEGraph(graph);
-      EList<Unit> _units = evolver.getUnits();
-      Unit _head = IterableExtensions.<Unit>head(_units);
-      runner.setUnit(_head);
-      boolean _execute = runner.execute(null);
-      boolean _not = (!_execute);
-      if (_not) {
-        throw new IllegalArgumentException("Error running evolver...");
-      }
-      List<EObject> _roots = graph.getRoots();
-      _xblockexpression = IterableExtensions.<EObject>head(_roots);
+      List<Module> _list = IterableExtensions.<Module>toList(this.henshinEvolvers);
+      final ArrayList<Module> evolversToTry = new ArrayList<Module>(_list);
+      do {
+        {
+          Random _random = new Random();
+          int _size = evolversToTry.size();
+          int _nextInt = _random.nextInt(_size);
+          final Module evolver = evolversToTry.remove(_nextInt);
+          final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
+          final EGraphImpl graph = new EGraphImpl(candidateSolution);
+          final EngineImpl engine = new EngineImpl();
+          final UnitApplicationImpl runner = new UnitApplicationImpl(engine);
+          runner.setEGraph(graph);
+          EList<Unit> _units = evolver.getUnits();
+          Unit _head = IterableExtensions.<Unit>head(_units);
+          runner.setUnit(_head);
+          boolean _execute = runner.execute(null);
+          if (_execute) {
+            List<EObject> _roots = graph.getRoots();
+            return IterableExtensions.<EObject>head(_roots);
+          }
+        }
+      } while((!evolversToTry.isEmpty()));
+      _xblockexpression = null;
     }
-    return _xblockexpression;
+    return ((EObject)_xblockexpression);
   }
   
   public HenshinResourceSet getResourceSet() {
