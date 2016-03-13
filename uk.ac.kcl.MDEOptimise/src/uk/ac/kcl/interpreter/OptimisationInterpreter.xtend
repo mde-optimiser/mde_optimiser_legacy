@@ -110,6 +110,7 @@ class OptimisationInterpreter {
 			
 			// 3. Apply the transformation
 			// TODO: Some of these objects we may actually be able to reuse across evolver calls.
+			// Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
 			val graph = new EGraphImpl(candidateSolution)
 			val engine = new EngineImpl
 			val runner = new UnitApplicationImpl(engine)
