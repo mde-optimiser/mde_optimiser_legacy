@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compatibility notice: If using this package together with hyperref, make sure hyperref is loaded first.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{drafts}
+
+\DeclareOption{unknownkeysallowed}
+  {\PassOptionsToPackage\CurrentOption{keyval}}
+
+\DeclareOption{nodrafts} % Use this option to have all draft-commands emit a warning
+  {\gdef\dr@ftPrefix{\PackageWarning{commands}{Draft commands have been disallowed for this document!}}%
+   \renewcommand{\change}[2]{#2}
+  }
+\def\dr@ftPrefix{}
+% Note, colors will be defined below, but need to define macros here so they can be redefined in response to option
+\newcommand{\change}[2]{\textcolor{red}{\sout{#1}}\textcolor{green}{#2}}
+
+\ProcessOptions
+
+\RequirePackage{keyval,ifthen}
+\RequirePackage[normalem]{ulem} % For change control
+\RequirePackage{color}  % For change control
+
+% Use these commands to mark comments in the text. When switching off draft mode, LaTeX will emit a warning whenever it encounters one of these commands.
+\newcommand{\draft}[2][]%
+    {\dr@ftPrefix\noindent{\bfseries $\Rightarrow$ {\ttfamily To Do} #1: }{{\itshape\sffamily#2}} $\Leftarrow$}
+\newenvironment{draftbar}[1][]%
+    {\dr@ftPrefix%
+     \par\noindent{\bfseries $\Downarrow$ {\ttfamily To Do} #1 \par}\begin{itshape}\begin{sffamily}\begin{scriptsize}}%
+    {\end{scriptsize}\end{sffamily}\end{itshape}{\par\noindent\bfseries $\Uparrow$ \ttfamily To Do\par}}
+\newenvironment{draftlist}[1][]%
+    {\begin{draftbar}[#1]
+       \let\olditem\item
+       \def\item{\begin{itemize}\let\item\olditem\item}}%
+    {\end{itemize}\end{draftbar}}
+
+% Change Control
+\definecolor{green}{rgb}{.2,.8,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{red}{rgb}{1,0,0}
+
+\newcommand{\add}[1]{\change{}{#1}}
+\newcommand{\delete}[1]{\change{#1}{}}
+% Ensure use of \sout in things like \title doesn't cause problems
+\@ifpackageloaded{hyperref}{
+	\pdfstringdefDisableCommands{\let\sout\relax}
+}{}
+
+\endinput

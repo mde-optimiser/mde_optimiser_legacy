@@ -1,0 +1,46 @@
+\newif\ifdraft
+\drafttrue
+%\draftfalse
+
+\ifdraft
+	\documentclass[draft]{llncs}
+	
+	\usepackage{drafts}
+\else
+	\documentclass{llncs}
+
+	\usepackage[nodrafts]{drafts}
+\fi
+
+
+\title{\draft{}}
+
+%\titlerunning{\draft{}}  % abbreviated title (for running head) also used for the TOC unless \toctitle is used
+
+\author{Steffen Zschaler\inst{1}}
+\institute{
+	Department of Informatics\\
+	King's College London\\
+	\email{szschaler@acm.org}
+}
+
+\begin{document}
+
+	\maketitle
+	
+	\begin{abstract}
+		\begin{draftbar}
+		\end{draftbar}
+		
+		\ifdraft
+			\draft{To be submitted to MELO as a work-in-progress paper. max 6 pages, LNCS. Paper: April 18, 2016}
+		\fi
+		
+		\keywords{evolutionary optimisation, object space, model-driven engineering, model transformations}
+	\end{abstract}
+	
+	\bibliographystyle{splncs}
+	\bibliography{biblio}
+
+\end{document}
+
