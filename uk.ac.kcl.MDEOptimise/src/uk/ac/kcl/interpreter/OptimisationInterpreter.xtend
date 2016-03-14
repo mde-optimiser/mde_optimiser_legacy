@@ -20,6 +20,7 @@ import uk.ac.kcl.mDEOptimise.Optimisation
  * for interpreting optimisation scripts, but does not actually contain a concrete optimisation 
  * algorithm. Such algorithms are provided separately through a strategy object.
  */
+// TODO: Add a combine method to support cross-over like steps for multi-objective optimisers. Use something like EMF Diff/Merge for implementation (see {@see http://wiki.eclipse.org/EMF_DiffMerge/Programmatic_Usage}).
 class OptimisationInterpreter {
 
 	/**
