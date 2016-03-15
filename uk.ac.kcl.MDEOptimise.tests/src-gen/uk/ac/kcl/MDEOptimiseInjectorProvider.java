@@ -3,6 +3,8 @@
  */
 package uk.ac.kcl;
 
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.henshin.model.HenshinPackage;
 import org.eclipse.xtext.junit4.GlobalRegistries;
 import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
 import org.eclipse.xtext.junit4.IInjectorProvider;
@@ -44,5 +46,8 @@ public class MDEOptimiseInjectorProvider implements IInjectorProvider, IRegistry
 	public void setupRegistry() {
 		getInjector();
 		stateAfterInjectorCreation.restoreGlobalState();
+		
+		// Need to manually restore the Henshin metamodel registration: Global state storing doesn't capture this because it lives in a delegate Registry
+		EPackage.Registry.INSTANCE.put(HenshinPackage.eNS_URI, HenshinPackage.eINSTANCE);
 	}
 }

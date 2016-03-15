@@ -26,6 +26,7 @@ public class InterpreterTest {
   @Inject
   private ParseHelper<Optimisation> parser;
   
+  @Test
   public void testBasicInterpreter() {
     this.genericZooInterpreterImpl(1);
   }

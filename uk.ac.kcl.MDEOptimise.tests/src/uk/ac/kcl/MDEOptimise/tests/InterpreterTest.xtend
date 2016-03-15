@@ -1,6 +1,7 @@
 package uk.ac.kcl.MDEOptimise.tests
 
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -13,16 +14,13 @@ import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
-import org.eclipse.emf.ecore.util.EcoreUtil
 
 @InjectWith(MDEOptimiseInjectorProvider)
 @RunWith(XtextRunner)
 class InterpreterTest {
 	@Inject ParseHelper<Optimisation> parser
 
-	// FIXME: Currently, can only run one of the interpreter tests at a time as there is some issue with XText removing Henshin from the local 
-	// registry between runs. Need to look into how I need to change the configuration to avoid this.
-	//@Test
+	@Test
 	def void testBasicInterpreter() {
 		// Testing the basic case
 		genericZooInterpreterImpl(1)
