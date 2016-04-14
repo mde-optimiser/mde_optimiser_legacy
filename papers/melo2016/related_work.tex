@@ -14,11 +14,14 @@
 					difficult to extend to population-based approaches as the current model is somewhat implicit in the scheduling specification. Also, they do not touch on
 					what breeding means for models. They provide some performance analysis.
 					
-					Look at references in \cite{Denil+14}!
+					%Look at references in \cite{Denil+14}!
 					
 		\item \cite{Abdeen+14} present an approach similar to MOMOT, but based on Viatra. Have some interesting discussion of repair/ranking of invalid solution
 		      candidates.
 					
 	  \item \cite{BurtonPoulding13} gives a good discussion of why one would want to optimise at the model level. They also introduce the idea of domain-specific
-		      encodings (even though they don't call it that).
+		      encodings (even though they don't call it that). In \cite{Burton+12} they give a concrete application example (resource allocation) and present an 
+					Epsilon-based tool doing the optimisation. An interesting effect here is that they are specifically identifying only a part of the model that the optimiser
+					actually manipulates (correspondences between model elements in a requirements and an implementations model). This allows crossover to be expressed
+					relatively easily, but comes at the cost of having to run a transformation for every fitness evaluation to reconstruct the ``phenotype'' model.
 	\end{draftlist}
