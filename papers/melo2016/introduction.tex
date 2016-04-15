@@ -1,15 +1,38 @@
 \section{Introduction}
 \label{section:introduction}
 
-	\begin{draftlist}
-		\item Search-based and optimisation approaches to design are becoming more important (SBSE), but they are also important to adaptation (cite our cloud work,
-					mention robotics). 
-		\item The domains concerned can be quite complex, capturing them in traditional optimisation-oriented ways is difficult.
-		\item Some earlier work exists that tries to define a generic mechanism of translating models into genome representation (cite Crepe complete paper and
-					James' thesis), but this has issues. Discuss these issues in detail here or possibly in its own section below.
-		\item Main problem: loses lots of domain-specific knowledge.
-		\item We have spent lots of time to design a good meta-model based on extensive domain analysis. Why not use this knowledge when developing optimisations?
-		\item In this paper, we propose a technique and prototype tool for doing so and present its application to a simple case study. This forms the basis of a 
-					research agenda.
-		\item Structure of the paper etc.
-	\end{draftlist}
+	%\begin{draftlist}
+		%\item Search-based and optimisation approaches to design are becoming more important (SBSE), but they are also important to adaptation (cite our cloud work,
+					%mention robotics). 
+		%\item The domains concerned can be quite complex, capturing them in traditional optimisation-oriented ways is difficult.
+		%\item Some earlier work exists that tries to define a generic mechanism of translating models into genome representation (cite Crepe complete paper and
+					%James' thesis), but this has issues. Discuss these issues in detail here or possibly in its own section below.
+		%\item Main problem: loses lots of domain-specific knowledge.
+		%\item We have spent lots of time to design a good meta-model based on extensive domain analysis. Why not use this knowledge when developing optimisations?
+		%\item In this paper, we propose a technique and prototype tool for doing so and present its application to a simple case study. This forms the basis of a 
+					%research agenda.
+		%\item Structure of the paper etc.
+	%\end{draftlist}
+
+	Search-based software engineering (SBSE) is about using optimisation techniques for automating the search for (near-)optimal software designs \cite{SBSE}. More
+	recently, the use of search-based approaches has also been extended to software adaptation (e.g., \cite{Efstathiou+14,Chatziprimou+14}). Using search-based
+	techniques allows the exploration of much larger design spaces than could be explored manually by developers. As a result, better solutions can be identified more
+	quickly.
+	
+	However, as has been recognised before \cite{BurtonPoulding13,Kessentini+13}, the problem domains in software engineering are too complex to be effectively
+	captured with traditional problem representations as they are typically used in search-based systems. Model-driven engineering (MDE) offers good techniques for
+	capturing complex domains including their structural constraints by using meta-models. As a result, there has recently been increased interest in combining the
+	advantages of SBSE and MDE \cite{Fleck15,Drago+10,Drago+11,Drago+15,Efstathiou+14b,Williams13,Denil+14,Abdeen+14}.
+	
+	Much of this work has focused on finding good generic representations of models that are tailored towards the needs of standard optimisation algorithms (most
+	typically, genetic algorithms \cite{GA}). As we will discuss in detail in Sect.~\ref{section:issues}, these generic encodings introduce their own challenges.
+	Most importantly, they make it easy for search steps to produce invalid candidate solution; that is, models that do not satisfy the constraints expressed by the
+	meta-model or its well-formedness rules.
+	
+	In this paper, we propose an alternative approach: instead of defining a secondary encoding for candidate solutions, we propose to run optimisation algorithms
+	directly on models represented in standard meta-modelling data structures. We argue that given that developers have spent substantial time and effort designing
+	meta-models that are a good representation of the domain, we should make use of as much of this information as possible during search and optimisation. We
+	present a first prototype of a tool for running such optimisations and discuss some of the research challenges that need to be addressed to make this vision a
+	reality.
+	
+	The remainder of this paper is strucured as follows: \draft{}
