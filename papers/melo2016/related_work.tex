@@ -65,7 +65,7 @@
 			      are the actual optimisation object, their application to models is separate to the optimisation process.
 		\end{enumerate}
 			
-		\subsubsection{Using genome encodings}
+		\subsubsection{Using genome encodings.}
 	
 			%\begin{draftlist}
 				%To discuss:
@@ -84,7 +84,7 @@
 			transformations to a base model. Fleck \emph{et al.} handle invalid candidate solutions with a repair mechanism, effectively reducing the population size
 			for these situations.
 		
-		\subsubsection{Using direct search}
+		\subsubsection{Using direct search.}
 		
 		  %\begin{draftlist}
 			  %To discuss:
@@ -98,7 +98,7 @@
 
 	\subsection{Optimisation of models}
 	
-	  \subsubsection{Using genome encodings}
+	  \subsubsection{Using genome encodings.}
 		
 			%\begin{draftlist}
 				%To discuss:
@@ -117,20 +117,31 @@
 			ingredient of their approach is also a generic meta-model for encoding models as genomes, making them amenable to standard genetic operators such as
 			mutation and crossover.
 
-	  \subsubsection{Using direct search}
+	  \subsubsection{Using direct search.}
 
-			\begin{draftlist}
-				To discuss:
-				\item \cite{Denil+14} (also a version at https://www.cs.mcgill.ca/files/techReports/icse.pdf) use transformation scheduling specifications to implement 
-							single-state (non-population based) optimisation algorithms directly over models 
-							(using transformations to describe exploration steps). They provide some good arguments for why this is a good approach. I think their approach would 
-							be difficult to extend to population-based approaches as the current model is somewhat implicit in the scheduling specification. Also, they do not
-							touch on what breeding means for models. They provide some performance analysis.
-							
-				\item \cite{BurtonPoulding13} gives a good discussion of why one would want to optimise at the model level. They also introduce the idea of domain-specific
-							encodings (even though they don't call it that). In \cite{Burton+12} they give a concrete application example (resource allocation) and present an 
-							Epsilon-based tool doing the optimisation. An interesting effect here is that they are specifically identifying only a part of the model that the 
-							optimiser actually manipulates (correspondences between model elements in a requirements and an implementations model). This allows crossover to be
-							expressed relatively easily, but comes at the cost of having to run a transformation for every fitness evaluation to reconstruct the ``phenotype''
-							model.
-			\end{draftlist}
+			%\begin{draftlist}
+				%To discuss:
+				%\item \cite{Denil+14} (also a version at https://www.cs.mcgill.ca/files/techReports/icse.pdf) use transformation scheduling specifications to implement 
+							%single-state (non-population based) optimisation algorithms directly over models 
+							%(using transformations to describe exploration steps). They provide some good arguments for why this is a good approach. I think their approach would 
+							%be difficult to extend to population-based approaches as the current model is somewhat implicit in the scheduling specification. Also, they do not
+							%touch on what breeding means for models. They provide some performance analysis.
+							%
+				%\item \cite{BurtonPoulding13} gives a good discussion of why one would want to optimise at the model level. They also introduce the idea of domain-specific
+							%encodings (even though they don't call it that). In \cite{Burton+12} they give a concrete application example (resource allocation) and present an 
+							%Epsilon-based tool doing the optimisation. An interesting effect here is that they are specifically identifying only a part of the model that the 
+							%optimiser actually manipulates (correspondences between model elements in a requirements and an implementations model). This allows crossover to be
+							%expressed relatively easily, but comes at the cost of having to run a transformation for every fitness evaluation to reconstruct the ``phenotype''
+							%model.
+			%\end{draftlist}
+			
+			Burton and Poulding \cite{BurtonPoulding13} were the first to describe an idea for running transformations directly on models. They create separate 
+			domain-specific modelling languages describing a search problem and candidate solutions and run search to find near-optimal solutions. As described in 
+			\cite{Burton+12}, their solutions are mappings between solution and problem models, effectively limiting the problem to the optimisation of vectors of
+			binary associations. This enables them to easily define general mutation and crossover operators so that standard evolutionary search can be applied.
+			
+			Denil \emph{et al.} \cite{Denil+14} present a general approach for model-based optimisation based on their Formalism Transformation Graph and Process Model 
+			(FTG+PM). Their main focus is on how different search algorithms can be implemented as transformation scheduling programs, thus integrating them fully into
+			a general MDE approach. They show how they can easily implement a number of single-state search algorithms in this way, applying them to a problem in
+			circuit design. Candidate solutions are implicit in the transformation scheduling language, which may make it difficult to extend this approach to 
+			population-based search algorithms.
