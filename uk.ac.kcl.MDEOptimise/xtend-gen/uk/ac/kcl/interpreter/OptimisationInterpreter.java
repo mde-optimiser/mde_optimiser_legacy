@@ -3,6 +3,7 @@ package uk.ac.kcl.interpreter;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -64,7 +65,7 @@ public class OptimisationInterpreter {
   /**
    * Cache for the fitness function object
    */
-  private FitnessFunction fitnessFunction = null;
+  private List<FitnessFunction> fitnessFunctions = null;
   
   public OptimisationInterpreter(final Optimisation model, final OptimisationAlgorithm algorithm, final ModelProvider initalModelProvider) {
     this.model = model;
@@ -87,25 +88,36 @@ public class OptimisationInterpreter {
   /**
    * This will compute the fitness for the given candidate solution
    */
-  public double fitness(final EObject candidateSolution) {
-    try {
-      double _xblockexpression = (double) 0;
-      {
-        boolean _equals = Objects.equal(this.fitnessFunction, null);
-        if (_equals) {
-          FitnessFunctionSpec _fitness = this.model.getFitness();
-          String _class_ = _fitness.getClass_();
-          Class<?> _forName = Class.forName(_class_);
-          final Class<? extends FitnessFunction> fitnessClass = ((Class<? extends FitnessFunction>) _forName);
-          FitnessFunction _newInstance = fitnessClass.newInstance();
-          this.fitnessFunction = _newInstance;
-        }
-        _xblockexpression = this.fitnessFunction.computeFitness(candidateSolution);
+  public List<Double> fitness(final EObject candidateSolution) {
+    List<Double> _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(this.fitnessFunctions, null);
+      if (_equals) {
+        EList<FitnessFunctionSpec> _fitness = this.model.getFitness();
+        final Function1<FitnessFunctionSpec, FitnessFunction> _function = (FitnessFunctionSpec f) -> {
+          try {
+            FitnessFunction _xblockexpression_1 = null;
+            {
+              String _class_ = f.getClass_();
+              Class<?> _forName = Class.forName(_class_);
+              final Class<? extends FitnessFunction> fitnessClass = ((Class<? extends FitnessFunction>) _forName);
+              _xblockexpression_1 = fitnessClass.newInstance();
+            }
+            return _xblockexpression_1;
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        };
+        List<FitnessFunction> _map = ListExtensions.<FitnessFunctionSpec, FitnessFunction>map(_fitness, _function);
+        LinkedList<FitnessFunction> _linkedList = new LinkedList<FitnessFunction>(_map);
+        this.fitnessFunctions = _linkedList;
       }
-      return _xblockexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
+      final Function1<FitnessFunction, Double> _function_1 = (FitnessFunction f) -> {
+        return Double.valueOf(f.computeFitness(candidateSolution));
+      };
+      _xblockexpression = ListExtensions.<FitnessFunction, Double>map(this.fitnessFunctions, _function_1);
     }
+    return _xblockexpression;
   }
   
   /**

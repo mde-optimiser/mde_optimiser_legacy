@@ -85,7 +85,7 @@ public interface MDEOptimisePackage extends EPackage
   int OPTIMISATION__METAMODEL = 1;
 
   /**
-   * The feature id for the '<em><b>Fitness</b></em>' containment reference.
+   * The feature id for the '<em><b>Fitness</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -266,10 +266,10 @@ public interface MDEOptimisePackage extends EPackage
   EReference getOptimisation_Metamodel();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mDEOptimise.Optimisation#getFitness <em>Fitness</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mDEOptimise.Optimisation#getFitness <em>Fitness</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Fitness</em>'.
+   * @return the meta object for the containment reference list '<em>Fitness</em>'.
    * @see uk.ac.kcl.mDEOptimise.Optimisation#getFitness()
    * @see #getOptimisation()
    * @generated
@@ -432,7 +432,7 @@ public interface MDEOptimisePackage extends EPackage
     EReference OPTIMISATION__METAMODEL = eINSTANCE.getOptimisation_Metamodel();
 
     /**
-     * The meta object literal for the '<em><b>Fitness</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Fitness</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

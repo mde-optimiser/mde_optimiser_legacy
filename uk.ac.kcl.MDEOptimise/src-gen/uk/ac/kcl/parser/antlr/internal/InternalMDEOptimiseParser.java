@@ -216,7 +216,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
             	        if (current==null) {
             	            current = createModelElementForParent(grammarAccess.getOptimisationRule());
             	        }
-                   		set(
+                   		add(
                    			current, 
                    			"fitness",
                     		lv_fitness_2_0, 

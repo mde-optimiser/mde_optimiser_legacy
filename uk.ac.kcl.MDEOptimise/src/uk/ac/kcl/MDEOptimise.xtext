@@ -6,7 +6,7 @@ generate mDEOptimise "http://www.ac.uk/kcl/MDEOptimise"
 Optimisation:
 	basepath=BasepathSpec
 	metamodel=MetaModelSpec
-	fitness=FitnessFunctionSpec
+	fitness+=FitnessFunctionSpec
 	evolvers+=EvolverSpec+
 ;
 

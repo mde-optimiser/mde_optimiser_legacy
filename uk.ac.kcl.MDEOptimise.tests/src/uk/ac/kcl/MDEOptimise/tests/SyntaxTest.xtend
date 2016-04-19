@@ -4,15 +4,14 @@ import javax.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.MDEOptimiseInjectorProvider
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 
-@InjectWith(MDEOptimiseInjectorProvider)
+@InjectWith(FullTestInjector)
 @RunWith(XtextRunner)
 class SyntaxTest {
 	@Inject ParseHelper<Optimisation> parser

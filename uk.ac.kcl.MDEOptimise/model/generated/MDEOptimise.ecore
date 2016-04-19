@@ -6,8 +6,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//MetaModelSpec"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fitness" eType="#//FitnessFunctionSpec"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fitness" upperBound="-1"
+        eType="#//FitnessFunctionSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
         eType="#//EvolverSpec" containment="true"/>
   </eClassifiers>

@@ -13,13 +13,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.ac.kcl.MDEOptimise.tests.FullTestInjector;
 import uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooModelProvider;
-import uk.ac.kcl.MDEOptimiseInjectorProvider;
 import uk.ac.kcl.interpreter.OptimisationInterpreter;
 import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
-@InjectWith(MDEOptimiseInjectorProvider.class)
+@InjectWith(FullTestInjector.class)
 @RunWith(XtextRunner.class)
 @SuppressWarnings("all")
 public class InterpreterTest {

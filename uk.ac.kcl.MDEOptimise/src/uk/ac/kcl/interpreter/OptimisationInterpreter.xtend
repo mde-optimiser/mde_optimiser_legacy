@@ -2,6 +2,7 @@ package uk.ac.kcl.interpreter
 
 import java.util.ArrayList
 import java.util.Iterator
+import java.util.LinkedList
 import java.util.List
 import java.util.Random
 import org.eclipse.emf.common.util.URI
@@ -43,7 +44,7 @@ class OptimisationInterpreter {
 	private HenshinResourceSet henshinResourceSet = null
 
 	private EPackage theMetamodel = null
-	
+
 	/**
 	 * The list of Henshin rules used as evolvers
 	 */
@@ -52,7 +53,7 @@ class OptimisationInterpreter {
 	/**
 	 * Cache for the fitness function object
 	 */
-	private FitnessFunction fitnessFunction = null
+	private List<FitnessFunction> fitnessFunctions = null
 
 	new(Optimisation model, OptimisationAlgorithm algorithm, ModelProvider initalModelProvider) {
 		this.model = model
@@ -74,14 +75,16 @@ class OptimisationInterpreter {
 	/**
 	 * This will compute the fitness for the given candidate solution
 	 */
-	def double fitness(EObject candidateSolution) {
-		if (fitnessFunction == null) {
-			val Class<? extends FitnessFunction> fitnessClass = Class.forName(
-				model.getFitness.class_) as Class<? extends FitnessFunction>
-			fitnessFunction = fitnessClass.newInstance
+	def List<Double> fitness(EObject candidateSolution) {
+		if (fitnessFunctions == null) {
+			fitnessFunctions = new LinkedList(model.fitness.map [ f |
+				val Class<? extends FitnessFunction> fitnessClass = Class.forName(
+					f.class_) as Class<? extends FitnessFunction>
+				fitnessClass.newInstance
+			])
 		}
 
-		fitnessFunction.computeFitness(candidateSolution)
+		fitnessFunctions.map[f|f.computeFitness(candidateSolution)]
 	}
 
 	/**
@@ -94,21 +97,21 @@ class OptimisationInterpreter {
 		if (henshinEvolvers == null) {
 			val hrs = resourceSet
 			henshinEvolvers = model.evolvers.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit) 
+				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
 			]
 		}
 
 		// Make a copy of the evolvers list so that we can keep track of which evolvers we have already tried.
 		val evolversToTry = new ArrayList(henshinEvolvers.toList)
-		
+
 		do {
 			// 1. Pick an evolver
 			val evolver = evolversToTry.remove(new Random().nextInt(evolversToTry.size))
-			
+
 			// 2. Make a copy of the current candidate solution
 			// Doing this here just in case unsuccessfully applying an evolver has already made changes
-			val candidateSolution = EcoreUtil.copy (object)
-			
+			val candidateSolution = EcoreUtil.copy(object)
+
 			// 3. Apply the transformation
 			// TODO: Some of these objects we may actually be able to reuse across evolver calls.
 			// Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
@@ -116,14 +119,14 @@ class OptimisationInterpreter {
 			val engine = new EngineImpl
 			val runner = new UnitApplicationImpl(engine)
 			runner.EGraph = graph
-			
+
 			runner.unit = evolver
 			if (runner.execute(null)) {
 				// 4. Return the transformed solution
 				return graph.roots.head
-			}	
+			}
 		} while (!evolversToTry.empty)
-		
+
 		// We didn't find any applicable evolvers...
 		null
 	}
@@ -132,15 +135,15 @@ class OptimisationInterpreter {
 		if (henshinResourceSet == null) {
 			henshinResourceSet = new HenshinResourceSet(model.basepath.location)
 		}
-		
+
 		henshinResourceSet
 	}
-	
+
 	def getMetamodel() {
 		if (theMetamodel == null) {
 			theMetamodel = resourceSet.registerDynamicEPackages(model.metamodel.location).head
 		}
-		
+
 		theMetamodel
 	}
 }

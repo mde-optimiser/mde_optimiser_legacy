@@ -8,14 +8,13 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimise.tests.models.zoo.ZooModelProvider
-import uk.ac.kcl.MDEOptimiseInjectorProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
 
-@InjectWith(MDEOptimiseInjectorProvider)
+@InjectWith(FullTestInjector)
 @RunWith(XtextRunner)
 class InterpreterTest {
 	@Inject ParseHelper<Optimisation> parser

@@ -80,30 +80,20 @@ public interface Optimisation extends EObject
   void setMetamodel(MetaModelSpec value);
 
   /**
-   * Returns the value of the '<em><b>Fitness</b></em>' containment reference.
+   * Returns the value of the '<em><b>Fitness</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.mDEOptimise.FitnessFunctionSpec}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Fitness</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Fitness</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Fitness</em>' containment reference.
-   * @see #setFitness(FitnessFunctionSpec)
+   * @return the value of the '<em>Fitness</em>' containment reference list.
    * @see uk.ac.kcl.mDEOptimise.MDEOptimisePackage#getOptimisation_Fitness()
    * @model containment="true"
    * @generated
    */
-  FitnessFunctionSpec getFitness();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.mDEOptimise.Optimisation#getFitness <em>Fitness</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Fitness</em>' containment reference.
-   * @see #getFitness()
-   * @generated
-   */
-  void setFitness(FitnessFunctionSpec value);
+  EList<FitnessFunctionSpec> getFitness();
 
   /**
    * Returns the value of the '<em><b>Evolvers</b></em>' containment reference list.

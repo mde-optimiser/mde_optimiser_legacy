@@ -64,14 +64,14 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
   protected MetaModelSpec metamodel;
 
   /**
-   * The cached value of the '{@link #getFitness() <em>Fitness</em>}' containment reference.
+   * The cached value of the '{@link #getFitness() <em>Fitness</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFitness()
    * @generated
    * @ordered
    */
-  protected FitnessFunctionSpec fitness;
+  protected EList<FitnessFunctionSpec> fitness;
 
   /**
    * The cached value of the '{@link #getEvolvers() <em>Evolvers</em>}' containment reference list.
@@ -205,47 +205,13 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public FitnessFunctionSpec getFitness()
+  public EList<FitnessFunctionSpec> getFitness()
   {
+    if (fitness == null)
+    {
+      fitness = new EObjectContainmentEList<FitnessFunctionSpec>(FitnessFunctionSpec.class, this, MDEOptimisePackage.OPTIMISATION__FITNESS);
+    }
     return fitness;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetFitness(FitnessFunctionSpec newFitness, NotificationChain msgs)
-  {
-    FitnessFunctionSpec oldFitness = fitness;
-    fitness = newFitness;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.OPTIMISATION__FITNESS, oldFitness, newFitness);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFitness(FitnessFunctionSpec newFitness)
-  {
-    if (newFitness != fitness)
-    {
-      NotificationChain msgs = null;
-      if (fitness != null)
-        msgs = ((InternalEObject)fitness).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MDEOptimisePackage.OPTIMISATION__FITNESS, null, msgs);
-      if (newFitness != null)
-        msgs = ((InternalEObject)newFitness).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MDEOptimisePackage.OPTIMISATION__FITNESS, null, msgs);
-      msgs = basicSetFitness(newFitness, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MDEOptimisePackage.OPTIMISATION__FITNESS, newFitness, newFitness));
   }
 
   /**
@@ -277,7 +243,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MDEOptimisePackage.OPTIMISATION__METAMODEL:
         return basicSetMetamodel(null, msgs);
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
-        return basicSetFitness(null, msgs);
+        return ((InternalEList<?>)getFitness()).basicRemove(otherEnd, msgs);
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
         return ((InternalEList<?>)getEvolvers()).basicRemove(otherEnd, msgs);
     }
@@ -324,7 +290,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         setMetamodel((MetaModelSpec)newValue);
         return;
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
-        setFitness((FitnessFunctionSpec)newValue);
+        getFitness().clear();
+        getFitness().addAll((Collection<? extends FitnessFunctionSpec>)newValue);
         return;
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
@@ -351,7 +318,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         setMetamodel((MetaModelSpec)null);
         return;
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
-        setFitness((FitnessFunctionSpec)null);
+        getFitness().clear();
         return;
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
@@ -375,7 +342,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MDEOptimisePackage.OPTIMISATION__METAMODEL:
         return metamodel != null;
       case MDEOptimisePackage.OPTIMISATION__FITNESS:
-        return fitness != null;
+        return fitness != null && !fitness.isEmpty();
       case MDEOptimisePackage.OPTIMISATION__EVOLVERS:
         return evolvers != null && !evolvers.isEmpty();
     }
