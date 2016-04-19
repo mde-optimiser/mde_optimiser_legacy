@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({InterpreterTest.class, SyntaxTest.class})
+@SuiteClasses({InterpreterTest.class, MOInterpreterTest.class, SyntaxTest.class})
 public class AllTests {
 
 }

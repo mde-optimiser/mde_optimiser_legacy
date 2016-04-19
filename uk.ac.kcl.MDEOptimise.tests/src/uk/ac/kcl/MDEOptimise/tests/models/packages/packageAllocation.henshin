@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_2YkRAAY5EeaA_tyj4aml1w">
+  <imports href="packages.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_52SVEAY5EeaA_tyj4aml1w" name="CreatePackage">
+    <lhs xmi:id="_55NGMAY5EeaA_tyj4aml1w" name="Lhs">
+      <nodes xmi:id="_CIxIoAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_55NGMQY5EeaA_tyj4aml1w" name="Rhs">
+      <nodes xmi:id="_CIxIoQY6EeaA_tyj4aml1w" outgoing="_OG_t0AY9EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_D6_7QAY6EeaA_tyj4aml1w" incoming="_OG_t0AY9EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <edges xmi:id="_OG_t0AY9EeaA_tyj4aml1w" source="_CIxIoQY6EeaA_tyj4aml1w" target="_D6_7QAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_CI7gsAY6EeaA_tyj4aml1w" origin="_CIxIoAY6EeaA_tyj4aml1w" image="_CIxIoQY6EeaA_tyj4aml1w"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_JQNFYAY6EeaA_tyj4aml1w" name="AllocateUnallocatedClass">
+    <lhs xmi:id="_JQQvwAY6EeaA_tyj4aml1w" name="Lhs">
+      <nodes xmi:id="_LZcCwAY6EeaA_tyj4aml1w" outgoing="_Oa5ooAY6EeaA_tyj4aml1w _Oy6gAAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_MZ2W4AY6EeaA_tyj4aml1w" incoming="_Oa5ooAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Clazz"/>
+      </nodes>
+      <nodes xmi:id="_NE77QAY6EeaA_tyj4aml1w" incoming="_Oy6gAAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <edges xmi:id="_Oa5ooAY6EeaA_tyj4aml1w" source="_LZcCwAY6EeaA_tyj4aml1w" target="_MZ2W4AY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/classes"/>
+      </edges>
+      <edges xmi:id="_Oy6gAAY6EeaA_tyj4aml1w" source="_LZcCwAY6EeaA_tyj4aml1w" target="_NE77QAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_JQQvwQY6EeaA_tyj4aml1w" name="Rhs">
+      <nodes xmi:id="_LZdQ4AY6EeaA_tyj4aml1w" outgoing="_Oy6gAQY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_MZ2W4QY6EeaA_tyj4aml1w" incoming="_PKX9wAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Clazz"/>
+      </nodes>
+      <nodes xmi:id="_NE77QQY6EeaA_tyj4aml1w" incoming="_Oy6gAQY6EeaA_tyj4aml1w" outgoing="_PKX9wAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <edges xmi:id="_Oy6gAQY6EeaA_tyj4aml1w" source="_LZdQ4AY6EeaA_tyj4aml1w" target="_NE77QQY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+      <edges xmi:id="_PKX9wAY6EeaA_tyj4aml1w" source="_NE77QQY6EeaA_tyj4aml1w" target="_MZ2W4QY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package/classes"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_LZdQ4QY6EeaA_tyj4aml1w" origin="_LZcCwAY6EeaA_tyj4aml1w" image="_LZdQ4AY6EeaA_tyj4aml1w"/>
+    <mappings xmi:id="_MZ2W4gY6EeaA_tyj4aml1w" origin="_MZ2W4AY6EeaA_tyj4aml1w" image="_MZ2W4QY6EeaA_tyj4aml1w"/>
+    <mappings xmi:id="_NE77QgY6EeaA_tyj4aml1w" origin="_NE77QAY6EeaA_tyj4aml1w" image="_NE77QQY6EeaA_tyj4aml1w"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_h3K0EAY6EeaA_tyj4aml1w" name="MoveClass">
+    <lhs xmi:id="_h3OecAY6EeaA_tyj4aml1w" name="Lhs">
+      <nodes xmi:id="_jaox8AY6EeaA_tyj4aml1w" outgoing="_niGWkAY6EeaA_tyj4aml1w _n0QdkAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_kU6o4AY6EeaA_tyj4aml1w" name="p1" incoming="_n0QdkAY6EeaA_tyj4aml1w" outgoing="_pYgekAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <nodes xmi:id="_lTPSUAY6EeaA_tyj4aml1w" name="p2" incoming="_niGWkAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <nodes xmi:id="_mYtFkAY6EeaA_tyj4aml1w" incoming="_pYgekAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Clazz"/>
+      </nodes>
+      <edges xmi:id="_niGWkAY6EeaA_tyj4aml1w" source="_jaox8AY6EeaA_tyj4aml1w" target="_lTPSUAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+      <edges xmi:id="_n0QdkAY6EeaA_tyj4aml1w" source="_jaox8AY6EeaA_tyj4aml1w" target="_kU6o4AY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+      <edges xmi:id="_pYgekAY6EeaA_tyj4aml1w" source="_kU6o4AY6EeaA_tyj4aml1w" target="_mYtFkAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package/classes"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_h3OecQY6EeaA_tyj4aml1w" name="Rhs">
+      <nodes xmi:id="_japZAAY6EeaA_tyj4aml1w" outgoing="_niGWkQY6EeaA_tyj4aml1w _n0REoAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_kU6o4QY6EeaA_tyj4aml1w" name="p1" incoming="_n0REoAY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <nodes xmi:id="_lTPSUQY6EeaA_tyj4aml1w" name="p2" incoming="_niGWkQY6EeaA_tyj4aml1w" outgoing="_prK74AY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package"/>
+      </nodes>
+      <nodes xmi:id="_mYtFkQY6EeaA_tyj4aml1w" incoming="_prK74AY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Clazz"/>
+      </nodes>
+      <edges xmi:id="_niGWkQY6EeaA_tyj4aml1w" source="_japZAAY6EeaA_tyj4aml1w" target="_lTPSUQY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+      <edges xmi:id="_n0REoAY6EeaA_tyj4aml1w" source="_japZAAY6EeaA_tyj4aml1w" target="_kU6o4QY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Model/packages"/>
+      </edges>
+      <edges xmi:id="_prK74AY6EeaA_tyj4aml1w" source="_lTPSUQY6EeaA_tyj4aml1w" target="_mYtFkQY6EeaA_tyj4aml1w">
+        <type href="packages.ecore#//Package/classes"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_japZAQY6EeaA_tyj4aml1w" origin="_jaox8AY6EeaA_tyj4aml1w" image="_japZAAY6EeaA_tyj4aml1w"/>
+    <mappings xmi:id="_kU7P8AY6EeaA_tyj4aml1w" origin="_kU6o4AY6EeaA_tyj4aml1w" image="_kU6o4QY6EeaA_tyj4aml1w"/>
+    <mappings xmi:id="_lTPSUgY6EeaA_tyj4aml1w" origin="_lTPSUAY6EeaA_tyj4aml1w" image="_lTPSUQY6EeaA_tyj4aml1w"/>
+    <mappings xmi:id="_mYtFkgY6EeaA_tyj4aml1w" origin="_mYtFkAY6EeaA_tyj4aml1w" image="_mYtFkQY6EeaA_tyj4aml1w"/>
+  </units>
+</henshin:Module>
