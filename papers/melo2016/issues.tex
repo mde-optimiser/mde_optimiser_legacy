@@ -6,3 +6,13 @@
 		\item Introduce the Zoo meta-model and show an example encoding.
 		\item Then show how this is broken by simple crossover.
 	\end{draftlist}
+
+  We are interested in optimisation of models rather than transformations. The latter is useful when we have optimality requirements over transformation chains. More
+	typically, we are interested simply in deriving optimal models. In such a case, optimising transformations incurs too much overhead in repair and through redundant
+	representations of the same model through different transformation chains (effectively reducing the size of the search population).
+	
+	Generic genetic encodings of models as proposed in \cite{Kessentini+13,Williams13,Efstathiou+14b}, however, have their own problems. In particular, it seems very
+	difficult to ensure locality and preservation of wellformedness as we will demonstrate in an example. Figure~\figref{zoo_meta_model} shows the meta-model of a
+	simple Zoo DSL. This DSL allows the description of zoo configurations, where there are 
+	
+	\insertFigure[caption={Metamodel of a Zoo DSL (based on \cite{Williams13})},targetwidth=.8\textwidth]{zoo_meta_model}
