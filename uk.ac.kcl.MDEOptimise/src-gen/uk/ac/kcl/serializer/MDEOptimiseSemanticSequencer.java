@@ -121,7 +121,7 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec evolvers+=EvolverSpec+)
+	 *     (basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec+ evolvers+=EvolverSpec+)
 	 */
 	protected void sequence_Optimisation(EObject context, Optimisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -67,4 +67,45 @@ public class SyntaxTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  /**
+   * A test with multiple fitness functions that should pass to demonstrate basic parsing functionality.
+   */
+  @Test
+  public void testMultiObjectiveParsing() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("basepath <ABC>");
+      _builder.newLine();
+      _builder.append("metamodel <ABC>");
+      _builder.newLine();
+      _builder.append("fitness \"ABC\"");
+      _builder.newLine();
+      _builder.append("fitness \"DEF\"");
+      _builder.newLine();
+      _builder.append("evolve using <ABC> unit \"XYZ\"");
+      _builder.newLine();
+      _builder.append("evolve using <CDE> unit \"LMN\"");
+      _builder.newLine();
+      final Optimisation model = this.parser.parse(_builder);
+      Assert.assertNotNull(model);
+      this._validationTestHelper.assertNoIssues(model);
+      BasepathSpec _basepath = model.getBasepath();
+      String _location = _basepath.getLocation();
+      Assert.assertEquals("ABC", _location);
+      MetaModelSpec _metamodel = model.getMetamodel();
+      String _location_1 = _metamodel.getLocation();
+      Assert.assertEquals("ABC", _location_1);
+      EList<EvolverSpec> _evolvers = model.getEvolvers();
+      EvolverSpec _get = _evolvers.get(0);
+      String _rule_location = _get.getRule_location();
+      Assert.assertEquals("ABC", _rule_location);
+      EList<EvolverSpec> _evolvers_1 = model.getEvolvers();
+      EvolverSpec _get_1 = _evolvers_1.get(1);
+      String _rule_location_1 = _get_1.getRule_location();
+      Assert.assertEquals("CDE", _rule_location_1);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

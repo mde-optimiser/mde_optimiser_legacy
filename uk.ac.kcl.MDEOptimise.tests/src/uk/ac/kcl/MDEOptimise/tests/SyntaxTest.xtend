@@ -38,4 +38,27 @@ class SyntaxTest {
 		assertEquals("ABC", model.evolvers.get(0).rule_location)
 		assertEquals("CDE", model.evolvers.get(1).rule_location)
 	} 
+
+	/**
+	 * A test with multiple fitness functions that should pass to demonstrate basic parsing functionality.
+	 */
+	@Test
+	def void testMultiObjectiveParsing() {
+		val model = parser.parse('''
+			basepath <ABC>
+			metamodel <ABC>
+			fitness "ABC"
+			fitness "DEF"
+			evolve using <ABC> unit "XYZ"
+			evolve using <CDE> unit "LMN"
+		''')
+		assertNotNull(model)
+		
+		model.assertNoIssues
+		
+		assertEquals("ABC", model.basepath.location)
+		assertEquals("ABC", model.metamodel.location)
+		assertEquals("ABC", model.evolvers.get(0).rule_location)
+		assertEquals("CDE", model.evolvers.get(1).rule_location)
+	} 
 }

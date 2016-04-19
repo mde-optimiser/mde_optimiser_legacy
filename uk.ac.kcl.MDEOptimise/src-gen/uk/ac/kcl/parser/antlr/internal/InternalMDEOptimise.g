@@ -131,7 +131,7 @@ ruleOptimisation returns [EObject current=null]
 	    }
 
 )
-)(
+)+(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_3_0()); 
