@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pex:Model xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pex="http://inf.kcl.ac.uk/mdeoptimise/packages_example"
+    xsi:schemaLocation="http://inf.kcl.ac.uk/mdeoptimise/packages_example packages.ecore">
+  <packages>
+    <classes
+        dependsOn="//@packages.0/@classes.3 //@packages.0/@classes.4"
+        name="a"/>
+    <classes
+        dependsOn="//@packages.0/@classes.2"
+        name="b"/>
+    <classes
+        name="c"/>
+    <classes
+        dependsOn="//@packages.0/@classes.2"
+        name="d"/>
+    <classes
+        name="e"/>
+  </packages>
+</pex:Model>

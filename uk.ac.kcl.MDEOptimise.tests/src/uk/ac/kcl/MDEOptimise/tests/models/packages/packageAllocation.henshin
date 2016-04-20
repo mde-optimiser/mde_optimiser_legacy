@@ -6,18 +6,35 @@
       <nodes xmi:id="_CIxIoAY6EeaA_tyj4aml1w">
         <type href="packages.ecore#//Model"/>
       </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_unQEQgZOEeaA_tyj4aml1w">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_unQEQwZOEeaA_tyj4aml1w">
+          <conclusion xmi:id="_unQERAZOEeaA_tyj4aml1w">
+            <nodes xmi:id="_unQERQZOEeaA_tyj4aml1w" outgoing="_wUisgAZOEeaA_tyj4aml1w">
+              <type href="packages.ecore#//Model"/>
+            </nodes>
+            <nodes xmi:id="_unOPEAZOEeaA_tyj4aml1w" name="p2" incoming="_wUisgAZOEeaA_tyj4aml1w">
+              <type href="packages.ecore#//Package"/>
+            </nodes>
+            <edges xmi:id="_wUisgAZOEeaA_tyj4aml1w" source="_unQERQZOEeaA_tyj4aml1w" target="_unOPEAZOEeaA_tyj4aml1w">
+              <type href="packages.ecore#//Model/packages"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_unQERgZOEeaA_tyj4aml1w" origin="_CIxIoAY6EeaA_tyj4aml1w" image="_unQERQZOEeaA_tyj4aml1w"/>
+        </child>
+      </formula>
     </lhs>
     <rhs xmi:id="_55NGMQY5EeaA_tyj4aml1w" name="Rhs">
       <nodes xmi:id="_CIxIoQY6EeaA_tyj4aml1w" outgoing="_OG_t0AY9EeaA_tyj4aml1w">
         <type href="packages.ecore#//Model"/>
       </nodes>
-      <nodes xmi:id="_D6_7QAY6EeaA_tyj4aml1w" incoming="_OG_t0AY9EeaA_tyj4aml1w">
+      <nodes xmi:id="_D6_7QAY6EeaA_tyj4aml1w" name="p1" incoming="_OG_t0AY9EeaA_tyj4aml1w">
         <type href="packages.ecore#//Package"/>
       </nodes>
       <edges xmi:id="_OG_t0AY9EeaA_tyj4aml1w" source="_CIxIoQY6EeaA_tyj4aml1w" target="_D6_7QAY6EeaA_tyj4aml1w">
         <type href="packages.ecore#//Model/packages"/>
       </edges>
     </rhs>
+    <attributeConditions xmi:id="_usEdYAZPEeaA_tyj4aml1w" name="NoOtherEmptyPackages" conditionText="p2.classes.size == 0"/>
     <mappings xmi:id="_CI7gsAY6EeaA_tyj4aml1w" origin="_CIxIoAY6EeaA_tyj4aml1w" image="_CIxIoQY6EeaA_tyj4aml1w"/>
   </units>
   <units xsi:type="henshin:Rule" xmi:id="_JQNFYAY6EeaA_tyj4aml1w" name="AllocateUnallocatedClass">

@@ -1,12 +1,16 @@
 package uk.ac.kcl.interpreter;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -19,9 +23,12 @@ import org.eclipse.emf.henshin.model.Module;
 import org.eclipse.emf.henshin.model.Unit;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import uk.ac.kcl.interpreter.FitnessFunction;
 import uk.ac.kcl.interpreter.ModelProvider;
 import uk.ac.kcl.interpreter.OptimisationAlgorithm;
@@ -91,8 +98,12 @@ public class OptimisationInterpreter {
   public List<Double> fitness(final EObject candidateSolution) {
     List<Double> _xblockexpression = null;
     {
-      boolean _equals = Objects.equal(this.fitnessFunctions, null);
+      boolean _equals = Objects.equal(candidateSolution, null);
       if (_equals) {
+        throw new NullPointerException();
+      }
+      boolean _equals_1 = Objects.equal(this.fitnessFunctions, null);
+      if (_equals_1) {
         EList<FitnessFunctionSpec> _fitness = this.model.getFitness();
         final Function1<FitnessFunctionSpec, FitnessFunction> _function = (FitnessFunctionSpec f) -> {
           try {
@@ -198,5 +209,100 @@ public class OptimisationInterpreter {
       _xblockexpression = this.theMetamodel;
     }
     return _xblockexpression;
+  }
+  
+  /**
+   * Pareto-rank the provided solutions and return at most targetPopulationSize many starting with the top ranked ones.
+   */
+  public Pair<List<EObject>, List<List<Double>>> getTopRanked(final int targetPopulationSize, final List<EObject> solutions, final List<List<Double>> fitnesses) {
+    Pair<List<EObject>, List<List<Double>>> _xblockexpression = null;
+    {
+      final HashMap<EObject, List<EObject>> dominators = new HashMap<EObject, List<EObject>>();
+      final Procedure2<EObject, Integer> _function = (EObject s, Integer idx) -> {
+        LinkedList<EObject> _linkedList = new LinkedList<EObject>();
+        dominators.put(s, _linkedList);
+        final Procedure2<EObject, Integer> _function_1 = (EObject s2, Integer idx2) -> {
+          List<Double> _get = fitnesses.get((idx2).intValue());
+          List<Double> _get_1 = fitnesses.get((idx).intValue());
+          boolean _dominates = this.dominates(_get, _get_1);
+          if (_dominates) {
+            List<EObject> _get_2 = dominators.get(s);
+            _get_2.add(s2);
+          }
+        };
+        IterableExtensions.<EObject>forEach(solutions, _function_1);
+      };
+      IterableExtensions.<EObject>forEach(solutions, _function);
+      LinkedList<EObject> _linkedList = new LinkedList<EObject>();
+      LinkedList<List<Double>> _linkedList_1 = new LinkedList<List<Double>>();
+      final Pair<List<EObject>, List<List<Double>>> tentativeResult = new Pair<List<EObject>, List<List<Double>>>(_linkedList, _linkedList_1);
+      int _size = solutions.size();
+      final int adjustedTgtSize = Math.min(targetPopulationSize, _size);
+      while ((tentativeResult.getKey().size() < adjustedTgtSize)) {
+        {
+          Set<EObject> _keySet = dominators.keySet();
+          final Function1<EObject, Boolean> _function_1 = (EObject cs) -> {
+            List<EObject> _get = dominators.get(cs);
+            int _size_1 = _get.size();
+            return Boolean.valueOf((_size_1 == 0));
+          };
+          Iterable<EObject> _filter = IterableExtensions.<EObject>filter(_keySet, _function_1);
+          final List<EObject> undominatedSolutions = IterableExtensions.<EObject>toList(_filter);
+          Collection<List<EObject>> _values = dominators.values();
+          final Consumer<List<EObject>> _function_2 = (List<EObject> lDominators) -> {
+            lDominators.removeAll(undominatedSolutions);
+          };
+          _values.forEach(_function_2);
+          List<EObject> _key = tentativeResult.getKey();
+          List<EObject> _key_1 = tentativeResult.getKey();
+          int _size_1 = _key_1.size();
+          int _minus = (adjustedTgtSize - _size_1);
+          Iterable<EObject> _take = IterableExtensions.<EObject>take(undominatedSolutions, _minus);
+          Iterables.<EObject>addAll(_key, _take);
+          List<List<Double>> _value = tentativeResult.getValue();
+          final Function1<EObject, List<Double>> _function_3 = (EObject cs) -> {
+            int _indexOf = solutions.indexOf(cs);
+            return fitnesses.get(_indexOf);
+          };
+          List<List<Double>> _map = ListExtensions.<EObject, List<Double>>map(undominatedSolutions, _function_3);
+          List<List<Double>> _value_1 = tentativeResult.getValue();
+          int _size_2 = _value_1.size();
+          int _minus_1 = (adjustedTgtSize - _size_2);
+          Iterable<List<Double>> _take_1 = IterableExtensions.<List<Double>>take(_map, _minus_1);
+          Iterables.<List<Double>>addAll(_value, _take_1);
+        }
+      }
+      _xblockexpression = tentativeResult;
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * Check domination between two fitness vectors. Returns true if fitness1 dominates fitness2
+   */
+  public boolean dominates(final List<Double> fitness1, final List<Double> fitness2) {
+    boolean _and = false;
+    int _size = fitness1.size();
+    ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);
+    final Function1<Integer, Boolean> _function = (Integer i) -> {
+      Double _get = fitness1.get((i).intValue());
+      Double _get_1 = fitness2.get((i).intValue());
+      return Boolean.valueOf((_get.compareTo(_get_1) >= 0));
+    };
+    boolean _forall = IterableExtensions.<Integer>forall(_doubleDotLessThan, _function);
+    if (!_forall) {
+      _and = false;
+    } else {
+      int _size_1 = fitness1.size();
+      ExclusiveRange _doubleDotLessThan_1 = new ExclusiveRange(0, _size_1, true);
+      final Function1<Integer, Boolean> _function_1 = (Integer i) -> {
+        Double _get = fitness1.get((i).intValue());
+        Double _get_1 = fitness2.get((i).intValue());
+        return Boolean.valueOf((_get.compareTo(_get_1) > 0));
+      };
+      boolean _exists = IterableExtensions.<Integer>exists(_doubleDotLessThan_1, _function_1);
+      _and = _exists;
+    }
+    return _and;
   }
 }

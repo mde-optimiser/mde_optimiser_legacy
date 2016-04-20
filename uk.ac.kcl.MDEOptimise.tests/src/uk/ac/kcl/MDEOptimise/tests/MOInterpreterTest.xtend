@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimise.tests.models.packages.PackagesModelProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
-import uk.ac.kcl.interpreter.algorithms.RandomHillClimbing
+import uk.ac.kcl.interpreter.algorithms.SimpleMO
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 import static org.junit.Assert.*
@@ -28,6 +28,7 @@ class MOInterpreterTest {
 			basepath <src/uk/ac/kcl/MDEOptimise/tests/models/packages/>
 			metamodel <packages.ecore>
 			fitness "uk.ac.kcl.MDEOptimise.tests.models.packages.MinimizeDependencies"
+			fitness "uk.ac.kcl.MDEOptimise.tests.models.packages.MinimizeEmptyPackages"
 			fitness "uk.ac.kcl.MDEOptimise.tests.models.packages.MinimizePackageLessClasses"
 			evolve using <packageAllocation.henshin> unit "CreatePackage"
 			evolve using <packageAllocation.henshin> unit "AllocateUnallocatedClass"
@@ -37,11 +38,11 @@ class MOInterpreterTest {
 		
 		val mp = new PackagesModelProvider
 		
-		val interpreter = new OptimisationInterpreter(model, new RandomHillClimbing (10), mp)
-		val optimiserOutcome = interpreter.execute().head;
+		val interpreter = new OptimisationInterpreter(model, new SimpleMO (50, 10), mp)
+		val optimiserOutcome = interpreter.execute();
 		
-		//val expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/zoo/SimpleZoo_expected.xmi")
+		val expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/packages/OneTestSetupResult.xmi")
 		
-		//assertTrue (EcoreUtil.equals (expectedOutcome, optimiserOutcome))
+		assertTrue (optimiserOutcome.exists[m | EcoreUtil.equals (expectedOutcome, m)])
 	}
 }
