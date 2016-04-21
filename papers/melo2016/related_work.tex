@@ -30,12 +30,12 @@
 	for a specific problem. Here, we focus on approaches that aim to be generic.} We use two orthogonal sets of categories for characterising the different
 	approaches that have been explored so far:
 	\begin{enumerate}
-		\item \emph{By optimisation target.} Some approaches focus on selecting optimal \emph{transformations} (such that optimal models will be produced), while other
-		      approaches focus on finding optimal \emph{models} directly without considering optimality criteria for transformations (and, in some cases without
+		\item \emph{By optimisation target.} Some approaches focus on selecting optimal \emph{transformations} (producing optimal models), while other
+		      approaches focus on finding optimal \emph{models} directly without considering optimality of transformations (and, possibly, without
 					explicitly specified transformations).
-		\item \emph{By encoding approach.} Two general approaches have emerged here: (1) techniques for general encoding of MDE artefacts using standard genetic
+		\item \emph{By encoding approach.} Two general approaches have emerged: (1) general encoding of MDE artefacts using standard genetic
 		      encodings and applying genetic optimisation algorithms, and (2) techniques that work directly on the structure of the MDE artefacts themselves (possibly
-					with some annotations).
+					with annotations).
 	\end{enumerate}
 	We will briefly discuss these categories in more detail below.
 	
@@ -74,7 +74,7 @@
 							%candidates.
 			%\end{draftlist}
 			%
-			Abdeen \emph{et al.} \cite{Abdeen+14} propose an approach for encoding different transformation sequences as genomes so that they become amenable to search
+			Abdeen \emph{et al.} \cite{Abdeen+14} propose encoding different transformation sequences as genomes so that they become amenable to search
 			with a genetic algorithm. Their approach is based on Viatra. Each candidate solution is a tuple made from a start model and a sequence of applications of
 			small, predefined Viatra transformations. The paper provides some good discussion of the issue of invalid individuals: these may be the result of crossover
 			or mutation, making transformation chains invalid or causing them to create invalid models. \cite{Abdeen+14} uses a specific ranking mechanism to handle
