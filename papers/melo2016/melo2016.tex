@@ -1,6 +1,6 @@
 \newif\ifdraft
-\drafttrue
-%\draftfalse
+%\drafttrue
+\draftfalse
 
 \ifdraft
 	\documentclass[draft]{llncs}
@@ -20,7 +20,8 @@
 
 %\titlerunning{\draft{}}  % abbreviated title (for running head) also used for the TOC unless \toctitle is used
 
-\author{Steffen Zschaler\inst{1}}
+\author{Steffen Zschaler}
+%\author{Steffen Zschaler\inst{1}}
 \institute{
 	Department of Informatics\\
 	King's College London\\
@@ -43,9 +44,9 @@
 		optimisation and generic genetic encodings of models). We then present a first prototype for running search algorithms directly on models themselves (rather
 		than a separate representation) and derive key research challenges for this approach to model optimisation.
 		
-		%\ifdraft
-			%\draft{To be submitted to MELO. max 12 pages, LNCS. Paper: April 18, 2016. Have permission to extend DL to April 22}
-		%\fi
+		\ifdraft
+			\draft{To be submitted to MELO. max 12 pages, LNCS. Paper: April 18, 2016. Have permission to extend DL to April 22}
+		\fi
 		
 		\keywords{evolutionary optimisation, object space, model-driven engineering, model transformations}
 	\end{abstract}
