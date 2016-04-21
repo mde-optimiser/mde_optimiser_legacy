@@ -36,7 +36,7 @@
 													pre-existing model elements.
 										\item \emph{Generic breeding through model merging.} Model breeding essentially requires identifying the common and different parts of two models so that the common parts can be
 										      retained in the new solution and the different parts can be mixed suitably. This is very similar to what has been developed in the context of work on model differencing and
-													model merging \cite{model-diff-merge}. It should be possible to reuse ideas from this field to develop generic model breeders. The key challenge here is that mixing of
+													model merging \cite{Kolovos09,Kolovos+09b,Maoz+10,Langer+14}. It should be possible to reuse ideas from this field to develop generic model breeders. The key challenge here is that mixing of
 													differences should lead to a new model that is (a) different from both parent models, and (b) well-formed. This will require suitable adjustments to be made to existing 
 													diff/merge algorithms for models.
 									\end{enumerate}
@@ -68,11 +68,11 @@
 		      of candidate solutions. Each iteration requires each candidate solution in the population to be evolved to a new solution and the fitness of these
 					solutions to be evaluated. The performance of search algorithms is therefore substantially influenced by the performance of solution evolution and
 					fitness evaluations. Depending on the size of the models, model transformations can be computationally expensive to execute. There has been recent
-					interest in increasing the efficiency of model transformation execution \cite{efficient-trafos}. We need to explore how this could be integrated into
+					interest in increasing the efficiency of model transformation execution \cite{Amstel+11,Meszaros2010}. We need to explore how this could be integrated into
 					model-based optimisation. Ideally, we would like to be able to run model-based search even at system run time to support self-aware system adaptation.
 
 		\item \emph{Flexible definition of model providers.} As discussed above, candidate solutions in model-based optimisation are particular in that substantial
-		      parts of the model will remain constant as they are describing the search problem. When using constraint solvers like Alloy \cite{alloy-based-work}, this
+		      parts of the model will remain constant as they are describing the search problem. When using constraint solvers like Alloy \cite{Jackson02}, this
 					would result in a large number of constraints, potentially impacting the performance of initial model generation. Better techniques need to be studied
 					that can limit the performance impact on model generation.
 
