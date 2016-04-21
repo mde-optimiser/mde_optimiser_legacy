@@ -65,15 +65,15 @@
 			      are the actual optimisation object, their application to models is separate to the optimisation process.
 		\end{enumerate}
 			
-		\subsubsection{Using genome encodings.}
-	
+		\textbf{Using genome encodings.}
+	%
 			%\begin{draftlist}
 				%To discuss:
 				%\item MOMOT \cite{Fleck+15}					
 				%\item \cite{Abdeen+14} present an approach similar to MOMOT, but based on Viatra. Have some interesting discussion of repair/ranking of invalid solution
 							%candidates.
 			%\end{draftlist}
-			
+			%
 			Abdeen \emph{et al.} \cite{Abdeen+14} propose an approach for encoding different transformation sequences as genomes so that they become amenable to search
 			with a genetic algorithm. Their approach is based on Viatra. Each candidate solution is a tuple made from a start model and a sequence of applications of
 			small, predefined Viatra transformations. The paper provides some good discussion of the issue of invalid individuals: these may be the result of crossover
@@ -84,8 +84,8 @@
 			transformations to a base model. Fleck \emph{et al.} handle invalid candidate solutions with a repair mechanism, effectively reducing the population size
 			for these situations.
 		
-		\subsubsection{Using direct search.}
-		
+		\textbf{Using direct search.}
+		%
 		  %\begin{draftlist}
 			  %To discuss:
 				%\item \cite{Drago+10,Drago+11,Drago+15}
@@ -98,15 +98,15 @@
 
 	\subsection{Optimisation of models}
 	
-	  \subsubsection{Using genome encodings.}
-		
+	  \textbf{Using genome encodings.}
+		%
 			%\begin{draftlist}
 				%To discuss:
 				%\item Crepe \cite{Efstathiou+14b,Williams13}
 				%\item Searching Models, Modeling Search: On the Synergies of SBSE and MDE \cite{Kessentini+13}. General position paper. Focuses on genetic encoding of 
 				      %models (like Crepe). Proposes a general infrastructure/architecture for MDE search.
 			%\end{draftlist}
-			
+			%
 			Williams \cite{Williams13} proposes Crepe, a generic encoding of models as sequences of integers. Given a meta-model and a so-called ``finitisation model'' 
 			(containing information about the range of attributes), Crepe provides a unique, bi-directional transformation between instances of the meta-model and
 			integer-vector representations of these models. The integer vectors can be used as genomes in the context of genetic algorithms using standardised, 
@@ -117,8 +117,8 @@
 			ingredient of their approach is also a generic meta-model for encoding models as genomes, making them amenable to standard genetic operators such as
 			mutation and crossover.
 
-	  \subsubsection{Using direct search.}
-
+	  \textbf{Using direct search.}
+%
 			%\begin{draftlist}
 				%To discuss:
 				%\item \cite{Denil+14} (also a version at https://www.cs.mcgill.ca/files/techReports/icse.pdf) use transformation scheduling specifications to implement 
@@ -134,7 +134,7 @@
 							%expressed relatively easily, but comes at the cost of having to run a transformation for every fitness evaluation to reconstruct the ``phenotype''
 							%model.
 			%\end{draftlist}
-			
+			%
 			Burton and Poulding \cite{BurtonPoulding13} were the first to describe an idea for running transformations directly on models. They create separate 
 			domain-specific modelling languages describing a search problem and candidate solutions and run search to find near-optimal solutions. As described in 
 			\cite{Burton+12}, their solutions are mappings between solution and problem models, effectively limiting the problem to the optimisation of vectors of

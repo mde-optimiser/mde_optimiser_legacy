@@ -13,71 +13,93 @@
 		%\item \ldots
 	%\end{draftlist}
 
-  Our initial work has identified a number of challenges requiring further research to enable model-based optimisation to be used effectively:
-	\begin{itemize}
-		\item \emph{Reuse of existing optimisation algorithms.} Some existing optimisation algorithms make particular assumptions about the search space. For example, hill climbing, a basic 
-		      single-objective search algorithm, expects to be able to identify the complete ``neighbourhood'' of a given candidate solution so that this can be systematically explored. Similarly, 
-					swarm-based search algorithms expect to be able to identify a ``direction'' vector between solutions and to use this to guide the derivation of one solution from another. These notions are
-					easily defined in classic search-based approaches, where solutions are represented by (high dimensional) numerical vectors. It is less obvious what they mean for models, which are only
-					indirectly related by model transformation chains. Providing appropriate interpretations of these notions will make it possible to reuse more existing search and optimisation algorithms.
-					Beyond that, however, there is an opportunity to explore novel search algorithms that take guidance from the structure and constraints encoding the search space in a model-driven context.
-
-		\item \emph{Model evolution.} Generating new candidate solutions from existing ones is a key element of any search algorithm. In model-based search, a number of challenges need to be addressed:
-					\begin{itemize}
-						\item \emph{Model breeding.} Many population-based algorithms rely on a notion of ``breeding'', which allows creating new candidate solutions by combining two good parent solutions. This
-						      is useful because it allows the search to reach new areas of the search space, hopefully benefiting from the advantages of both parent solutions. For example, in genetic algorithms,
-									``breeding'' is realised through so-called crossover operators, which combine two genes by swapping sub-sequences. While mutation of solutions is easily captured by model
-									transformations as discussed, it is less clear how to express breeding. Two approaches seem worth exploring:
-									\begin{enumerate}
-										\item \emph{Domain-specific breeders.} As with model mutation, we could use model transformations to express domain-specific breeding. These transformations would take in two
-										      models and produce a new model. For example, in our \texttt{Zoo} problem, we could consider developing a transformation that takes two cage--animal allocations and produces
-													a new one mixing allocations from both sources while making sure that constraints are not violated (e.g., updating \texttt{spaceRemaining} values and checking for 
-													\texttt{eats} relationships). Burton \emph{et al.} \cite{Burton+12} show a first example of this for problems where solutions are essentially sets of links between 
-													pre-existing model elements.
-										\item \emph{Generic breeding through model merging.} Model breeding essentially requires identifying the common and different parts of two models so that the common parts can be
-										      retained in the new solution and the different parts can be mixed suitably. This is very similar to what has been developed in the context of work on model differencing and
-													model merging \cite{Kolovos09,Kolovos+09b,Maoz+10,Langer+14}. It should be possible to reuse ideas from this field to develop generic model breeders. The key challenge here is that mixing of
-													differences should lead to a new model that is (a) different from both parent models, and (b) well-formed. This will require suitable adjustments to be made to existing 
-													diff/merge algorithms for models.
-									\end{enumerate}
-									It is very likely that in either case we will not be able to produce breeders that are guaranteed to produce well-formed models, introducing the need to deal with invalid solutions
-									in the search. Abdeen \emph{et al.} \cite{Abdeen+14} give a good discussion of these issues in the context of genetic optimisation of model-transformation chains, where they use
-									repair as well as customised ranking rules. Similar techniques could be applied to model-based optimisation, too.
-									
-						\item \emph{Efficient model evolution.} Our current prototype randomly selects an evolver when asked to produce a new candidate solution. Should Henshin be unable to apply the rule 
-						      (i.e., find no suitable match) we randomly select another evolver until one is applicable or we have tried all available evolvers. Especially where rules have similar 
-									pre-conditions this seems an inefficient approach. We should explore mechanisms for selecting evolvers more efficiently. Denil \emph{et al.} \cite{Denil+14} provide some initial
-									insights into this problem by considering optimisation algorithms to be a kind of transformation scheduling specification. This enables them to use different sets of evolvers at
-									different stages of the optimisation process.
-
-						\item \emph{Non-deterministic matching in graph transformation engines.} Search-based algorithms rely on an amount of randomness underlying the exploration process. Using graph
-						      transformations as model evolvers requires the matching process to be non-deterministic. In other words, if there are multiple potential matches for a graph-transformation rule in
-									a model, the choice of match to apply should be non-deterministic. Otherwise, we risk excluding large parts of the search space from the search as a result of an accidental effect
-									of how models happen to be stored in memory or of how model elements are enumerated to find potential matches. It is not clear whether this is the case for current implementations 
-									(and in particular for Henshin). If it is not, we need to explore new implementation techniques for balancing match efficiency and the required non-determinism.
-									
-						\item \emph{Compact representations of solutions and evolvers.} Typically, a substantial part of a candidate solution will remain constant, as it essentially describes problem
-						      constraints rather than solution elements. Burton \emph{et al.} \cite{Burton+12} use different models to represent these static parts independently of the parts that change during
-									search. This makes for a very compact solution representation, but requires a separate composition transformation whenever a solution's fitness is to be evaluated or when a new
-									solution needs to be generated. There is a need to understand other similarly compact representations of candidate solutions that do not incur the additional effort of composition
-									transformations. Similarly, we should explore ways in which evolvers can be represented more compactly and executed more efficiently knowing that large parts of a candidate
-									solution never change.
-					\end{itemize}
-
-		\item \emph{Performance.} Search algorithms are computationally expensive. Typically, they require a large number of iterations to be run for large populations
-		      of candidate solutions. Each iteration requires each candidate solution in the population to be evolved to a new solution and the fitness of these
-					solutions to be evaluated. The performance of search algorithms is therefore substantially influenced by the performance of solution evolution and
-					fitness evaluations. Depending on the size of the models, model transformations can be computationally expensive to execute. There has been recent
-					interest in increasing the efficiency of model transformation execution \cite{Amstel+11,Meszaros2010}. We need to explore how this could be integrated into
-					model-based optimisation. Ideally, we would like to be able to run model-based search even at system run time to support self-aware system adaptation.
-
-		\item \emph{Flexible definition of model providers.} As discussed above, candidate solutions in model-based optimisation are particular in that substantial
-		      parts of the model will remain constant as they are describing the search problem. When using constraint solvers like Alloy \cite{Jackson02}, this
-					would result in a large number of constraints, potentially impacting the performance of initial model generation. Better techniques need to be studied
-					that can limit the performance impact on model generation.
-
-		\item \emph{Expressing fitness evaluations.} Some fitness functions are essentially model queries, which can be efficiently expressed in languages like OCL.
-		      However, other evaluations will be more complex, including simulations and model analyses. At the moment, these are handled by providing a general Java
-					interface to be implemented for specific fitness evaluations. Techniques better aligned with model-driven approaches need to be developed. Kessentini 
-					\emph{et al.} \cite{Kessentini+13} have made some interesting first proposals in this area, which need to be explored further.
-	\end{itemize}
+  Our initial work has identified a number of challenges requiring further research to enable model-based optimisation to be used effectively.
+	
+	\subsection{Reuse of existing optimisation algorithms}
+	
+		Some existing optimisation algorithms make particular assumptions about the search space. For example, hill climbing, a basic single-objective search algorithm,
+		expects to be able to identify the complete ``neighbourhood'' of a given candidate solution so that this can be systematically explored. Similarly, swarm-based
+		search algorithms expect to be able to identify a ``direction'' vector between solutions and to use this to guide the derivation of one solution from another.
+		These notions are easily defined in classic search-based approaches, where solutions are represented by (high dimensional) numerical vectors. It is less obvious
+		what they mean for models, which are only indirectly related by model transformation chains. Providing appropriate interpretations of these notions will make it
+		possible to reuse more existing search and optimisation algorithms. Beyond that, however, there is an opportunity to explore novel search algorithms that take
+		guidance from the structure and constraints encoding the search space in a model-driven context.
+	
+	\subsection{Model evolution}
+	
+		Generating new candidate solutions from existing ones is a key element of any search algorithm. In model-based search, a number of challenges need to be
+		addressed:
+		
+		\textbf{Model breeding.}
+		%
+		  Many population-based algorithms rely on a notion of ``breeding'', which allows creating new candidate solutions by combining two good parent solutions. This
+			is useful because it allows the search to reach new areas of the search space, hopefully benefiting from the advantages of both parent solutions. For
+			example, in genetic algorithms, ``breeding'' is realised through so-called crossover operators, which combine two genes by swapping sub-sequences. While
+			mutation of solutions is easily captured by model transformations as discussed, it is less clear how to express breeding. Two approaches seem worth exploring:
+			
+			\begin{enumerate}
+			  \item \emph{Domain-specific breeders.} As with model mutation, we could use model transformations to express domain-specific breeding. These
+				      transformations would take in two models and produce a new model. For example, in our \texttt{Zoo} problem, we could consider developing a
+							transformation that takes two cage--animal allocations and produces a new one mixing allocations from both sources while making sure that constraints
+							are not violated (e.g., updating \texttt{spaceRemaining} values and checking for \texttt{eats} relationships). Burton \emph{et al.} \cite{Burton+12}
+							show a first example of this for problems where solutions are essentially sets of links between pre-existing model elements.
+				\item \emph{Generic breeding through model merging.} Model breeding essentially requires identifying the common and different parts of two models so that
+				      the common parts can be retained in the new solution and the different parts can be mixed suitably. This is very similar to what has been developed
+							in the context of work on model differencing and model merging \cite{Kolovos09,Kolovos+09b,Maoz+10,Langer+14}. It should be possible to reuse ideas
+							from this field to develop generic model breeders. The key challenge here is that mixing of differences should lead to a new model that is (a)
+							different from both parent models, and (b) well-formed. This will require suitable adjustments to be made to existing diff/merge algorithms for
+							models.
+			\end{enumerate}
+			
+			It is very likely that in either case we will not be able to produce breeders that are guaranteed to produce well-formed models, introducing the need to
+			deal with invalid solutions in the search. Abdeen \emph{et al.} \cite{Abdeen+14} give a good discussion of these issues in the context of genetic
+			optimisation of model-transformation chains, where they use repair as well as customised ranking rules. Similar techniques could be applied to model-based
+			optimisation, too.
+			
+		\textbf{Efficient model evolution.} 
+		%
+			Our current prototype randomly selects an evolver when asked to produce a new candidate solution. Should Henshin be unable to apply the rule (i.e., find no
+			suitable match) we randomly select another evolver until one is applicable or we have tried all available evolvers. Especially where rules have similar 
+			pre-conditions this seems an inefficient approach. We should explore mechanisms for selecting evolvers more efficiently. Denil \emph{et al.} \cite{Denil+14}
+			provide some initial insights into this problem by considering optimisation algorithms to be a kind of transformation scheduling specification. This enables
+			them to use different sets of evolvers at different stages of the optimisation process.
+			
+		\textbf{Non-deterministic matching in graph transformation engines.} 
+		%
+			Search-based algorithms rely on an amount of randomness underlying the exploration process. Using graph transformations as model evolvers requires the
+			matching process to be non-deterministic. In other words, if there are multiple potential matches for a graph-transformation rule in a model, the choice of
+			match to apply should be non-deterministic. Otherwise, we risk excluding large parts of the search space from the search as a result of an accidental effect
+			of how models happen to be stored in memory or of how model elements are enumerated to find potential matches. It is not clear whether this is the case for
+			current implementations (and in particular for Henshin). If it is not, we need to explore new implementation techniques for balancing match efficiency and
+			the required non-determinism.
+			
+		\textbf{Compact representations of solutions and evolvers.} 
+		%
+			Typically, a substantial part of a candidate solution will remain constant, as it essentially describes problem constraints rather than solution elements.
+			Burton \emph{et al.} \cite{Burton+12} use different models to represent these static parts independently of the parts that change during search. This makes
+			for a very compact solution representation, but requires a separate composition transformation whenever a solution's fitness is to be evaluated or when a
+			new solution needs to be generated. There is a need to understand other similarly compact representations of candidate solutions that do not incur the
+			additional effort of composition transformations. Similarly, we should explore ways in which evolvers can be represented more compactly and executed more
+			efficiently knowing that large parts of a candidate solution never change.
+		
+	\subsection{Performance}
+	
+		Search algorithms are computationally expensive. Typically, they require a large number of iterations to be run for large populations of candidate solutions.
+		Each iteration requires each candidate solution in the population to be evolved to a new solution and the fitness of these solutions to be evaluated. The
+		performance of search algorithms is therefore substantially influenced by the performance of solution evolution and fitness evaluations. Depending on the size
+		of the models, model transformations can be computationally expensive to execute. There has been recent interest in increasing the efficiency of model
+		transformation execution \cite{Amstel+11,Meszaros2010}. We need to explore how this could be integrated into model-based optimisation. Ideally, we would like
+		to be able to run model-based search even at system run time to support self-aware system adaptation.
+		
+	\subsection{Flexible definition of model providers}
+	
+		As discussed above, candidate solutions in model-based optimisation are particular in that substantial parts of the model will remain constant as they are
+		describing the search problem. When using constraint solvers like Alloy \cite{Jackson02}, this would result in a large number of constraints, potentially
+		impacting the performance of initial model generation. Better techniques need to be studied that can limit the performance impact on model generation.
+		
+	\subsection{Expressing fitness evaluations}
+	
+		Some fitness functions are essentially model queries, which can be efficiently expressed in languages like OCL. However, other evaluations will be more
+		complex, including simulations and model analyses. At the moment, these are handled by providing a general Java interface to be implemented for specific
+		fitness evaluations. Techniques better aligned with model-driven approaches need to be developed. Kessentini \emph{et al.} \cite{Kessentini+13} have made some
+		interesting first proposals in this area, which need to be explored further.
