@@ -7,9 +7,9 @@
 		%\item Then show how this is broken by simple crossover.
 	%\end{draftlist}
 
-  We are interested in optimisation of models rather than transformations. The latter is useful when we have optimality requirements over transformation chains. More typically, we are interested
-	simply in deriving optimal models. In such a case, optimising transformations incurs too much overhead in repair and through redundant representations of the same model through different
-	transformation chains (effectively reducing the size of the search population).
+  We are interested in optimisation of models rather than transformations. While the latter is useful when we have optimality requirements over transformation
+	chains, more typically, we are interested simply in deriving optimal models. In such a case, optimising transformations incurs too much overhead in repair and
+	through redundant representations of the same model through different transformation chains (effectively reducing the size of the search population).
 	
 	Generic genetic encodings of models as proposed in \cite{Kessentini+13,Williams13,Efstathiou+14b}, however, have their own problems. In particular, it seems very difficult to ensure locality and
 	preservation of well-formedness as we will demonstrate in an example. Figure~\figref{zoo_example}~(a) shows the meta-model of a simple Zoo DSL. This DSL allows the description of zoo configurations,
@@ -30,6 +30,12 @@
 	will occur with any generic genetic encoding of models when using generic mutation and crossover operators. As a result, such approaches require a lot of repair of candidate solutions, substantially
 	worsening the optimisation performance \cite{Efstathiou+14b}.
 	
-	Of course, the problem could be resolved by defining domain-specific mutation and crossover operators. However, these are difficult to implement on the level of genotypes as they will effectively
-	have to constantly reinterpret the genes as the corresponding model fragments. In the next section, we propose that using optimisation directly on models makes it much easier to define such domain
-	specific operators, substantially reducing the need for repair.
+	Of course, the problem could be resolved by defining domain-specific mutation and crossover operators. However, these are difficult to implement on the level of
+	genotypes as they will effectively have to constantly reinterpret the genes as the corresponding model fragments. In the next section, we propose that using
+	optimisation directly on models makes it much easier to define such domain specific operators, substantially reducing the need for repair. As discussed in 
+	Sect.~\ref{section:related_work}, we are not the first to propose this: Burton \emph{et al.} \cite{Burton+12,BurtonPoulding13} first proposed the general idea
+	and gave an example. They do not, however, provide a general implementation. Denil \emph{et al.} \cite{Denil+14} provide a first generic implementation using a
+	transformation scheduling language. However, it is difficult to see how their approach would generalise to population-based algorithms as typically used for 
+	multi-objective optimisation as the actual candidate-solution model is implicit in the specification. Moreover, they do not provide general mechanisms for
+	encoding optimisation objectives, initial model generation, or model evolution and breeding. Therefore, there still is substantial need for further research in
+	this area.
