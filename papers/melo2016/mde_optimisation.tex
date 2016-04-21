@@ -39,4 +39,15 @@
 	DSL-level support for fitness functions and initial model generation, but plan to add these features. For now, they are specified by providing Java implementations. Solution evolution is realised by
 	Henshin transformations.
 	
-	\draft{Consider showing example syntax for Zoo case.}
+	Figure~\figref{zoo_code} shows an example specification of the \texttt{Zoo} example in our tool. After some configuration information in the first line, this
+	code declares the structure of the search space by indicating a meta-model, and then defines relevant fitness functions and model evolvers. Fitness functions are
+	currently provided by implementing a specific Java interface; we are planning to provide full OCL integration in the language for simple model queries. Evolvers
+	are defined by specifying a Henshin model and naming a unit (often a rule) in this model.
+	
+	\insertFigure[caption={Specification of the \texttt{Zoo} search problem}, targetwidth=.8\textwidth]{zoo_code}
+	
+	Figure~\figref{run_code} shows how to run a search using our tool. At this point, we only support programmatic invocation. For this, a new \texttt{Interpreter}
+	object needs to be created and configured with a parsed version of the problem, a \texttt{ModelProvider} for generating initial models, and a generic search
+	algorithm (a variant of random hill climbing in this example). Invoking \texttt{execute} runs the search as specified and returns the set of solutions found.
+	
+	\insertFigure[caption={Basic code for running model-based search algorithms}, targetwidth=.9\textwidth]{run_code}
