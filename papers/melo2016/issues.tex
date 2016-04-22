@@ -22,21 +22,20 @@
 	\insertFigure[caption={Zoo DSL example (based on \cite{Williams13})},targetwidth=.8\textwidth]{zoo_example}
 	
 	Figure~\figref{zoo_example}~(b) shows an example model\footnote{We leave out the recurring \texttt{Zoo} object for simplicity.} and its encoding as a gene
-	according to this algorithm. To ensure smooth applicability of the standard mutation and crossover operators, genetic encodings should be local; that is, changes
-	in one part should ideally not affect other parts of the represented object. This is not the case for this generic encoding. For example, 
-	Fig.~\figref{zoo_example}~(c) shows the same gene after it has been split in preparation of a standard single-point crossover operation. The gene has been split
-	such that the representation for object \texttt{a1} has been removed. The remainder of the gene is exactly as before, but the model fragment encoded by it has
-	changed dramatically: the eat relationship between the two animals has been lost and \texttt{a3} has been moved into the cage. Note that the latter change has
-	also led to a violation of the models well-formedness rules, which require that \texttt{spaceRemaining} should always indicate the space left to place additional
-	animals in a cage (and so should now be 2). We are not aware of any generic genetic encoding of models that has overcome this problem using generic mutation and
-	crossover operators. As a result, such approaches require a lot of repair of candidate solutions, substantially worsening the optimisation performance 
-	\cite{Efstathiou+14b}.
+	using this algorithm. To ensure smooth applicability of the standard mutation and crossover operators, genetic encodings should be local; that is, changes
+	in one part should not affect other parts of the represented object. This is not the case for this generic encoding. For example, Fig.~\figref{zoo_example}~(c)
+	shows the same gene after it has been split in preparation of a standard single-point crossover operation, removing the representation for object \texttt{a1}
+	only. The remainder of the gene is exactly as before, but the model fragment encoded by it has changed dramatically: the eat relationship between the two animals
+	has been lost and \texttt{a3} has been moved into the cage. Note that the latter change has also led to a violation of the models well-formedness rules, which
+	require that \texttt{spaceRemaining} should always indicate the space left to place additional animals in a cage (and so should now be 2). We are not aware of
+	any generic genetic encoding of models that has overcome this problem using generic mutation and crossover operators. As a result, such approaches require a lot
+	of repair of candidate solutions, substantially worsening the optimisation performance \cite{Efstathiou+14b}.
 	
-	Of course, the problem could be resolved by defining domain-specific mutation and crossover operators. However, these are difficult to implement on the level of
-	genotypes as they will effectively have to constantly reinterpret the genes as the corresponding model fragments. In the next section, we propose that using
-	optimisation directly on models makes it much easier to define such domain specific operators, substantially reducing the need for repair. As discussed in 
-	Sect.~\ref{section:related_work}, we are not the first to propose this: Burton \emph{et al.} \cite{Burton+12,BurtonPoulding13} first proposed the general idea
-	and gave an example. They do not, however, provide a general implementation. Denil \emph{et al.} \cite{Denil+14} provide a first generic implementation using a
+	The problem could be resolved by defining domain-specific mutation and crossover operators. However, these are difficult to implement on the level of genotypes;  
+	they will effectively have to constantly reinterpret the genes as the corresponding model fragments. In the next section, we propose that using optimisation
+	directly on models makes it much easier to define such domain specific operators, substantially reducing the need for repair. As discussed in 
+	Sect.~\ref{section:related_work}, we are not the first to propose this: Burton \emph{et al.} \cite{Burton+12,BurtonPoulding13} first proposed the idea and gave
+	an example. They do not, however, provide a general implementation. Denil \emph{et al.} \cite{Denil+14} provide a first generic implementation using a
 	transformation scheduling language. However, it is difficult to see how their approach would generalise to population-based algorithms as typically used for 
 	multi-objective optimisation as the actual candidate-solution model is implicit in the specification. Moreover, they do not provide general mechanisms for
 	encoding optimisation objectives, initial model generation, or model evolution and breeding. Therefore, there still is substantial need for further research in
