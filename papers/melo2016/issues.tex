@@ -11,13 +11,15 @@
 	chains, more typically, we are interested simply in deriving optimal models. In such a case, optimising transformations incurs too much overhead in repair and
 	through redundant representations of the same model through different transformation chains (effectively reducing the size of the search population).
 	
-	Generic genetic encodings of models as proposed in \cite{Kessentini+13,Williams13,Efstathiou+14b}, however, have their own problems. In particular, it seems very difficult to ensure locality and
-	preservation of well-formedness as we will demonstrate in an example. Figure~\figref{zoo_example}~(a) shows the meta-model of a simple Zoo DSL. This DSL allows the description of zoo configurations,
-	where there are cages with animals, some of which may eat other animals. An optimisation problem of interest would be to find the minimum number of cages to keep all the animals in so that there are
-	no animals that eat each other. Note that cages have a maximum capacity and animals require a certain amount of space. The meta-model has been annotated to indicate how it would be encoded by the
-	algorithm proposed in \cite{Williams13}. There, models are encoded as integer strings, where each model element is started by an integer identifying its meta-class (shown in dashed rectangles in 
-	Fig.~\figref{zoo_example}~(a)). This is then followed by pairs of integers where the first identifies the structural feature (indicated by dashed circles in the figure) and the second provides the
-	value for this feature. For associations, the values are provided by numbering all instances of the target type in sequence of appearance in the gene.
+	Generic genetic encodings of models as proposed in \cite{Kessentini+13,Williams13,Efstathiou+14b}, however, have their own problems. In particular, it seems very
+	difficult to ensure locality and preservation of well-formedness as we will demonstrate in an example. Figure~\figref{zoo_example}~(a) shows the meta-model of a
+	simple Zoo DSL. This DSL allows the description of zoo configurations, where there are cages with animals, some of which may eat other animals. An optimisation
+	problem of interest would be to find the minimum number of cages to keep all the animals in so that there are no animals that eat each other in the same cage.
+	Note that cages have a maximum capacity and animals require a certain amount of space. The meta-model has been annotated to indicate how it would be encoded by the
+	algorithm proposed in \cite{Williams13}. There, models are encoded as integer strings, where each model element is started by an integer identifying its 
+	meta-class (shown in dashed rectangles in Fig.~\figref{zoo_example}~(a)). This is then followed by pairs of integers where the first identifies the structural
+	feature (indicated by dashed circles in the figure) and the second provides the value for this feature. For associations, the values are provided by numbering
+	all instances of the target type in sequence of appearance in the gene.
 	
 	\insertFigure[caption={Zoo DSL example (based on \cite{Williams13})},targetwidth=.8\textwidth]{zoo_example}
 	

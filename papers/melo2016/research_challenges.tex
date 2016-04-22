@@ -68,18 +68,18 @@
 		%
 			Search-based algorithms rely on an amount of randomness underlying the exploration process. Using graph transformations as model evolvers requires the
 			matching process to be non-deterministic. In other words, if there are multiple potential matches for a graph-transformation rule in a model, the choice of
-			match to apply should be non-deterministic. Otherwise, we risk excluding large parts of the search space from the search as a result of an accidental effect
-			of how models happen to be stored in memory or of how model elements are enumerated to find potential matches. It is not clear whether this is the case for
-			current implementations (and in particular for Henshin). If it is not, we need to explore new implementation techniques for balancing match efficiency and
-			the required non-determinism.
+			match to apply should be non-deterministic. Otherwise, we risk excluding large parts of the search space from the search as a result of an accidental
+			systematic effect of how models happen to be stored in memory or of how model elements are enumerated to find potential matches. It is not clear whether
+			current implementations (and in particular Henshin) are non-deterministic in this sense. If they are not, we need to explore new implementation techniques
+			for balancing match efficiency and the required non-determinism.
 			
 		\textbf{Compact representations of solutions and evolvers.} 
 		%
 			Typically, a substantial part of a candidate solution will remain constant, as it essentially describes problem constraints rather than solution elements.
 			Burton \emph{et al.} \cite{Burton+12} use different models to represent these static parts independently of the parts that change during search. This makes
 			for a very compact solution representation, but requires a separate composition transformation whenever a solution's fitness is to be evaluated or when a
-			new solution needs to be generated. There is a need to understand other similarly compact representations of candidate solutions that do not incur the
-			additional effort of composition transformations. Similarly, we should explore ways in which evolvers can be represented more compactly and executed more
+			new solution needs to be generated. There is a need to understand other similarly compact representations of candidate solutions and how they affect
+			solution evolution and fitness evaluation. Similarly, we should explore ways in which evolvers can be represented more compactly and executed more
 			efficiently knowing that large parts of a candidate solution never change.
 		
 	\subsection{Performance}
