@@ -21,14 +21,16 @@
 	
 	\insertFigure[caption={Zoo DSL example (based on \cite{Williams13})},targetwidth=.8\textwidth]{zoo_example}
 	
-	Figure~\figref{zoo_example}~(b) shows an example model\footnote{We leave out the recurring \texttt{Zoo} object for simplicity.} and its encoding as a gene according to this algorithm. To ensure
-	smooth applicability of the standard mutation and crossover operators, genetic encodings should be local; that is, changes in one part should ideally not affect other parts of the represented
-	object. This is not the case for this generic encoding. For example, Fig.~\figref{zoo_example}~(c) shows the same gene after it has been split in preparation of a standard single-point crossover
-	operation. The gene has been split such that the representation for object \texttt{a1} has been removed. The remainder of the gene is exactly as before, but the model fragment encoded by it has
-	changed dramatically: the eat relationship between the two animals has been lost and \texttt{a3} has been moved into the cage. Note that the latter change has also led to a violation of the models
-	well-formedness rules, which require that \texttt{spaceRemaining} should always indicate the space left to place additional animals in a cage (and so should now be 2). We argue that similar problems
-	will occur with any generic genetic encoding of models when using generic mutation and crossover operators. As a result, such approaches require a lot of repair of candidate solutions, substantially
-	worsening the optimisation performance \cite{Efstathiou+14b}.
+	Figure~\figref{zoo_example}~(b) shows an example model\footnote{We leave out the recurring \texttt{Zoo} object for simplicity.} and its encoding as a gene
+	according to this algorithm. To ensure smooth applicability of the standard mutation and crossover operators, genetic encodings should be local; that is, changes
+	in one part should ideally not affect other parts of the represented object. This is not the case for this generic encoding. For example, 
+	Fig.~\figref{zoo_example}~(c) shows the same gene after it has been split in preparation of a standard single-point crossover operation. The gene has been split
+	such that the representation for object \texttt{a1} has been removed. The remainder of the gene is exactly as before, but the model fragment encoded by it has
+	changed dramatically: the eat relationship between the two animals has been lost and \texttt{a3} has been moved into the cage. Note that the latter change has
+	also led to a violation of the models well-formedness rules, which require that \texttt{spaceRemaining} should always indicate the space left to place additional
+	animals in a cage (and so should now be 2). We are not aware of any generic genetic encoding of models that has overcome this problem using generic mutation and
+	crossover operators. As a result, such approaches require a lot of repair of candidate solutions, substantially worsening the optimisation performance 
+	\cite{Efstathiou+14b}.
 	
 	Of course, the problem could be resolved by defining domain-specific mutation and crossover operators. However, these are difficult to implement on the level of
 	genotypes as they will effectively have to constantly reinterpret the genes as the corresponding model fragments. In the next section, we propose that using
