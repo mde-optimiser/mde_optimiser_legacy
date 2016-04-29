@@ -3,6 +3,7 @@ package uk.ac.kcl.MDEOptimise.tests.models;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -48,6 +49,23 @@ public abstract class TestModelProvider implements ModelProvider {
         _xblockexpression = IteratorExtensions.<EObject>head(_allContents);
       }
       return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public void writeModel(final EObject model, final String path) {
+    try {
+      URI _createURI = URI.createURI(path);
+      final Resource resource = this.resourceSet.createResource(_createURI);
+      boolean _isLoaded = resource.isLoaded();
+      if (_isLoaded) {
+        EList<EObject> _contents = resource.getContents();
+        _contents.clear();
+      }
+      EList<EObject> _contents_1 = resource.getContents();
+      _contents_1.add(model);
+      resource.save(Collections.EMPTY_MAP);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

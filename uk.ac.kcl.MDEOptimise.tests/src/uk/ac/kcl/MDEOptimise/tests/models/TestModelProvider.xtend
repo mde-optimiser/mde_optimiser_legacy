@@ -3,6 +3,7 @@ package uk.ac.kcl.MDEOptimise.tests.models
 import java.util.Collections
 import java.util.List
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
@@ -24,6 +25,15 @@ abstract class TestModelProvider implements ModelProvider {
 		val resource = resourceSet.createResource(URI.createURI(path))
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
+	}
+	
+	def writeModel (EObject model, String path) {
+		val resource = resourceSet.createResource(URI.createURI(path))
+		if (resource.loaded) {
+			resource.contents.clear
+		}
+		resource.contents.add(model)
+		resource.save(Collections.EMPTY_MAP)
 	}
 	
 	abstract def List<String> getModelPaths()
