@@ -18,7 +18,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_pTVPhOeBEeW5Af7b2nyHRQ"/>
         </children>
         <element xmi:type="henshin:Node" href="zoo_evolution.henshin#_pTSzQOeBEeW5Af7b2nyHRQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pTUoceeBEeW5Af7b2nyHRQ" x="20" y="120"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pTUoceeBEeW5Af7b2nyHRQ" x="11" y="97"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_qsBgwOeBEeW5Af7b2nyHRQ" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_qsCH0OeBEeW5Af7b2nyHRQ" type="5002"/>
@@ -32,7 +32,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_qsCH1OeBEeW5Af7b2nyHRQ"/>
         </children>
         <element xmi:type="henshin:Node" href="zoo_evolution.henshin#_qr_rkOeBEeW5Af7b2nyHRQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qsBgweeBEeW5Af7b2nyHRQ" x="577" y="120"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qsBgweeBEeW5Af7b2nyHRQ" x="568" y="97"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_s1E38OeBEeW5Af7b2nyHRQ" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_s1FfAOeBEeW5Af7b2nyHRQ" type="5002"/>
@@ -50,7 +50,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_s1FfBOeBEeW5Af7b2nyHRQ"/>
         </children>
         <element xmi:type="henshin:Node" href="zoo_evolution.henshin#_s1DCwOeBEeW5Af7b2nyHRQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s1E38eeBEeW5Af7b2nyHRQ" x="133" y="243"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s1E38eeBEeW5Af7b2nyHRQ" x="124" y="220"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_dONbgOenEeWm2cOvbYzuPw" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_dOOCkOenEeWm2cOvbYzuPw" type="5002"/>
@@ -60,7 +60,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_dOOClOenEeWm2cOvbYzuPw"/>
         </children>
         <element xmi:type="henshin:Node" href="zoo_evolution.henshin#_dOFfsOenEeWm2cOvbYzuPw"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dONbgeenEeWm2cOvbYzuPw" x="619" y="275"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dONbgeenEeWm2cOvbYzuPw" x="610" y="252"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_CW17AOeoEeWm2cOvbYzuPw" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_CW2iEOeoEeWm2cOvbYzuPw" type="5002"/>
@@ -70,7 +70,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_CW2iFOeoEeWm2cOvbYzuPw"/>
         </children>
         <element xmi:type="henshin:Node" href="zoo_evolution.henshin#_CWy3sOeoEeWm2cOvbYzuPw"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CW17AeeoEeWm2cOvbYzuPw" x="269" y="31"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CW17AeeoEeWm2cOvbYzuPw" x="260" y="8"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_DawEsOfMEeWm2cOvbYzuPw" type="3005">
         <children xmi:type="notation:DecorationNode" xmi:id="_DawEtOfMEeWm2cOvbYzuPw" type="5006"/>
@@ -78,11 +78,11 @@
         <styles xmi:type="notation:DescriptionStyle" xmi:id="_DawEsefMEeWm2cOvbYzuPw"/>
         <styles xmi:type="notation:FontStyle" xmi:id="_DawEsufMEeWm2cOvbYzuPw" fontName="Segoe UI"/>
         <element xmi:type="henshin:AttributeCondition" href="zoo_evolution.henshin#_DauPgOfMEeWm2cOvbYzuPw"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DawEs-fMEeWm2cOvbYzuPw" x="32" y="332"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DawEs-fMEeWm2cOvbYzuPw" x="758" y="21"/>
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="zoo_evolution.henshin#_jDWfMOeBEeW5Af7b2nyHRQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jDlIseeBEeW5Af7b2nyHRQ" x="23" y="20" width="1126" height="408"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jDlIseeBEeW5Af7b2nyHRQ" x="23" y="34" width="1078" height="337"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_gW6HEOeBEeW5Af7b2nyHRQ"/>
   <element xmi:type="henshin:Module" href="zoo_evolution.henshin#_gV4MUOeBEeW5Af7b2nyHRQ"/>
