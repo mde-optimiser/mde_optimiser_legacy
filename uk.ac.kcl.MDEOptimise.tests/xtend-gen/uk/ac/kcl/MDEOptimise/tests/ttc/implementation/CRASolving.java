@@ -1,8 +1,9 @@
 package uk.ac.kcl.MDEOptimise.tests.ttc.implementation;
 
 import com.google.inject.Inject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
-import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
@@ -27,6 +28,10 @@ public class CRASolving {
   @Test
   public void run() {
     try {
+      SimpleDateFormat _simpleDateFormat = new SimpleDateFormat("yyMMdd-HHmmss");
+      Date _date = new Date();
+      String _format = _simpleDateFormat.format(_date);
+      final String pathPrefix = ("gen/models/ttc/" + _format);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("basepath <src/uk/ac/kcl/MDEOptimise/tests/ttc/models>");
       _builder.newLine();
@@ -45,13 +50,7 @@ public class CRASolving {
       SimpleMO _simpleMO = new SimpleMO(50, 10);
       final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _simpleMO, modelProvider);
       final Set<EObject> optimiserOutcome = interpreter.execute();
-      final Consumer<EObject> _function = (EObject omodel) -> {
-        double _random = Math.random();
-        String _plus = ("gen/models/test" + Double.valueOf(_random));
-        String _plus_1 = (_plus + ".xmi");
-        ((CRAModelProvider) modelProvider).writeModel(omodel, _plus_1);
-      };
-      optimiserOutcome.forEach(_function);
+      modelProvider.storeModels(optimiserOutcome, (pathPrefix + "/final"));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

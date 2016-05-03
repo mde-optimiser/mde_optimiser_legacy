@@ -1,8 +1,10 @@
 package uk.ac.kcl.MDEOptimise.tests.models;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -69,6 +71,21 @@ public abstract class TestModelProvider implements ModelProvider {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public void storeModel(final EObject model, final String pathPrefix) {
+    int _hashCode = model.hashCode();
+    String _format = String.format("%08X", Integer.valueOf(_hashCode));
+    String _plus = ((pathPrefix + "/") + _format);
+    String _plus_1 = (_plus + ".xmi");
+    this.writeModel(model, _plus_1);
+  }
+  
+  public void storeModels(final Collection<EObject> models, final String pathPrefix) {
+    final Consumer<EObject> _function = (EObject m) -> {
+      this.storeModel(m, pathPrefix);
+    };
+    models.forEach(_function);
   }
   
   public abstract List<String> getModelPaths();

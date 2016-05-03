@@ -1,5 +1,6 @@
 package uk.ac.kcl.MDEOptimise.tests.models
 
+import java.util.Collection
 import java.util.Collections
 import java.util.List
 import org.eclipse.emf.common.util.URI
@@ -16,8 +17,8 @@ abstract class TestModelProvider implements ModelProvider {
 	override initialModels(EPackage metamodel) {
 		resourceSet.packageRegistry.put(metamodel.nsURI, metamodel)
 
-		modelPaths.map [p | 
-			loadModel (p)
+		modelPaths.map [ p |
+			loadModel(p)
 		].iterator
 	}
 
@@ -26,8 +27,8 @@ abstract class TestModelProvider implements ModelProvider {
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
 	}
-	
-	def writeModel (EObject model, String path) {
+
+	def writeModel(EObject model, String path) {
 		val resource = resourceSet.createResource(URI.createURI(path))
 		if (resource.loaded) {
 			resource.contents.clear
@@ -35,6 +36,15 @@ abstract class TestModelProvider implements ModelProvider {
 		resource.contents.add(model)
 		resource.save(Collections.EMPTY_MAP)
 	}
-	
+
+	def storeModel(EObject model, String pathPrefix) {
+		model.writeModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi"
+		)
+	}
+
+	def storeModels(Collection<EObject> models, String pathPrefix) {
+		models.forEach[m|m.storeModel(pathPrefix)]
+	}
+
 	abstract def List<String> getModelPaths()
 }

@@ -1,6 +1,8 @@
 package uk.ac.kcl.MDEOptimise.tests.ttc.implementation
 
 import com.google.inject.Inject
+import java.text.SimpleDateFormat
+import java.util.Date
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -20,6 +22,7 @@ class CRASolving {
 
 	@Test
 	def void run() {
+		val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 		val model = parser.parse('''
 			basepath <src/uk/ac/kcl/MDEOptimise/tests/ttc/models>
 			metamodel <architectureCRA.ecore>
@@ -35,8 +38,6 @@ class CRASolving {
 
 		val optimiserOutcome = interpreter.execute()
 
-		optimiserOutcome.forEach [ omodel |
-			(modelProvider as CRAModelProvider).writeModel(omodel, "gen/models/test" + Math.random + ".xmi")
-		]
+		modelProvider.storeModels (optimiserOutcome, pathPrefix + "/final")
 	}
 }
