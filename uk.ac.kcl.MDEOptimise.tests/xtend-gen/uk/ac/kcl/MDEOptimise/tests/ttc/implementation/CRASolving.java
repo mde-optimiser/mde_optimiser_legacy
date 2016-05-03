@@ -13,9 +13,9 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.ac.kcl.MDEOptimise.tests.FullTestInjector;
+import uk.ac.kcl.MDEOptimise.tests.models.DebuggableSimpleMO;
 import uk.ac.kcl.MDEOptimise.tests.ttc.implementation.CRAModelProvider;
 import uk.ac.kcl.interpreter.OptimisationInterpreter;
-import uk.ac.kcl.interpreter.algorithms.SimpleMO;
 import uk.ac.kcl.mDEOptimise.Optimisation;
 
 @InjectWith(FullTestInjector.class)
@@ -47,8 +47,8 @@ public class CRASolving {
       _builder.newLine();
       final Optimisation model = this.parser.parse(_builder);
       final CRAModelProvider modelProvider = new CRAModelProvider();
-      SimpleMO _simpleMO = new SimpleMO(50, 10);
-      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _simpleMO, modelProvider);
+      DebuggableSimpleMO _debuggableSimpleMO = new DebuggableSimpleMO(50, 10, pathPrefix, modelProvider);
+      final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _debuggableSimpleMO, modelProvider);
       final Set<EObject> optimiserOutcome = interpreter.execute();
       modelProvider.storeModels(optimiserOutcome, (pathPrefix + "/final"));
     } catch (Throwable _e) {

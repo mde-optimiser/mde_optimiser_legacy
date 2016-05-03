@@ -9,8 +9,8 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.MDEOptimise.tests.FullTestInjector
+import uk.ac.kcl.MDEOptimise.tests.models.DebuggableSimpleMO
 import uk.ac.kcl.interpreter.OptimisationInterpreter
-import uk.ac.kcl.interpreter.algorithms.SimpleMO
 import uk.ac.kcl.mDEOptimise.Optimisation
 
 @InjectWith(FullTestInjector)
@@ -34,7 +34,7 @@ class CRASolving {
 
 		val modelProvider = new CRAModelProvider()
 
-		val interpreter = new OptimisationInterpreter(model, new SimpleMO(50, 10), modelProvider)
+		val interpreter = new OptimisationInterpreter(model, new DebuggableSimpleMO(50, 10, pathPrefix, modelProvider), modelProvider)
 
 		val optimiserOutcome = interpreter.execute()
 
