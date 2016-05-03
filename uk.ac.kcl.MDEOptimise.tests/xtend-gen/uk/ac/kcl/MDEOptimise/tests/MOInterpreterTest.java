@@ -1,9 +1,10 @@
 package uk.ac.kcl.MDEOptimise.tests;
 
 import com.google.inject.Inject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -15,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.ac.kcl.MDEOptimise.tests.FullTestInjector;
+import uk.ac.kcl.MDEOptimise.tests.models.ECoreComparator;
 import uk.ac.kcl.MDEOptimise.tests.models.packages.PackagesModelProvider;
 import uk.ac.kcl.interpreter.OptimisationInterpreter;
 import uk.ac.kcl.interpreter.algorithms.SimpleMO;
@@ -33,6 +35,10 @@ public class MOInterpreterTest {
   @Test
   public void testMOInterpreter() {
     try {
+      SimpleDateFormat _simpleDateFormat = new SimpleDateFormat("yyMMdd-HHmmss");
+      Date _date = new Date();
+      String _format = _simpleDateFormat.format(_date);
+      final String pathPrefix = ("gen/models/motest/" + _format);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("basepath <src/uk/ac/kcl/MDEOptimise/tests/models/packages/>");
       _builder.newLine();
@@ -56,9 +62,11 @@ public class MOInterpreterTest {
       SimpleMO _simpleMO = new SimpleMO(50, 10);
       final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _simpleMO, mp);
       final Set<EObject> optimiserOutcome = interpreter.execute();
+      mp.storeModels(optimiserOutcome, pathPrefix);
       final EObject expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/packages/OneTestSetupResult.xmi");
       final Function1<EObject, Boolean> _function = (EObject m) -> {
-        return Boolean.valueOf(EcoreUtil.equals(expectedOutcome, m));
+        ECoreComparator _eCoreComparator = new ECoreComparator();
+        return Boolean.valueOf(_eCoreComparator.equals(expectedOutcome, m));
       };
       boolean _exists = IterableExtensions.<EObject>exists(optimiserOutcome, _function);
       Assert.assertTrue(_exists);
