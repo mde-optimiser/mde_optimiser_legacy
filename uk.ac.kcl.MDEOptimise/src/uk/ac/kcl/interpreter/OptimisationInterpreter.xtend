@@ -178,6 +178,7 @@ class OptimisationInterpreter {
 			val undominatedSolutions = dominators.keySet.filter[cs | dominators.get(cs).size == 0].toList
 			
 			// Remove them from domination matrix
+			undominatedSolutions.forEach[s | dominators.remove(s)]
 			dominators.values.forEach[lDominators | lDominators.removeAll(undominatedSolutions)]
 			
 			// Add them to solution population

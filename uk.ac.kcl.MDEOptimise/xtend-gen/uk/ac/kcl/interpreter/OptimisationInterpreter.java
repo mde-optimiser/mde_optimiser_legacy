@@ -248,11 +248,15 @@ public class OptimisationInterpreter {
           };
           Iterable<EObject> _filter = IterableExtensions.<EObject>filter(_keySet, _function_1);
           final List<EObject> undominatedSolutions = IterableExtensions.<EObject>toList(_filter);
+          final Consumer<EObject> _function_2 = (EObject s) -> {
+            dominators.remove(s);
+          };
+          undominatedSolutions.forEach(_function_2);
           Collection<List<EObject>> _values = dominators.values();
-          final Consumer<List<EObject>> _function_2 = (List<EObject> lDominators) -> {
+          final Consumer<List<EObject>> _function_3 = (List<EObject> lDominators) -> {
             lDominators.removeAll(undominatedSolutions);
           };
-          _values.forEach(_function_2);
+          _values.forEach(_function_3);
           List<EObject> _key = tentativeResult.getKey();
           List<EObject> _key_1 = tentativeResult.getKey();
           int _size_1 = _key_1.size();
@@ -260,11 +264,11 @@ public class OptimisationInterpreter {
           Iterable<EObject> _take = IterableExtensions.<EObject>take(undominatedSolutions, _minus);
           Iterables.<EObject>addAll(_key, _take);
           List<List<Double>> _value = tentativeResult.getValue();
-          final Function1<EObject, List<Double>> _function_3 = (EObject cs) -> {
+          final Function1<EObject, List<Double>> _function_4 = (EObject cs) -> {
             int _indexOf = solutions.indexOf(cs);
             return fitnesses.get(_indexOf);
           };
-          List<List<Double>> _map = ListExtensions.<EObject, List<Double>>map(undominatedSolutions, _function_3);
+          List<List<Double>> _map = ListExtensions.<EObject, List<Double>>map(undominatedSolutions, _function_4);
           List<List<Double>> _value_1 = tentativeResult.getValue();
           int _size_2 = _value_1.size();
           int _minus_1 = (adjustedTgtSize - _size_2);
