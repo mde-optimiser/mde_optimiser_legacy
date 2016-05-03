@@ -1,8 +1,6 @@
 package uk.ac.kcl.MDEOptimise.tests;
 
 import com.google.inject.Inject;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -35,10 +33,6 @@ public class MOInterpreterTest {
   @Test
   public void testMOInterpreter() {
     try {
-      SimpleDateFormat _simpleDateFormat = new SimpleDateFormat("yyMMdd-HHmmss");
-      Date _date = new Date();
-      String _format = _simpleDateFormat.format(_date);
-      final String pathPrefix = ("gen/models/motest/" + _format);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("basepath <src/uk/ac/kcl/MDEOptimise/tests/models/packages/>");
       _builder.newLine();
@@ -62,7 +56,6 @@ public class MOInterpreterTest {
       SimpleMO _simpleMO = new SimpleMO(50, 10);
       final OptimisationInterpreter interpreter = new OptimisationInterpreter(model, _simpleMO, mp);
       final Set<EObject> optimiserOutcome = interpreter.execute();
-      mp.storeModels(optimiserOutcome, pathPrefix);
       final EObject expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/packages/OneTestSetupResult.xmi");
       final Function1<EObject, Boolean> _function = (EObject m) -> {
         ECoreComparator _eCoreComparator = new ECoreComparator();

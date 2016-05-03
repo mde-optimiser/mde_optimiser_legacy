@@ -1,8 +1,6 @@
 package uk.ac.kcl.MDEOptimise.tests
 
 import com.google.inject.Inject
-import java.text.SimpleDateFormat
-import java.util.Date
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -26,7 +24,7 @@ class MOInterpreterTest {
 
 	@Test
 	def void testMOInterpreter() {
-		val pathPrefix = "gen/models/motest/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
+		//val pathPrefix = "gen/models/motest/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 		val model = parser.parse ('''
 			basepath <src/uk/ac/kcl/MDEOptimise/tests/models/packages/>
 			metamodel <packages.ecore>
@@ -44,7 +42,7 @@ class MOInterpreterTest {
 		val interpreter = new OptimisationInterpreter(model, new SimpleMO (50, 10), mp)
 		val optimiserOutcome = interpreter.execute();
 		
-		mp.storeModels(optimiserOutcome, pathPrefix)
+		//mp.storeModels(optimiserOutcome, pathPrefix)
 		
 		val expectedOutcome = mp.loadModel("src/uk/ac/kcl/MDEOptimise/tests/models/packages/OneTestSetupResult.xmi")
 		
