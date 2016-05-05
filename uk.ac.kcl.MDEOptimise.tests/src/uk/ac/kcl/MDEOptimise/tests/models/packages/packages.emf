@@ -1,18 +1,17 @@
-@namespace(
-	uri="http://inf.kcl.ac.uk/mdeoptimise/packages_example",
-	prefix="pex")
+@namespace(uri="http://inf.kcl.ac.uk/mdeoptimise/packages_example", prefix="pex")
 package packagesExample;
 
 class Model {
-	val Package[*] packages;
-	val Clazz[*] classes;
+  !ordered val Package[*] packages;
+  !ordered val Clazz[*] classes;
 }
 
 class Clazz {
-	ref Clazz[*] dependsOn;
-	attr String name;
+  ref Clazz[*] dependsOn;
+  attr String name;
 }
 
 class Package {
-	val Clazz[*] classes;
+  !ordered val Clazz[*] classes;
 }
+
