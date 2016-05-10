@@ -4,17 +4,15 @@
 package uk.ac.kcl.serializer;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
+import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Parameter;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
-import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
-import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import uk.ac.kcl.mDEOptimise.BasepathSpec;
 import uk.ac.kcl.mDEOptimise.EvolverSpec;
@@ -31,8 +29,13 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	private MDEOptimiseGrammarAccess grammarAccess;
 	
 	@Override
-	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == MDEOptimisePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+	public void sequence(ISerializationContext context, EObject semanticObject) {
+		EPackage epackage = semanticObject.eClass().getEPackage();
+		ParserRule rule = context.getParserRule();
+		Action action = context.getAssignedAction();
+		Set<Parameter> parameters = context.getEnabledBooleanParameters();
+		if (epackage == MDEOptimisePackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
 			case MDEOptimisePackage.BASEPATH_SPEC:
 				sequence_BasepathSpec(context, (BasepathSpec) semanticObject); 
 				return; 
@@ -49,38 +52,43 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 				sequence_Optimisation(context, (Optimisation) semanticObject); 
 				return; 
 			}
-		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
+		if (errorAcceptor != null)
+			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
 	
 	/**
+	 * Contexts:
+	 *     BasepathSpec returns BasepathSpec
+	 *
 	 * Constraint:
 	 *     location=URL
 	 */
-	protected void sequence_BasepathSpec(EObject context, BasepathSpec semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.BASEPATH_SPEC__LOCATION) == ValueTransient.YES)
+	protected void sequence_BasepathSpec(ISerializationContext context, BasepathSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.BASEPATH_SPEC__LOCATION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.BASEPATH_SPEC__LOCATION));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     EvolverSpec returns EvolverSpec
+	 *
 	 * Constraint:
 	 *     (rule_location=URL unit=STRING)
 	 */
-	protected void sequence_EvolverSpec(EObject context, EvolverSpec semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION) == ValueTransient.YES)
+	protected void sequence_EvolverSpec(ISerializationContext context, EvolverSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION));
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__UNIT) == ValueTransient.YES)
+			if (transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__UNIT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.EVOLVER_SPEC__UNIT));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0(), semanticObject.getRule_location());
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0(), semanticObject.getUnit());
 		feeder.finish();
@@ -88,42 +96,51 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	
 	/**
+	 * Contexts:
+	 *     FitnessFunctionSpec returns FitnessFunctionSpec
+	 *
 	 * Constraint:
 	 *     class=STRING
 	 */
-	protected void sequence_FitnessFunctionSpec(EObject context, FitnessFunctionSpec semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__CLASS) == ValueTransient.YES)
+	protected void sequence_FitnessFunctionSpec(ISerializationContext context, FitnessFunctionSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__CLASS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.FITNESS_FUNCTION_SPEC__CLASS));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFitnessFunctionSpecAccess().getClassSTRINGTerminalRuleCall_1_0(), semanticObject.getClass_());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     MetaModelSpec returns MetaModelSpec
+	 *
 	 * Constraint:
 	 *     location=URL
 	 */
-	protected void sequence_MetaModelSpec(EObject context, MetaModelSpec semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.META_MODEL_SPEC__LOCATION) == ValueTransient.YES)
+	protected void sequence_MetaModelSpec(ISerializationContext context, MetaModelSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MDEOptimisePackage.Literals.META_MODEL_SPEC__LOCATION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MDEOptimisePackage.Literals.META_MODEL_SPEC__LOCATION));
 		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getMetaModelSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
 		feeder.finish();
 	}
 	
 	
 	/**
+	 * Contexts:
+	 *     Optimisation returns Optimisation
+	 *
 	 * Constraint:
 	 *     (basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec+ evolvers+=EvolverSpec+)
 	 */
-	protected void sequence_Optimisation(EObject context, Optimisation semanticObject) {
+	protected void sequence_Optimisation(ISerializationContext context, Optimisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
+	
+	
 }

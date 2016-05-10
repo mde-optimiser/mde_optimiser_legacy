@@ -21,5 +21,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.ui.quickfix,
  uk.ac.kcl.ui.contentassist,
  uk.ac.kcl.ui.internal,
- uk.ac.kcl.ui.contentassist.antlr
+ uk.ac.kcl.ui.contentassist.antlr,
+ uk.ac.kcl.ui.contentassist.antlr.internal
 Bundle-Activator: uk.ac.kcl.ui.internal.MDEOptimiseActivator

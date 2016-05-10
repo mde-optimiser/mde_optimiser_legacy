@@ -90,7 +90,7 @@ ruleOptimisation returns [EObject current=null]
        			$current, 
        			"basepath",
         		lv_basepath_0_0, 
-        		"BasepathSpec");
+        		"uk.ac.kcl.MDEOptimise.BasepathSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -108,7 +108,7 @@ ruleOptimisation returns [EObject current=null]
        			$current, 
        			"metamodel",
         		lv_metamodel_1_0, 
-        		"MetaModelSpec");
+        		"uk.ac.kcl.MDEOptimise.MetaModelSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -126,7 +126,7 @@ ruleOptimisation returns [EObject current=null]
        			$current, 
        			"fitness",
         		lv_fitness_2_0, 
-        		"FitnessFunctionSpec");
+        		"uk.ac.kcl.MDEOptimise.FitnessFunctionSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -144,7 +144,7 @@ ruleOptimisation returns [EObject current=null]
        			$current, 
        			"evolvers",
         		lv_evolvers_3_0, 
-        		"EvolverSpec");
+        		"uk.ac.kcl.MDEOptimise.EvolverSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -188,7 +188,7 @@ ruleBasepathSpec returns [EObject current=null]
        			$current, 
        			"location",
         		lv_location_1_0, 
-        		"URL");
+        		"uk.ac.kcl.MDEOptimise.URL");
 	    }
 
 )
@@ -231,7 +231,7 @@ ruleMetaModelSpec returns [EObject current=null]
        			$current, 
        			"location",
         		lv_location_1_0, 
-        		"URL");
+        		"uk.ac.kcl.MDEOptimise.URL");
 	    }
 
 )
@@ -274,7 +274,7 @@ ruleFitnessFunctionSpec returns [EObject current=null]
        			$current, 
        			"class",
         		lv_class_1_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -321,7 +321,7 @@ ruleEvolverSpec returns [EObject current=null]
        			$current, 
        			"rule_location",
         		lv_rule_location_2_0, 
-        		"URL");
+        		"uk.ac.kcl.MDEOptimise.URL");
 	    }
 
 )
@@ -343,7 +343,7 @@ ruleEvolverSpec returns [EObject current=null]
        			$current, 
        			"unit",
         		lv_unit_4_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )

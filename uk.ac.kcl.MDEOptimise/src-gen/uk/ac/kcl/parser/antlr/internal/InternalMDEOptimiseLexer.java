@@ -39,15 +39,15 @@ public class InternalMDEOptimiseLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g"; }
+    public String getGrammarFileName() { return "InternalMDEOptimise.g"; }
 
     // $ANTLR start "T__12"
     public final void mT__12() throws RecognitionException {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:11:7: ( 'basepath' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:11:9: 'basepath'
+            // InternalMDEOptimise.g:11:7: ( 'basepath' )
+            // InternalMDEOptimise.g:11:9: 'basepath'
             {
             match("basepath"); 
 
@@ -67,8 +67,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:12:7: ( 'metamodel' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:12:9: 'metamodel'
+            // InternalMDEOptimise.g:12:7: ( 'metamodel' )
+            // InternalMDEOptimise.g:12:9: 'metamodel'
             {
             match("metamodel"); 
 
@@ -88,8 +88,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:13:7: ( 'fitness' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:13:9: 'fitness'
+            // InternalMDEOptimise.g:13:7: ( 'fitness' )
+            // InternalMDEOptimise.g:13:9: 'fitness'
             {
             match("fitness"); 
 
@@ -109,8 +109,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:14:7: ( 'evolve' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:14:9: 'evolve'
+            // InternalMDEOptimise.g:14:7: ( 'evolve' )
+            // InternalMDEOptimise.g:14:9: 'evolve'
             {
             match("evolve"); 
 
@@ -130,8 +130,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:15:7: ( 'using' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:15:9: 'using'
+            // InternalMDEOptimise.g:15:7: ( 'using' )
+            // InternalMDEOptimise.g:15:9: 'using'
             {
             match("using"); 
 
@@ -151,8 +151,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:16:7: ( 'unit' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:16:9: 'unit'
+            // InternalMDEOptimise.g:16:7: ( 'unit' )
+            // InternalMDEOptimise.g:16:9: 'unit'
             {
             match("unit"); 
 
@@ -172,11 +172,11 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_URL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:357:10: ( '<' (~ ( '>' ) )* '>' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:357:12: '<' (~ ( '>' ) )* '>'
+            // InternalMDEOptimise.g:357:10: ( '<' (~ ( '>' ) )* '>' )
+            // InternalMDEOptimise.g:357:12: '<' (~ ( '>' ) )* '>'
             {
             match('<'); 
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:357:16: (~ ( '>' ) )*
+            // InternalMDEOptimise.g:357:16: (~ ( '>' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -189,7 +189,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:357:16: ~ ( '>' )
+            	    // InternalMDEOptimise.g:357:16: ~ ( '>' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='=')||(input.LA(1)>='?' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -226,10 +226,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:359:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:359:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMDEOptimise.g:359:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalMDEOptimise.g:359:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:359:11: ( '^' )?
+            // InternalMDEOptimise.g:359:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -238,7 +238,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:359:11: '^'
+                    // InternalMDEOptimise.g:359:11: '^'
                     {
                     match('^'); 
 
@@ -256,7 +256,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:359:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMDEOptimise.g:359:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -269,7 +269,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:
+            	    // InternalMDEOptimise.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -305,10 +305,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:361:10: ( ( '0' .. '9' )+ )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:361:12: ( '0' .. '9' )+
+            // InternalMDEOptimise.g:361:10: ( ( '0' .. '9' )+ )
+            // InternalMDEOptimise.g:361:12: ( '0' .. '9' )+
             {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:361:12: ( '0' .. '9' )+
+            // InternalMDEOptimise.g:361:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -322,7 +322,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:361:13: '0' .. '9'
+            	    // InternalMDEOptimise.g:361:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -354,10 +354,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMDEOptimise.g:363:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalMDEOptimise.g:363:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMDEOptimise.g:363:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -375,10 +375,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalMDEOptimise.g:363:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalMDEOptimise.g:363:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -394,7 +394,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:21: '\\\\' .
+                    	    // InternalMDEOptimise.g:363:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -402,7 +402,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalMDEOptimise.g:363:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -427,10 +427,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalMDEOptimise.g:363:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalMDEOptimise.g:363:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -446,7 +446,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:54: '\\\\' .
+                    	    // InternalMDEOptimise.g:363:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -454,7 +454,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:363:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalMDEOptimise.g:363:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -497,12 +497,12 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:365:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:365:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalMDEOptimise.g:365:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalMDEOptimise.g:365:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:365:24: ( options {greedy=false; } : . )*
+            // InternalMDEOptimise.g:365:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -527,7 +527,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:365:52: .
+            	    // InternalMDEOptimise.g:365:52: .
             	    {
             	    matchAny(); 
 
@@ -557,12 +557,12 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalMDEOptimise.g:367:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalMDEOptimise.g:367:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalMDEOptimise.g:367:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -575,7 +575,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalMDEOptimise.g:367:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -595,7 +595,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
                 }
             } while (true);
 
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:40: ( ( '\\r' )? '\\n' )?
+            // InternalMDEOptimise.g:367:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -604,9 +604,9 @@ public class InternalMDEOptimiseLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:41: ( '\\r' )? '\\n'
+                    // InternalMDEOptimise.g:367:41: ( '\\r' )? '\\n'
                     {
-                    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:41: ( '\\r' )?
+                    // InternalMDEOptimise.g:367:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -615,7 +615,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:367:41: '\\r'
+                            // InternalMDEOptimise.g:367:41: '\\r'
                             {
                             match('\r'); 
 
@@ -647,10 +647,10 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:369:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:369:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMDEOptimise.g:369:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalMDEOptimise.g:369:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:369:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMDEOptimise.g:369:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -664,7 +664,7 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:
+            	    // InternalMDEOptimise.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -704,8 +704,8 @@ public class InternalMDEOptimiseLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:371:16: ( . )
-            // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:371:18: .
+            // InternalMDEOptimise.g:371:16: ( . )
+            // InternalMDEOptimise.g:371:18: .
             {
             matchAny(); 
 
@@ -720,103 +720,103 @@ public class InternalMDEOptimiseLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | RULE_URL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalMDEOptimise.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | RULE_URL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt13=14;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:10: T__12
+                // InternalMDEOptimise.g:1:10: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 2 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:16: T__13
+                // InternalMDEOptimise.g:1:16: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 3 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:22: T__14
+                // InternalMDEOptimise.g:1:22: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 4 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:28: T__15
+                // InternalMDEOptimise.g:1:28: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 5 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:34: T__16
+                // InternalMDEOptimise.g:1:34: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 6 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:40: T__17
+                // InternalMDEOptimise.g:1:40: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 7 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:46: RULE_URL
+                // InternalMDEOptimise.g:1:46: RULE_URL
                 {
                 mRULE_URL(); 
 
                 }
                 break;
             case 8 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:55: RULE_ID
+                // InternalMDEOptimise.g:1:55: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 9 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:63: RULE_INT
+                // InternalMDEOptimise.g:1:63: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 10 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:72: RULE_STRING
+                // InternalMDEOptimise.g:1:72: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 11 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:84: RULE_ML_COMMENT
+                // InternalMDEOptimise.g:1:84: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 12 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:100: RULE_SL_COMMENT
+                // InternalMDEOptimise.g:1:100: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 13 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:116: RULE_WS
+                // InternalMDEOptimise.g:1:116: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 14 :
-                // ../uk.ac.kcl.MDEOptimise/src-gen/uk/ac/kcl/parser/antlr/internal/InternalMDEOptimise.g:1:124: RULE_ANY_OTHER
+                // InternalMDEOptimise.g:1:124: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -830,33 +830,19 @@ public class InternalMDEOptimiseLexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\5\20\2\16\2\uffff\3\16\2\uffff\1\20\1\uffff\5\20\6\uffff"+
-        "\13\20\1\55\4\20\1\62\1\uffff\3\20\1\66\1\uffff\2\20\1\71\1\uffff"+
-        "\1\72\1\20\2\uffff\1\74\1\uffff";
+        "\1\uffff\5\20\2\16\2\uffff\3\16\2\uffff\1\20\1\uffff\5\20\6\uffff\13\20\1\55\4\20\1\62\1\uffff\3\20\1\66\1\uffff\2\20\1\71\1\uffff\1\72\1\20\2\uffff\1\74\1\uffff";
     static final String DFA13_eofS =
         "\75\uffff";
     static final String DFA13_minS =
-        "\1\0\1\141\1\145\1\151\1\166\1\156\1\0\1\101\2\uffff\2\0\1\52\2"+
-        "\uffff\1\163\1\uffff\2\164\1\157\2\151\6\uffff\1\145\1\141\1\156"+
-        "\1\154\1\156\1\164\1\160\1\155\1\145\1\166\1\147\1\60\1\141\1\157"+
-        "\1\163\1\145\1\60\1\uffff\1\164\1\144\1\163\1\60\1\uffff\1\150\1"+
-        "\145\1\60\1\uffff\1\60\1\154\2\uffff\1\60\1\uffff";
+        "\1\0\1\141\1\145\1\151\1\166\1\156\1\0\1\101\2\uffff\2\0\1\52\2\uffff\1\163\1\uffff\2\164\1\157\2\151\6\uffff\1\145\1\141\1\156\1\154\1\156\1\164\1\160\1\155\1\145\1\166\1\147\1\60\1\141\1\157\1\163\1\145\1\60\1\uffff\1\164\1\144\1\163\1\60\1\uffff\1\150\1\145\1\60\1\uffff\1\60\1\154\2\uffff\1\60\1\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\141\1\145\1\151\1\166\1\163\1\uffff\1\172\2\uffff\2"+
-        "\uffff\1\57\2\uffff\1\163\1\uffff\2\164\1\157\2\151\6\uffff\1\145"+
-        "\1\141\1\156\1\154\1\156\1\164\1\160\1\155\1\145\1\166\1\147\1\172"+
-        "\1\141\1\157\1\163\1\145\1\172\1\uffff\1\164\1\144\1\163\1\172\1"+
-        "\uffff\1\150\1\145\1\172\1\uffff\1\172\1\154\2\uffff\1\172\1\uffff";
+        "\1\uffff\1\141\1\145\1\151\1\166\1\163\1\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\163\1\uffff\2\164\1\157\2\151\6\uffff\1\145\1\141\1\156\1\154\1\156\1\164\1\160\1\155\1\145\1\166\1\147\1\172\1\141\1\157\1\163\1\145\1\172\1\uffff\1\164\1\144\1\163\1\172\1\uffff\1\150\1\145\1\172\1\uffff\1\172\1\154\2\uffff\1\172\1\uffff";
     static final String DFA13_acceptS =
-        "\10\uffff\1\10\1\11\3\uffff\1\15\1\16\1\uffff\1\10\5\uffff\1\7"+
-        "\1\11\1\12\1\13\1\14\1\15\21\uffff\1\6\4\uffff\1\5\3\uffff\1\4\2"+
-        "\uffff\1\3\1\1\1\uffff\1\2";
+        "\10\uffff\1\10\1\11\3\uffff\1\15\1\16\1\uffff\1\10\5\uffff\1\7\1\11\1\12\1\13\1\14\1\15\21\uffff\1\6\4\uffff\1\5\3\uffff\1\4\2\uffff\1\3\1\1\1\uffff\1\2";
     static final String DFA13_specialS =
         "\1\1\5\uffff\1\0\3\uffff\1\2\1\3\61\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\16\2\15\2\16\1\15\22\16\1\15\1\16\1\12\4\16\1\13\7\16\1"+
-            "\14\12\11\2\16\1\6\4\16\32\10\3\16\1\7\1\10\1\16\1\10\1\1\2"+
-            "\10\1\4\1\3\6\10\1\2\7\10\1\5\5\10\uff85\16",
+            "\11\16\2\15\2\16\1\15\22\16\1\15\1\16\1\12\4\16\1\13\7\16\1\14\12\11\2\16\1\6\4\16\32\10\3\16\1\7\1\10\1\16\1\10\1\1\2\10\1\4\1\3\6\10\1\2\7\10\1\5\5\10\uff85\16",
             "\1\17",
             "\1\21",
             "\1\22",

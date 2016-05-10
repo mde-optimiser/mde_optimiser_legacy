@@ -19,7 +19,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class OptimisationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Optimisation");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.Optimisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cBasepathAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cBasepathBasepathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
@@ -31,7 +31,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEvolversEvolverSpecParserRuleCall_3_0 = (RuleCall)cEvolversAssignment_3.eContents().get(0);
 		
 		//Optimisation:
-		//	basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec+ evolvers+=EvolverSpec+;
+		//	basepath=BasepathSpec
+		//	metamodel=MetaModelSpec
+		//	fitness+=FitnessFunctionSpec+
+		//	evolvers+=EvolverSpec+;
 		@Override public ParserRule getRule() { return rule; }
 
 		//basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec+ evolvers+=EvolverSpec+
@@ -63,7 +66,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class BasepathSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BasepathSpec");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasepathSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -93,7 +96,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MetaModelSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetaModelSpec");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.MetaModelSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cMetamodelKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -117,7 +120,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class FitnessFunctionSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FitnessFunctionSpec");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.FitnessFunctionSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFitnessKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cClassAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -141,7 +144,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EvolverSpec");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cEvolveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cUsingKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -207,7 +210,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pMetaModelSpec = new MetaModelSpecElements();
 		this.pFitnessFunctionSpec = new FitnessFunctionSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
-		this.tURL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "URL");
+		this.tURL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.URL");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -238,7 +241,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Optimisation:
-	//	basepath=BasepathSpec metamodel=MetaModelSpec fitness+=FitnessFunctionSpec+ evolvers+=EvolverSpec+;
+	//	basepath=BasepathSpec
+	//	metamodel=MetaModelSpec
+	//	fitness+=FitnessFunctionSpec+
+	//	evolvers+=EvolverSpec+;
 	public OptimisationElements getOptimisationAccess() {
 		return pOptimisation;
 	}
@@ -295,44 +301,43 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal URL: // TODO: We can probably provide a more fine-grained specification here
-	//	"<" !">"* ">";
+	//	'<' !'>'* '>';
 	public TerminalRule getURLRule() {
 		return tURL;
 	} 
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
-	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 
