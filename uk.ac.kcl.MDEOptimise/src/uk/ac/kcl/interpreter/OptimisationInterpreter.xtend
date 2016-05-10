@@ -93,6 +93,11 @@ class OptimisationInterpreter {
 	}
 
 	/**
+	 * The single instance of the Henshin engine we are going to use throughout. 
+	 */
+	private static val engine = new EngineImpl
+
+	/**
 	 * Produce a new solution from the given one using one of the evolvers defined in the optimisation model. 
 	 * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>, 
 	 * otherwise returns the result of the first randomly picked evolver that was applicable. 
@@ -122,7 +127,6 @@ class OptimisationInterpreter {
 			// TODO: Some of these objects we may actually be able to reuse across evolver calls.
 			// Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
 			val graph = new EGraphImpl(candidateSolution)
-			val engine = new EngineImpl
 			val runner = new UnitApplicationImpl(engine)
 			runner.EGraph = graph
 

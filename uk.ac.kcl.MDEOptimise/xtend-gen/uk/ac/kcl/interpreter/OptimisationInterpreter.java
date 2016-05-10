@@ -132,6 +132,11 @@ public class OptimisationInterpreter {
   }
   
   /**
+   * The single instance of the Henshin engine we are going to use throughout.
+   */
+  private final static EngineImpl engine = new EngineImpl();
+  
+  /**
    * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
    * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
    * otherwise returns the result of the first randomly picked evolver that was applicable.
@@ -163,8 +168,7 @@ public class OptimisationInterpreter {
           final Unit evolver = evolversToTry.remove(_nextInt);
           final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
           final EGraphImpl graph = new EGraphImpl(candidateSolution);
-          final EngineImpl engine = new EngineImpl();
-          final UnitApplicationImpl runner = new UnitApplicationImpl(engine);
+          final UnitApplicationImpl runner = new UnitApplicationImpl(OptimisationInterpreter.engine);
           runner.setEGraph(graph);
           runner.setUnit(evolver);
           boolean _execute = runner.execute(null);
