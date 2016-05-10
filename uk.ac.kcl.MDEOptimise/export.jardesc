@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/git/mdeoptimise_ttc16/TTC2016/libraries/mdeoptimise.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/uk.ac.kcl.MDEOptimise/export.jardesc" exportErrors="false" exportWarnings="false" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=uk.ac.kcl.MDEOptimise/src"/>
+        <file path="/uk.ac.kcl.MDEOptimise/.classpath"/>
+        <folder path="/uk.ac.kcl.MDEOptimise/META-INF"/>
+        <folder path="/uk.ac.kcl.MDEOptimise/model"/>
+        <javaElement handleIdentifier="=uk.ac.kcl.MDEOptimise/xtend-gen"/>
+        <javaElement handleIdentifier="=uk.ac.kcl.MDEOptimise/src-gen"/>
+        <file path="/uk.ac.kcl.MDEOptimise/build.properties"/>
+        <file path="/uk.ac.kcl.MDEOptimise/plugin.xml_gen"/>
+        <file path="/uk.ac.kcl.MDEOptimise/.gitignore"/>
+        <file path="/uk.ac.kcl.MDEOptimise/.antlr-generator-3.2.0-patch.jar"/>
+        <file path="/uk.ac.kcl.MDEOptimise/plugin.xml"/>
+        <file path="/uk.ac.kcl.MDEOptimise/.project"/>
+    </selectedElements>
+</jardesc>

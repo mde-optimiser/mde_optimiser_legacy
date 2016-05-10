@@ -80,7 +80,7 @@ class OptimisationInterpreter {
 		if (candidateSolution == null) {
 			throw new NullPointerException();
 		}
-		
+
 		if (fitnessFunctions == null) {
 			fitnessFunctions = new LinkedList(model.fitness.map [ f |
 				val Class<? extends FitnessFunction> fitnessClass = Class.forName(
@@ -101,13 +101,14 @@ class OptimisationInterpreter {
 		// Extract Henshin evolvers if necessary
 		if (henshinEvolvers == null) {
 			val hrs = resourceSet
-			henshinEvolvers = model.evolvers.map [ e |
+			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
+			henshinEvolvers = new ArrayList(model.evolvers.map [ e |
 				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-			]
+			])
 		}
 
 		// Make a copy of the evolvers list so that we can keep track of which evolvers we have already tried.
-		val evolversToTry = new ArrayList(henshinEvolvers.toList)
+		val evolversToTry = new ArrayList(henshinEvolvers)
 
 		do {
 			// 1. Pick an evolver
@@ -155,45 +156,49 @@ class OptimisationInterpreter {
 	/**
 	 * Pareto-rank the provided solutions and return at most targetPopulationSize many starting with the top ranked ones. 
 	 */
-	def Pair<List<EObject>, List<List<Double>>> getTopRanked(int targetPopulationSize, List<EObject> solutions, List<List<Double>> fitnesses) {
+	def Pair<List<EObject>, List<List<Double>>> getTopRanked(int targetPopulationSize, List<EObject> solutions,
+		List<List<Double>> fitnesses) {
 		// TODO Not a very efficient implementation. Eventually to be shifted to some other framework
-		
 		// Build up the domination order
 		val dominators = new HashMap<EObject, List<EObject>>()
-		
-		solutions.forEach[s, idx|
-			dominators.put (s, new LinkedList<EObject>())
-			solutions.forEach[s2, idx2 | 
-				if (fitnesses.get(idx2).dominates (fitnesses.get(idx))) {
-					dominators.get(s).add (s2)
+
+		solutions.forEach [ s, idx |
+			dominators.put(s, new LinkedList<EObject>())
+			solutions.forEach [ s2, idx2 |
+				if (fitnesses.get(idx2).dominates(fitnesses.get(idx))) {
+					dominators.get(s).add(s2)
 				}
 			]
 		]
-		
+
 		// Iterate through the ranks until we've found enough elements
-		val tentativeResult = new Pair<List<EObject>, List<List<Double>>>(new LinkedList<EObject>(),new LinkedList<List<Double>>())
-		val adjustedTgtSize = Math.min (targetPopulationSize, solutions.size)
+		val tentativeResult = new Pair<List<EObject>, List<List<Double>>>(new LinkedList<EObject>(),
+			new LinkedList<List<Double>>())
+		val adjustedTgtSize = Math.min(targetPopulationSize, solutions.size)
 		while (tentativeResult.key.size < adjustedTgtSize) {
 			// Find top ranked solutions
-			val undominatedSolutions = dominators.keySet.filter[cs | dominators.get(cs).size == 0].toList
-			
+			val undominatedSolutions = dominators.keySet.filter[cs|dominators.get(cs).size == 0].toList
+
 			// Remove them from domination matrix
-			undominatedSolutions.forEach[s | dominators.remove(s)]
-			dominators.values.forEach[lDominators | lDominators.removeAll(undominatedSolutions)]
-			
+			undominatedSolutions.forEach[s|dominators.remove(s)]
+			dominators.values.forEach[lDominators|lDominators.removeAll(undominatedSolutions)]
+
 			// Add them to solution population
 			tentativeResult.key.addAll(undominatedSolutions.take(adjustedTgtSize - tentativeResult.key.size))
-			tentativeResult.value.addAll(undominatedSolutions.map[cs | fitnesses.get(solutions.indexOf(cs))].take (adjustedTgtSize - tentativeResult.value.size))
+			tentativeResult.value.addAll(
+				undominatedSolutions.map[cs|fitnesses.get(solutions.indexOf(cs))].take(adjustedTgtSize -
+					tentativeResult.value.size))
 		}
-		
+
 		tentativeResult
 	}
-	
+
 	/**
 	 * Check domination between two fitness vectors. Returns true if fitness1 dominates fitness2
 	 */
 	def boolean dominates(List<Double> fitness1, List<Double> fitness2) {
-		(0..<fitness1.size).forall[i | fitness1.get(i) >= fitness2.get(i)] &&
-		(0..<fitness1.size).exists[i | fitness1.get(i) > fitness2.get(i)]
+		(0 ..< fitness1.size).forall[i|fitness1.get(i) >= fitness2.get(i)] && (0 ..< fitness1.size).exists [i |
+			fitness1.get(i) > fitness2.get(i)
+		]
 	}
 }

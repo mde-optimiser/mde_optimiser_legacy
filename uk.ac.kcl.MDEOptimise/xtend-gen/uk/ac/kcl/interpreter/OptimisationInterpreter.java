@@ -151,10 +151,10 @@ public class OptimisationInterpreter {
           return _module.getUnit(_unit);
         };
         List<Unit> _map = ListExtensions.<EvolverSpec, Unit>map(_evolvers, _function);
-        this.henshinEvolvers = _map;
+        ArrayList<Unit> _arrayList = new ArrayList<Unit>(_map);
+        this.henshinEvolvers = _arrayList;
       }
-      List<Unit> _list = IterableExtensions.<Unit>toList(this.henshinEvolvers);
-      final ArrayList<Unit> evolversToTry = new ArrayList<Unit>(_list);
+      final ArrayList<Unit> evolversToTry = new ArrayList<Unit>(this.henshinEvolvers);
       do {
         {
           Random _random = new Random();
