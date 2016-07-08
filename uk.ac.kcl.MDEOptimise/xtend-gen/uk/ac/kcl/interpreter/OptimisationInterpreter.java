@@ -16,12 +16,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.henshin.interpreter.Match;
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.model.Module;
+import org.eclipse.emf.henshin.model.Rule;
 import org.eclipse.emf.henshin.model.Unit;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -159,25 +162,36 @@ public class OptimisationInterpreter {
         ArrayList<Unit> _arrayList = new ArrayList<Unit>(_map);
         this.henshinEvolvers = _arrayList;
       }
-      final ArrayList<Unit> evolversToTry = new ArrayList<Unit>(this.henshinEvolvers);
-      do {
-        {
-          Random _random = new Random();
-          int _size = evolversToTry.size();
-          int _nextInt = _random.nextInt(_size);
-          final Unit evolver = evolversToTry.remove(_nextInt);
-          final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
-          final EGraphImpl graph = new EGraphImpl(candidateSolution);
-          final UnitApplicationImpl runner = new UnitApplicationImpl(OptimisationInterpreter.engine);
-          runner.setEGraph(graph);
-          runner.setUnit(evolver);
-          boolean _execute = runner.execute(null);
-          if (_execute) {
-            List<EObject> _roots = graph.getRoots();
-            return IterableExtensions.<EObject>head(_roots);
-          }
+      final EObject candidateSolution = EcoreUtil.<EObject>copy(object);
+      final EGraphImpl graph = new EGraphImpl(candidateSolution);
+      final Function1<Unit, Iterable<Pair<Rule, Match>>> _function_1 = (Unit evolver) -> {
+        Iterable<Match> _findMatches = OptimisationInterpreter.engine.findMatches(((Rule) evolver), graph, null);
+        final Function1<Match, Pair<Rule, Match>> _function_2 = (Match m) -> {
+          return new Pair<Rule, Match>(((Rule) evolver), m);
+        };
+        return IterableExtensions.<Match, Pair<Rule, Match>>map(_findMatches, _function_2);
+      };
+      List<Iterable<Pair<Rule, Match>>> _map_1 = ListExtensions.<Unit, Iterable<Pair<Rule, Match>>>map(this.henshinEvolvers, _function_1);
+      final Iterable<Pair<Rule, Match>> matches = Iterables.<Pair<Rule, Match>>concat(_map_1);
+      boolean _isEmpty = IterableExtensions.isEmpty(matches);
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        Random _random = new Random();
+        int _size = IterableExtensions.size(matches);
+        int _nextInt = _random.nextInt(_size);
+        final Pair<Rule, Match> matchToUse = ((Pair<Rule, Match>[])Conversions.unwrapArray(matches, Pair.class))[_nextInt];
+        final RuleApplicationImpl runner = new RuleApplicationImpl(OptimisationInterpreter.engine);
+        runner.setEGraph(graph);
+        Rule _key = matchToUse.getKey();
+        runner.setUnit(_key);
+        Match _value = matchToUse.getValue();
+        runner.setPartialMatch(_value);
+        boolean _execute = runner.execute(null);
+        if (_execute) {
+          List<EObject> _roots = graph.getRoots();
+          return IterableExtensions.<EObject>head(_roots);
         }
-      } while((!evolversToTry.isEmpty()));
+      }
       _xblockexpression = null;
     }
     return ((EObject)_xblockexpression);

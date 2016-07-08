@@ -10,9 +10,12 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.henshin.interpreter.Match
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mDEOptimise.Optimisation
@@ -112,31 +115,29 @@ class OptimisationInterpreter {
 			])
 		}
 
-		// Make a copy of the evolvers list so that we can keep track of which evolvers we have already tried.
-		val evolversToTry = new ArrayList(henshinEvolvers)
+		val candidateSolution = EcoreUtil.copy(object)
 
-		do {
-			// 1. Pick an evolver
-			val evolver = evolversToTry.remove(new Random().nextInt(evolversToTry.size))
+		// Get all matches
+		val graph = new EGraphImpl(candidateSolution)
+		val matches = henshinEvolvers.map [ evolver |
+			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
+		].flatten
 
-			// 2. Make a copy of the current candidate solution
-			// Doing this here just in case unsuccessfully applying an evolver has already made changes
-			val candidateSolution = EcoreUtil.copy(object)
+		if (!matches.empty) {
+			// Randomly pick one match
+			val matchToUse = matches.get(new Random().nextInt(matches.size))
 
-			// 3. Apply the transformation
-			// TODO: Some of these objects we may actually be able to reuse across evolver calls.
-			// Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
-			val graph = new EGraphImpl(candidateSolution)
-			val runner = new UnitApplicationImpl(engine)
+			// Apply the match
+			val runner = new RuleApplicationImpl(engine)
 			runner.EGraph = graph
-
-			runner.unit = evolver
+			runner.unit = matchToUse.key
+			runner.partialMatch = matchToUse.value
+			
 			if (runner.execute(null)) {
-				// 4. Return the transformed solution
 				return graph.roots.head
 			}
-		} while (!evolversToTry.empty)
-
+		} 
+		
 		// We didn't find any applicable evolvers...
 		null
 	}
@@ -201,7 +202,7 @@ class OptimisationInterpreter {
 	 * Check domination between two fitness vectors. Returns true if fitness1 dominates fitness2
 	 */
 	def boolean dominates(List<Double> fitness1, List<Double> fitness2) {
-		(0 ..< fitness1.size).forall[i|fitness1.get(i) >= fitness2.get(i)] && (0 ..< fitness1.size).exists [i |
+		(0 ..< fitness1.size).forall[i|fitness1.get(i) >= fitness2.get(i)] && (0 ..< fitness1.size).exists [ i |
 			fitness1.get(i) > fitness2.get(i)
 		]
 	}
