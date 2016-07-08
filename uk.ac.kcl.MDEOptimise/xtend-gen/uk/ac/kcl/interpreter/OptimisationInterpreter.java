@@ -24,7 +24,6 @@ import org.eclipse.emf.henshin.model.Module;
 import org.eclipse.emf.henshin.model.Rule;
 import org.eclipse.emf.henshin.model.Unit;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -172,14 +171,16 @@ public class OptimisationInterpreter {
         return IterableExtensions.<Match, Pair<Rule, Match>>map(_findMatches, _function_2);
       };
       List<Iterable<Pair<Rule, Match>>> _map_1 = ListExtensions.<Unit, Iterable<Pair<Rule, Match>>>map(this.henshinEvolvers, _function_1);
-      final Iterable<Pair<Rule, Match>> matches = Iterables.<Pair<Rule, Match>>concat(_map_1);
-      boolean _isEmpty = IterableExtensions.isEmpty(matches);
+      final Iterable<Pair<Rule, Match>> matchesView = Iterables.<Pair<Rule, Match>>concat(_map_1);
+      List<Pair<Rule, Match>> _list = IterableExtensions.<Pair<Rule, Match>>toList(matchesView);
+      final ArrayList<Pair<Rule, Match>> matches = new ArrayList<Pair<Rule, Match>>(_list);
+      boolean _isEmpty = matches.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         Random _random = new Random();
-        int _size = IterableExtensions.size(matches);
+        int _size = matches.size();
         int _nextInt = _random.nextInt(_size);
-        final Pair<Rule, Match> matchToUse = ((Pair<Rule, Match>[])Conversions.unwrapArray(matches, Pair.class))[_nextInt];
+        final Pair<Rule, Match> matchToUse = matches.get(_nextInt);
         final RuleApplicationImpl runner = new RuleApplicationImpl(OptimisationInterpreter.engine);
         runner.setEGraph(graph);
         Rule _key = matchToUse.getKey();

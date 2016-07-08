@@ -119,9 +119,11 @@ class OptimisationInterpreter {
 
 		// Get all matches
 		val graph = new EGraphImpl(candidateSolution)
-		val matches = henshinEvolvers.map [ evolver |
+		val matchesView = henshinEvolvers.map [ evolver |
 			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
 		].flatten
+
+		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
 
 		if (!matches.empty) {
 			// Randomly pick one match
